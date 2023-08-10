@@ -1,0 +1,14 @@
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\bin\Debug\DAL.dll.config
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\bin\Debug\DAL.dll
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\bin\Debug\DAL.pdb
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\bin\Debug\EntityFramework.dll
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\bin\Debug\EntityFramework.xml
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.dll
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.pdb
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.Migrations.init.resources
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
