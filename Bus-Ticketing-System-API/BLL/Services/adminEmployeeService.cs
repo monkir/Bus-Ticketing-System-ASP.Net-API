@@ -15,7 +15,10 @@ namespace BLL.Services
         public static List<employeeDTO> allEmployee()
         {
             var data = DataAccessFactory.getEmployee().All();
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<employee, employeeDTO>());
+            var config = new MapperConfiguration(
+                cfg => cfg.CreateMap<employee, employeeDTO>()
+                .ForMember( dest => dest.username, opt => opt.MapFrom(src => src.user.username))
+                );
             var mapper = config.CreateMapper();
             return mapper.Map<List<employeeDTO>>(data);
         }
