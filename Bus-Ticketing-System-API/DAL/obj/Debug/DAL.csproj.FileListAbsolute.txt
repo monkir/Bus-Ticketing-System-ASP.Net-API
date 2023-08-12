@@ -12,3 +12,4 @@ D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DA
 D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.pdb
 D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.Migrations.init.resources
 D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.Migrations.moreentity.resources

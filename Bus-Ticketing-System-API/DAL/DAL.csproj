@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="DataAccessFactory.cs" />
     <Compile Include="EF\BTSContext.cs" />
     <Compile Include="EF\Models\admin.cs" />
     <Compile Include="EF\Models\bus.cs" />
@@ -65,12 +66,23 @@
     <Compile Include="EF\Models\token.cs" />
     <Compile Include="EF\Models\trip.cs" />
     <Compile Include="EF\Models\user.cs" />
+    <Compile Include="Interfaces\IAuth.cs" />
+    <Compile Include="Interfaces\IRepo.cs" />
     <Compile Include="Migrations\202308100753215_init.cs" />
     <Compile Include="Migrations\202308100753215_init.designer.cs">
       <DependentUpon>202308100753215_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202308121359198_more-entity.cs" />
+    <Compile Include="Migrations\202308121359198_more-entity.designer.cs">
+      <DependentUpon>202308121359198_more-entity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repos\busProviderRepo.cs" />
+    <Compile Include="Repos\discountCuponRepo.cs" />
+    <Compile Include="Repos\employeeRepo.cs" />
+    <Compile Include="Repos\noticeRepo.cs" />
+    <Compile Include="Repos\repo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -80,7 +92,11 @@
     <EmbeddedResource Include="Migrations\202308100753215_init.resx">
       <DependentUpon>202308100753215_init.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308121359198_more-entity.resx">
+      <DependentUpon>202308121359198_more-entity.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

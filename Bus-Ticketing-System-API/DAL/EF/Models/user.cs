@@ -15,27 +15,17 @@ namespace DAL.EF.Models
 
     //user role maybe admin/employee/bus-providers/customer
         public string userRole { get; set; }
-        public int userID { get; set; }
-        public int userRoleID { get; set;}
 
     // If user role is admin
-        /*[ForeignKey("admin")]
-        public int? admin_id { get; set; }*/
         public virtual admin admin { get; set; }
 
     // If user role is employee
-        /*[ForeignKey("employee")]
-        public int? emp_id { get; set; }*/
         public virtual employee employee { get; set; }
 
     // If user role is customer
-        /*[ForeignKey("customer")]
-        public int? cust_id { get; set; }*/
         public virtual customer customer { get; set; }
 
     // If user role is bus-provider
-        /*[ForeignKey("busProvider")]
-        public int? bp_id { get; set; }*/
         public virtual busProvider busProvider { get; set; }
     }
 }

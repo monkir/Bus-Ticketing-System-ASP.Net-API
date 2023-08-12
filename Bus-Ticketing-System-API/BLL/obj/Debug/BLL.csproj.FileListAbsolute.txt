@@ -1,0 +1,14 @@
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\BLL\bin\Debug\BLL.dll
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\BLL\bin\Debug\BLL.pdb
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\BLL\bin\Debug\AutoMapper.dll
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\BLL\bin\Debug\DAL.dll
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\BLL\bin\Debug\EntityFramework.dll
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\BLL\bin\Debug\DAL.pdb
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\BLL\bin\Debug\DAL.dll.config
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\BLL\bin\Debug\AutoMapper.xml
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\BLL\bin\Debug\EntityFramework.xml
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\BLL\obj\Debug\BLL.csproj.CopyComplete
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\BLL\obj\Debug\BLL.dll
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\BLL\obj\Debug\BLL.pdb

@@ -11,6 +11,8 @@ namespace DAL.EF.Models
     {
         public int id { get; set; }
         public string name { get; set; }
+        public float percentage { get; set; }
+        public int maxDiscount { get; set; }
 
     // The admin id who created this token
         [ForeignKey("admin")]
