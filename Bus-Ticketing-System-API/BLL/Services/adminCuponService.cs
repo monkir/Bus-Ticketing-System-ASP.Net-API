@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Services
 {
-    public class adminServices
+    public class adminCuponService
     {
         public static List<discountCuponDTO> allDiscountCupon()
         {

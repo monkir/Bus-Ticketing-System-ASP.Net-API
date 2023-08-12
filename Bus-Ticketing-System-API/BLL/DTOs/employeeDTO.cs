@@ -19,5 +19,8 @@ namespace BLL.DTOs
 
         // Admin who added this employee
         public int admin_id { get; set; }
+    // From user model
+        public string username { get; set; }
+        public string password { get; set; }
     }
 }

@@ -1,0 +1,334 @@
+{
+	"info": {
+		"_postman_id": "c7e86f08-3379-4837-898f-cba53b61e699",
+		"name": "BTS Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27181032"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Cupon",
+					"item": [
+						{
+							"name": "Admin cupon all",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:44304/api/admin/cupon/all",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"admin",
+										"cupon",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin cupon get by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:44304/api/admin/cupon/get/1",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"admin",
+										"cupon",
+										"get",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin cupon create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Eid discount",
+											"type": "text"
+										},
+										{
+											"key": "percentage",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "maxDiscount",
+											"value": "500",
+											"type": "text"
+										},
+										{
+											"key": "admin_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/admin/cupon/add",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"admin",
+										"cupon",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin cupon delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Eid discount",
+											"type": "text"
+										},
+										{
+											"key": "percentage",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "maxDiscount",
+											"value": "500",
+											"type": "text"
+										},
+										{
+											"key": "admin_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/admin/cupon/delete/2",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"admin",
+										"cupon",
+										"delete",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin cupon update",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Boisakhi discount",
+											"type": "text"
+										},
+										{
+											"key": "percentage",
+											"value": "15",
+											"type": "text"
+										},
+										{
+											"key": "maxDiscount",
+											"value": "300",
+											"type": "text"
+										},
+										{
+											"key": "admin_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/admin/cupon/update",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"admin",
+										"cupon",
+										"update"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Employee",
+					"item": [
+						{
+							"name": "Admin employee add",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Muzahidul Islam",
+											"type": "text"
+										},
+										{
+											"key": "salary",
+											"value": "50000",
+											"type": "text"
+										},
+										{
+											"key": "dob",
+											"value": "13-Aug-1998",
+											"type": "text"
+										},
+										{
+											"key": "admin_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "muzahid",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/admin/employee/add",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"admin",
+										"employee",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin employee add Copy",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Muzahidul Islam",
+											"type": "text"
+										},
+										{
+											"key": "salary",
+											"value": "50000",
+											"type": "text"
+										},
+										{
+											"key": "dob",
+											"value": "13-Aug-1998",
+											"type": "text"
+										},
+										{
+											"key": "admin_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "muzahid",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/admin/employee/all",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"admin",
+										"employee",
+										"all"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

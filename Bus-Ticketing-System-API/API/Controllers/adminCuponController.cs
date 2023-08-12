@@ -9,13 +9,13 @@ using System.Web.Http;
 
 namespace API.Controllers
 {
-    public class adminController : ApiController
+    public class adminCuponController : ApiController
     {
         [HttpGet]
         [Route("api/admin/cupon/all")]
         public HttpResponseMessage allCupon()
         {
-            var data = adminServices.allDiscountCupon();
+            var data = adminCuponService.allDiscountCupon();
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
         [HttpPost]
@@ -24,7 +24,7 @@ namespace API.Controllers
         {
             try
             {
-                var data = adminServices.addDiscountCupon(obj);
+                var data = adminCuponService.addDiscountCupon(obj);
                 string message = data ? "New cupon is created" : "New cupon is not created";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message});
             }
@@ -40,7 +40,7 @@ namespace API.Controllers
         {
             try
             {
-                var data = adminServices.updateDiscountCupon(obj);
+                var data = adminCuponService.updateDiscountCupon(obj);
                 string message = data ? "Cupon is updated" : "Cupon is not updated";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message});
             }
@@ -56,7 +56,7 @@ namespace API.Controllers
         {
             try
             {
-                var data = adminServices.deleteDiscountCupon(id);
+                var data = adminCuponService.deleteDiscountCupon(id);
                 string message = data ? "Cupon is deleted" : "Cupon is not deleted";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message});
             }
@@ -72,7 +72,7 @@ namespace API.Controllers
         {
             try
             {
-                var data = adminServices.GetDiscountCupon(id);
+                var data = adminCuponService.GetDiscountCupon(id);
                 //string message = data ? "Cupon is deleted" : "Cupon is not deleted";
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
