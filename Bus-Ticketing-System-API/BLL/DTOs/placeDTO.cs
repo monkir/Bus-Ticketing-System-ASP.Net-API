@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace BLL.DTOs
 {
-    public class noticeDTO
+    public class placeDTO
     {
         public int id { get; set; }
-        public string title { get; set; }
-        public string description { get; set; }
-
-        // The employee who post this notice
+        public string name { get; set; }
+    // The employee who post this notice
         public int emp_id { get; set; }
     }
 }

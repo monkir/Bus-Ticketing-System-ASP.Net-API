@@ -49,9 +49,12 @@
     <Compile Include="DTOs\discountCuponDTO.cs" />
     <Compile Include="DTOs\employeeDTO.cs" />
     <Compile Include="DTOs\noticeDTO.cs" />
+    <Compile Include="DTOs\placeDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\adminCuponService.cs" />
     <Compile Include="Services\adminEmployeeService.cs" />
+    <Compile Include="Services\employeeNoticeService.cs" />
+    <Compile Include="Services\employeePlaceService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">

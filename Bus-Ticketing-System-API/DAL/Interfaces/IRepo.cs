@@ -11,7 +11,7 @@ namespace DAL.Interfaces
         List<classType> All();
         classType get(idType key);
         returnType create(classType obj);
-        returnType update(classType obj);
-        returnType delete(idType key);
+        bool update(classType obj);
+        bool delete(idType key);
     }
 }
