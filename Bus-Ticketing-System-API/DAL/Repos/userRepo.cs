@@ -23,12 +23,11 @@ namespace DAL.Repos
             return obj;
         }
 
-        public user delete(int key)
+        public bool delete(int key)
         {
             var exObj = db.user.Find(key);
             db.user.Remove(exObj); 
-            db.SaveChanges();
-            return exObj;
+            return db.SaveChanges() > 0;
         }
 
         public user get(int key)
@@ -36,11 +35,10 @@ namespace DAL.Repos
             return db.user.Find(key);
         }
 
-        public user update(user obj)
+        public bool update(user obj)
         {
             db.user.AddOrUpdate(obj);
-            db.SaveChanges();
-            return obj;
+            return db.SaveChanges() > 0;
         }
     }
 }
