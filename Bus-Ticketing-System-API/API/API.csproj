@@ -94,6 +94,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\adminCuponController.cs" />
     <Compile Include="Controllers\adminEmployeeController.cs" />
+    <Compile Include="Controllers\employeeBusProviderController.cs" />
     <Compile Include="Controllers\employeeNoticeController.cs" />
     <Compile Include="Controllers\employeePlaceController.cs" />
     <Compile Include="Global.asax.cs">

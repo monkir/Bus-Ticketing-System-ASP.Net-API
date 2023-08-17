@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,13 @@ namespace DAL.EF.Models
     {
         public int id { get; set; }
         public int ticketPrice { get; set; }
+        [DefaultValue("adding/pending")]
+        public string status { get; set; }
+
+    // The employee who will approve or decline of adding or cancelling trip 
+        [ForeignKey("employee")]
+        public int? emp_id { get; set; }
+        public virtual employee employee { get; set; }
     // The place from where the bus will take off
         [ForeignKey("depot")]
         public int depot_id { get; set; }

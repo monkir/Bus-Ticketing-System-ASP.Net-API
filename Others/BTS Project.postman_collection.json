@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "087e02d3-30f2-4937-a75b-5c817569f795",
+		"_postman_id": "5a406a51-17f7-4622-a10b-73a63b107aa7",
 		"name": "BTS Project",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "29108010"
+		"_exporter_id": "27181032"
 	},
 	"item": [
 		{
@@ -219,17 +219,17 @@
 									"urlencoded": [
 										{
 											"key": "name",
-											"value": "Muzahidul Islam",
+											"value": "Najabat Islam",
 											"type": "text"
 										},
 										{
 											"key": "salary",
-											"value": "50000",
+											"value": "2500",
 											"type": "text"
 										},
 										{
 											"key": "dob",
-											"value": "13-Aug-1998",
+											"value": "10-Jan-2009",
 											"type": "text"
 										},
 										{
@@ -239,7 +239,7 @@
 										},
 										{
 											"key": "username",
-											"value": "muzahid",
+											"value": "najabat",
 											"type": "text"
 										},
 										{
@@ -738,12 +738,12 @@
 									"urlencoded": [
 										{
 											"key": "name",
-											"value": "Ctg",
+											"value": "Dhaka",
 											"type": "text"
 										},
 										{
 											"key": "emp_id",
-											"value": "3",
+											"value": "1002",
 											"type": "text"
 										}
 									]
@@ -802,7 +802,7 @@
 									"urlencoded": [
 										{
 											"key": "id",
-											"value": "2",
+											"value": "1",
 											"type": "text"
 										},
 										{
@@ -812,7 +812,7 @@
 										},
 										{
 											"key": "emp_id",
-											"value": "3",
+											"value": "1002",
 											"type": "text"
 										}
 									]
@@ -829,6 +829,289 @@
 										"employee",
 										"place",
 										"update"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Bus Provider",
+					"item": [
+						{
+							"name": "add",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "company",
+											"value": "Shohag Paribahan",
+											"type": "text"
+										},
+										{
+											"key": "emp_id",
+											"value": "1002",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "sharif",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/employee/busprovider/add",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"employee",
+										"busprovider",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "1005",
+											"type": "text"
+										},
+										{
+											"key": "company",
+											"value": "Shohag Paribahan",
+											"type": "text"
+										},
+										{
+											"key": "emp_id",
+											"value": "1002",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "babu",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/employee/busprovider/update",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"employee",
+										"busprovider",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Muzahidul Islam",
+											"type": "text"
+										},
+										{
+											"key": "salary",
+											"value": "50000",
+											"type": "text"
+										},
+										{
+											"key": "dob",
+											"value": "13-Aug-1998",
+											"type": "text"
+										},
+										{
+											"key": "admin_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "muzahid",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/employee/busprovider/all",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"employee",
+										"busprovider",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get by id",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Muzahidul Islam",
+											"type": "text"
+										},
+										{
+											"key": "salary",
+											"value": "50000",
+											"type": "text"
+										},
+										{
+											"key": "dob",
+											"value": "13-Aug-1998",
+											"type": "text"
+										},
+										{
+											"key": "admin_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "muzahid",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/employee/busprovider/get/3",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"employee",
+										"busprovider",
+										"get",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete by id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Muzahidul Islam",
+											"type": "text"
+										},
+										{
+											"key": "salary",
+											"value": "50000",
+											"type": "text"
+										},
+										{
+											"key": "dob",
+											"value": "13-Aug-1998",
+											"type": "text"
+										},
+										{
+											"key": "admin_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "muzahid",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/employee/busprovider/delete/4",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"employee",
+										"busprovider",
+										"delete",
+										"4"
 									]
 								}
 							},

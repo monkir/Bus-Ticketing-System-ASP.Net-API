@@ -80,6 +80,10 @@
     <Compile Include="Migrations\202308131621530_place_model_correction.designer.cs">
       <DependentUpon>202308131621530_place_model_correction.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202308171603572_trip-status.cs" />
+    <Compile Include="Migrations\202308171603572_trip-status.designer.cs">
+      <DependentUpon>202308171603572_trip-status.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repos\busProviderRepo.cs" />
@@ -103,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202308131621530_place_model_correction.resx">
       <DependentUpon>202308131621530_place_model_correction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308171603572_trip-status.resx">
+      <DependentUpon>202308171603572_trip-status.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

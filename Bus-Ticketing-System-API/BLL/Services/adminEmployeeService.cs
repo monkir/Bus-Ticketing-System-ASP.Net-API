@@ -57,10 +57,11 @@ namespace BLL.Services
             var mapper = config.CreateMapper();
             userData = mapper.Map<user>(obj);
             userData.userRole = "employee";
-            DataAccessFactory.getUser().update(userData);
+            bool userIsUpdated = DataAccessFactory.getUser().update(userData);
             var empData = mapper.Map<employee>(obj);
             empData.id = userData.id;
-            return DataAccessFactory.getEmployee().update(empData);
+            bool adminIsUpdated = DataAccessFactory.getEmployee().update(empData);
+            return userIsUpdated || adminIsUpdated;
         }
         public static bool deleteEmployee(int id)
         {
