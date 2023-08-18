@@ -9,8 +9,16 @@ using System.Threading.Tasks;
 
 namespace DAL.Repos
 {
-    public class userRepo : repo, IRepo<user, int, user>
+    public class userRepo : repo, IRepo<user, int, user>, IAuth
     {
+        public user Authentication(string username, string password)
+        {
+            user obj = (from u in db.user
+                      where u.username.Equals(username) && u.password.Equals(password)
+                      select u).SingleOrDefault();
+            return obj;
+        }
+
         public List<user> All()
         {
             return db.user.ToList();

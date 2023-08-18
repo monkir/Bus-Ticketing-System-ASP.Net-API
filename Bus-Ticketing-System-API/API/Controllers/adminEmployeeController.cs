@@ -1,4 +1,5 @@
-﻿using BLL.DTOs;
+﻿using API.Auth;
+using BLL.DTOs;
 using BLL.Services;
 using System;
 using System.Collections.Generic;
@@ -9,8 +10,13 @@ using System.Web.Http;
 
 namespace API.Controllers
 {
+    [adminAuth]
     public class adminEmployeeController : ApiController
     {
+        private int getAdminID(string tkString)
+        {
+            return authService.authorizeUser(tkString).id;
+        }
         [HttpGet]
         [Route("api/admin/employee/all")]
         public HttpResponseMessage allEmployee()
@@ -24,6 +30,7 @@ namespace API.Controllers
         {
             try
             {
+                obj.admin_id = getAdminID(Request.Headers.Authorization.ToString());
                 var data = adminEmployeeService.addEmpoloyee(obj);
                 string message = data ? "New employee is added" : "New employee is not added";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message });
@@ -39,6 +46,7 @@ namespace API.Controllers
         {
             try
             {
+                obj.admin_id = getAdminID(Request.Headers.Authorization.ToString());
                 var data = adminEmployeeService.updateEmployee(obj);
                 string message = data ? "The employee data is updated" : "The employee data is not updated";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message });

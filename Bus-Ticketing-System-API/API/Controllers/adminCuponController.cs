@@ -1,4 +1,5 @@
-﻿using BLL.DTOs;
+﻿using API.Auth;
+using BLL.DTOs;
 using BLL.Services;
 using System;
 using System.Collections.Generic;
@@ -9,8 +10,13 @@ using System.Web.Http;
 
 namespace API.Controllers
 {
+    [adminAuth]
     public class adminCuponController : ApiController
     {
+        private int getAdminID(string tkString)
+        {
+            return authService.authorizeUser(tkString).id;
+        }
         [HttpGet]
         [Route("api/admin/cupon/all")]
         public HttpResponseMessage allCupon()
@@ -24,6 +30,7 @@ namespace API.Controllers
         {
             try
             {
+                obj.admin_id = getAdminID(Request.Headers.Authorization.ToString());
                 var data = adminCuponService.addDiscountCupon(obj);
                 string message = data ? "New cupon is created" : "New cupon is not created";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message});
@@ -40,6 +47,7 @@ namespace API.Controllers
         {
             try
             {
+                obj.admin_id = getAdminID(Request.Headers.Authorization.ToString());
                 var data = adminCuponService.updateDiscountCupon(obj);
                 string message = data ? "Cupon is updated" : "Cupon is not updated";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message});

@@ -51,6 +51,7 @@
     <Compile Include="DTOs\employeeDTO.cs" />
     <Compile Include="DTOs\noticeDTO.cs" />
     <Compile Include="DTOs\placeDTO.cs" />
+    <Compile Include="DTOs\tokenDTO.cs" />
     <Compile Include="DTOs\tripDTO.cs" />
     <Compile Include="DTOs\userDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,6 +62,8 @@
     <Compile Include="Services\employee\employeeBusProviderService.cs" />
     <Compile Include="Services\employee\employeeNoticeService.cs" />
     <Compile Include="Services\employee\employeePlaceService.cs" />
+    <Compile Include="Services\employee\employeeTripService.cs" />
+    <Compile Include="Services\authService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">

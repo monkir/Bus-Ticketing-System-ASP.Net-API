@@ -93,6 +93,7 @@
     <Compile Include="Repos\noticeRepo.cs" />
     <Compile Include="Repos\placeRepo.cs" />
     <Compile Include="Repos\repo.cs" />
+    <Compile Include="Repos\tokenRepo.cs" />
     <Compile Include="Repos\tripRepo.cs" />
     <Compile Include="Repos\userRepo.cs" />
   </ItemGroup>
