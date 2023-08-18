@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.DTOs
 {
-    public class employeeDTO
+    public class employeeDTO:userDTO
     {
         public int id { get; set; }
         public string name { get; set; }
@@ -19,8 +19,5 @@ namespace BLL.DTOs
 
         // Admin who added this employee
         public int admin_id { get; set; }
-    // From user model
-        public string username { get; set; }
-        public string password { get; set; }
     }
 }
