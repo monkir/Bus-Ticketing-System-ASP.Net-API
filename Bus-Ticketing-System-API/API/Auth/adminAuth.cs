@@ -38,6 +38,17 @@ namespace API.Auth
                             new { Message = "Supplied token is expired" }
                         );
                 }
+                else
+                {
+                    var exUser = authService.getUserByTokenID(exToken.id);
+                    if(exUser.userRole.Equals("admin") == false)
+                    {
+                        actionContext.Response = actionContext.Request.CreateResponse(
+                            System.Net.HttpStatusCode.Forbidden,
+                            new { Message = "Only admin can access here" }
+                        );
+                    }
+                }
             }
             base.OnAuthorization(actionContext);
         }

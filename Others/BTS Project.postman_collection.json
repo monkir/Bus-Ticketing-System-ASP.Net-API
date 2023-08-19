@@ -16,7 +16,13 @@
 							"name": "Admin cupon all",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "7280539e-f4a3-4619-9677-6eb8d838545f",
+										"type": "text"
+									}
+								],
 								"url": {
 									"raw": "https://localhost:44304/api/admin/cupon/all",
 									"protocol": "https",
@@ -1120,6 +1126,41 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "user login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "muzahid",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44304/api/login",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44304",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

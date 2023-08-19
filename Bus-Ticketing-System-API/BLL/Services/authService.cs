@@ -37,5 +37,12 @@ namespace BLL.Services
             var mapper = config.CreateMapper();
             return mapper.Map<tokenDTO>(tk);
         }
+        public static userDTO getUserByTokenID(int id)
+        {
+            var exUser = DataAccessFactory.getToken().get(id).user;
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<user, userDTO>());
+            var mapper = config.CreateMapper();
+            return mapper.Map<userDTO>(exUser);
+        }
     }
 }

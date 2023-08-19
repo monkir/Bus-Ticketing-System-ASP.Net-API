@@ -13,9 +13,10 @@ namespace API.Controllers
     [adminAuth]
     public class adminCuponController : ApiController
     {
-        private int getAdminID(string tkString)
+        private int getAdminID(HttpRequestMessage request)
         {
-            return authService.authorizeUser(tkString).id;
+            string tokenString = request.Headers.Authorization.ToString();
+            return authService.authorizeUser(tokenString).id;
         }
         [HttpGet]
         [Route("api/admin/cupon/all")]
@@ -30,7 +31,7 @@ namespace API.Controllers
         {
             try
             {
-                obj.admin_id = getAdminID(Request.Headers.Authorization.ToString());
+                obj.admin_id = getAdminID(Request);
                 var data = adminCuponService.addDiscountCupon(obj);
                 string message = data ? "New cupon is created" : "New cupon is not created";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message});
@@ -41,13 +42,14 @@ namespace API.Controllers
             }
             
         }
+
         [HttpPost]
         [Route("api/admin/cupon/update")]
         public HttpResponseMessage updateCupon(discountCuponDTO obj)
         {
             try
             {
-                obj.admin_id = getAdminID(Request.Headers.Authorization.ToString());
+                obj.admin_id = getAdminID(Request);
                 var data = adminCuponService.updateDiscountCupon(obj);
                 string message = data ? "Cupon is updated" : "Cupon is not updated";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message});
