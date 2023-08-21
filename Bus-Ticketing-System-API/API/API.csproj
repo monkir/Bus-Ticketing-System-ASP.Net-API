@@ -93,6 +93,10 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Auth\adminAuth.cs" />
+    <Compile Include="Auth\busProviderAuth.cs" />
+    <Compile Include="Auth\customerAuth.cs" />
+    <Compile Include="Auth\employeeAuth.cs" />
+    <Compile Include="Auth\userAuth.cs" />
     <Compile Include="Controllers\adminCuponController.cs" />
     <Compile Include="Controllers\adminEmployeeController.cs" />
     <Compile Include="Controllers\employeeBusProviderController.cs" />

@@ -27,5 +27,11 @@ namespace API.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.NotFound, new { Message = "Invalid credential"});
         }
+        [HttpGet]
+        [Route("api/logout")]
+        public HttpResponseMessage logout()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
