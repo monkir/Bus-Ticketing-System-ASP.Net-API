@@ -8,7 +8,6 @@ namespace BLL.DTOs
 {
     public class busProviderDTO:userDTO
     {
-        public int id { get; set; }
         public string company { get; set; }
 
         // The employee who add this bus-provider

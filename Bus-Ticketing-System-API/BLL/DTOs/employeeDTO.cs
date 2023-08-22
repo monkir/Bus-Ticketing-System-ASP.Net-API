@@ -8,7 +8,6 @@ namespace BLL.DTOs
 {
     public class employeeDTO:userDTO
     {
-        public int id { get; set; }
         public string name { get; set; }
 
         // salary

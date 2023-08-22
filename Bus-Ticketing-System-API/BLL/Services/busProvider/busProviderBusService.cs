@@ -26,6 +26,13 @@ namespace BLL.Services
             var mapper = config.CreateMapper();
             return mapper.Map<busDTO>(data);
         }
+        public static List<tripDTO> tripList_of_bus(int busID)
+        {
+            var data = DataAccessFactory.getBus().get(busID).trips.ToList();
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<trip, tripDTO>());
+            var mapper = config.CreateMapper();
+            return mapper.Map<List<tripDTO>>(data);
+        }
         public static bool deleteBus(int id)
         {
             return DataAccessFactory.getBus().delete(id);

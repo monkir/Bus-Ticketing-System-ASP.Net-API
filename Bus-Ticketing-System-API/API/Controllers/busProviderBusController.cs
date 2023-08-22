@@ -50,7 +50,7 @@ namespace API.Controllers
         {
             try
             {
-                if (busProviderBusService.isOwner(obj.id, getID(Request)))
+                if (busProviderBusService.isOwner(obj.id, getID(Request)) == false)
                 {
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The busprovider is not owner of this bus" });
                 }
@@ -71,7 +71,7 @@ namespace API.Controllers
         {
             try
             {
-                if (busProviderBusService.isOwner(id, getID(Request)))
+                if (busProviderBusService.isOwner(id, getID(Request)) == false)
                 {
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The busprovider is not owner of this bus" });
                 }
@@ -91,11 +91,30 @@ namespace API.Controllers
         {
             try
             {
-                if (busProviderBusService.isOwner(id, getID(Request)))
+                if (busProviderBusService.isOwner(id, getID(Request)) == false)
                 {
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The busprovider is not owner of this bus" });
                 }
                 var data = busProviderBusService.GetBus(id);
+                //string message = data ? "bus is deleted" : "bus is not deleted";
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
+        [HttpGet]
+        [Route("get/{id}/trip")]
+        public HttpResponseMessage triplistByBus(int id)
+        {
+            try
+            {
+                if (busProviderBusService.isOwner(id, getID(Request)) == false)
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The busprovider is not owner of this bus" });
+                }
+                var data = busProviderBusService.tripList_of_bus(id);
                 //string message = data ? "bus is deleted" : "bus is not deleted";
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
