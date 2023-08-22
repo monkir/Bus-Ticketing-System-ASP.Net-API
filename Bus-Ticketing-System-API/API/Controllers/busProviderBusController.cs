@@ -10,9 +10,9 @@ using System.Web.Http;
 
 namespace API.Controllers
 {
-    [RoutePrefix("api/employee/place")]
-    [employeeAuth]
-    public class employeePlaceController : ApiController
+    [RoutePrefix("api/busprovider/bus")]
+    [busProviderAuth]
+    public class busProviderBusController : ApiController
     {
         private int getID(HttpRequestMessage request)
         {
@@ -21,20 +21,21 @@ namespace API.Controllers
         }
         [HttpGet]
         [Route("all")]
-        public HttpResponseMessage allPlace()
+        public HttpResponseMessage allBus()
         {
-            var data = employeePlaceService.allPlace();
+            int bp_id = getID(Request);
+            var data = busProviderBusService.allBus(bp_id);
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
         [HttpPost]
         [Route("add")]
-        public HttpResponseMessage addPlace(placeDTO obj)
+        public HttpResponseMessage addBus(busDTO obj)
         {
             try
             {
-                obj.emp_id = getID(Request);
-                var data = employeePlaceService.addPlace(obj);
-                string message = data ? "New place is created" : "New place is not created";
+                obj.bp_id = getID(Request);
+                var data = busProviderBusService.addBus(obj);
+                string message = data ? "New bus is created" : "New bus is not created";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message });
             }
             catch (Exception ex)
@@ -45,13 +46,17 @@ namespace API.Controllers
         }
         [HttpPost]
         [Route("update")]
-        public HttpResponseMessage updatePlace(placeDTO obj)
+        public HttpResponseMessage updateBus(busDTO obj)
         {
             try
             {
-                obj.emp_id = getID(Request);
-                var data = employeePlaceService.updatePlace(obj);
-                string message = data ? "place is updated" : "place is not updated";
+                if (busProviderBusService.isOwner(obj.id, getID(Request)))
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The busprovider is not owner of this bus" });
+                }
+                obj.bp_id = getID(Request);
+                var data = busProviderBusService.updateBus(obj);
+                string message = data ? "bus is updated" : "bus is not updated";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message });
             }
             catch (Exception ex)
@@ -62,12 +67,16 @@ namespace API.Controllers
         }
         [HttpDelete]
         [Route("delete/{id}")]
-        public HttpResponseMessage deletePlace(int id)
+        public HttpResponseMessage deleteBus(int id)
         {
             try
             {
-                var data = employeePlaceService.deletePlace(id);
-                string message = data ? "place is deleted" : "place is not deleted";
+                if (busProviderBusService.isOwner(id, getID(Request)))
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The busprovider is not owner of this bus" });
+                }
+                var data = busProviderBusService.deleteBus(id);
+                string message = data ? "bus is deleted" : "bus is not deleted";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message });
             }
             catch (Exception ex)
@@ -78,12 +87,16 @@ namespace API.Controllers
         }
         [HttpGet]
         [Route("get/{id}")]
-        public HttpResponseMessage findPlace(int id)
+        public HttpResponseMessage findBus(int id)
         {
             try
             {
-                var data = employeePlaceService.GetPlace(id);
-                //string message = data ? "place is deleted" : "place is not deleted";
+                if (busProviderBusService.isOwner(id, getID(Request)))
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The busprovider is not owner of this bus" });
+                }
+                var data = busProviderBusService.GetBus(id);
+                //string message = data ? "bus is deleted" : "bus is not deleted";
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex)

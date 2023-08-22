@@ -1,4 +1,5 @@
-﻿using BLL.DTOs;
+﻿using API.Auth;
+using BLL.DTOs;
 using BLL.Services;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,14 @@ using System.Web.Http;
 namespace API.Controllers
 {
     [RoutePrefix("api/employee/busprovider")]
+    [employeeAuth]
     public class employeeBusProviderController : ApiController
     {
+        private int getID(HttpRequestMessage request)
+        {
+            string tokenString = request.Headers.Authorization.ToString();
+            return authService.authorizeUser(tokenString).id;
+        }
         [HttpGet]
         [Route("all")]
         public HttpResponseMessage allBusProvider()
@@ -25,6 +32,7 @@ namespace API.Controllers
         {
             try
             {
+                obj.emp_id = getID(Request);
                 var data = employeeBusProviderService.addBusProvider(obj);
                 string message = data ? "New busprovider is added" : "New busprovider is not added";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message });
@@ -40,6 +48,7 @@ namespace API.Controllers
         {
             try
             {
+                obj.emp_id = getID(Request);
                 var data = employeeBusProviderService.updateBusProvider(obj);
                 string message = data ? "The busprovider data is updated" : "The busprovider data is not updated";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message });

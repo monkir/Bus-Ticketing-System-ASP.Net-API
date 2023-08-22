@@ -12,9 +12,9 @@ namespace BLL.Services
 {
     public class busProviderBusService
     {
-        public static List<busDTO> allBus()
+        public static List<busDTO> allBus(int bp_id)
         {
-            var data = DataAccessFactory.getBus().All();
+            var data = DataAccessFactory.getBusProvider().get(bp_id).buses;
             var config = new MapperConfiguration(cfg => cfg.CreateMap<bus, busDTO>());
             var mapper = config.CreateMapper();
             return mapper.Map<List<busDTO>>(data);
@@ -43,6 +43,11 @@ namespace BLL.Services
             var mapper = config.CreateMapper();
             var newObj = mapper.Map<bus>(obj);
             return DataAccessFactory.getBus().update(newObj);
+        }
+        public static bool isOwner(int busID, int busProviderID)
+        {
+            var obj = DataAccessFactory.getBus().get(busID);
+            return obj.bp_id.Equals(busProviderID);
         }
     }
 }

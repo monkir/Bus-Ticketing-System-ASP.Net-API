@@ -99,6 +99,8 @@
     <Compile Include="Auth\userAuth.cs" />
     <Compile Include="Controllers\adminCuponController.cs" />
     <Compile Include="Controllers\adminEmployeeController.cs" />
+    <Compile Include="Controllers\busProviderBusController.cs" />
+    <Compile Include="Controllers\busProviderTripController.cs" />
     <Compile Include="Controllers\employeeBusProviderController.cs" />
     <Compile Include="Controllers\employeeNoticeController.cs" />
     <Compile Include="Controllers\employeePlaceController.cs" />

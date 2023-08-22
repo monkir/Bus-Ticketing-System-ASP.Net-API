@@ -11,26 +11,28 @@ using System.Web.Http;
 namespace API.Controllers
 {
     [adminAuth]
+    [RoutePrefix("api/admin/employee")]
     public class adminEmployeeController : ApiController
     {
-        private int getAdminID(string tkString)
+        private int getID(HttpRequestMessage request)
         {
-            return authService.authorizeUser(tkString).id;
+            string tokenString = request.Headers.Authorization.ToString();
+            return authService.authorizeUser(tokenString).id;
         }
         [HttpGet]
-        [Route("api/admin/employee/all")]
+        [Route("all")]
         public HttpResponseMessage allEmployee()
         {
             var data = adminEmployeeService.allEmployee();
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
         [HttpPost]
-        [Route("api/admin/employee/add")]
+        [Route("add")]
         public HttpResponseMessage addEmployee(employeeDTO obj) 
         {
             try
             {
-                obj.admin_id = getAdminID(Request.Headers.Authorization.ToString());
+                obj.admin_id = getID(Request);
                 var data = adminEmployeeService.addEmpoloyee(obj);
                 string message = data ? "New employee is added" : "New employee is not added";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message });
@@ -41,12 +43,12 @@ namespace API.Controllers
             }
         }
         [HttpPut]
-        [Route("api/admin/employee/update")]
+        [Route("update")]
         public HttpResponseMessage updateEmployee(employeeDTO obj) 
         {
             try
             {
-                obj.admin_id = getAdminID(Request.Headers.Authorization.ToString());
+                obj.admin_id = getID(Request);
                 var data = adminEmployeeService.updateEmployee(obj);
                 string message = data ? "The employee data is updated" : "The employee data is not updated";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message });
@@ -57,7 +59,7 @@ namespace API.Controllers
             }
         }
         [HttpDelete]
-        [Route("api/admin/employee/delete/{id}")]
+        [Route("delete/{id}")]
         public HttpResponseMessage deleteEmployee(int id) 
         {
             try
@@ -72,7 +74,7 @@ namespace API.Controllers
             }
         }
         [HttpGet]
-        [Route("api/admin/employee/get/{id}")]
+        [Route("get/{id}")]
         public HttpResponseMessage getEmployee(int id) 
         {
             try

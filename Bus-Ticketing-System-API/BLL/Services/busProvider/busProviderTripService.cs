@@ -12,6 +12,11 @@ namespace BLL.Services
 {
     public class busProviderTripService
     {
+        public static bool isOwner(int busID, int busProviderID)
+        {
+            var obj = DataAccessFactory.getBus().get(busID);
+            return obj.bp_id.Equals(busProviderID);
+        }
         public static List<tripDTO> allTrip()
         {
             var data = DataAccessFactory.getTrip().All();
