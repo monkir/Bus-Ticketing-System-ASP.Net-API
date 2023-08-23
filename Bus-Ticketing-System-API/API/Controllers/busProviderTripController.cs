@@ -17,7 +17,7 @@ namespace API.Controllers
         private int getID(HttpRequestMessage request)
         {
             string tokenString = request.Headers.Authorization.ToString();
-            return authService.authorizeUser(tokenString).id;
+            return authService.authorizeUser(tokenString).userid;
         }
         [HttpGet]
         [Route("all")]
@@ -33,11 +33,11 @@ namespace API.Controllers
         {
             try
             {
-                if (busProviderTripService.isOwner(id, getID(Request)) == false)
+                if (busProviderTripService.isOwnerOfTrip(id, getID(Request)) == false)
                 {
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The busprovider is not owner of this trip" });
                 }
-                var data = busProviderBusService.GetBus(id);
+                var data = busProviderTripService.GetTrip(id);
                 //string message = data ? "bus is deleted" : "bus is not deleted";
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
@@ -52,7 +52,12 @@ namespace API.Controllers
         {
             try
             {
-                obj.bus_id = getID(Request);
+                int busID = obj.bus_id;
+                int bp_id = getID(Request);
+                if (busProviderTripService.isOwnerOfBus(busID, bp_id) == false)
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The busprovider is not owner of this trip" });
+                }
                 var data = busProviderTripService.addTrip(obj);
                 string message = data ? "New trip is requested to be added" : "New trip is not added";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message });
@@ -70,8 +75,8 @@ namespace API.Controllers
         {
             try
             {
-                int bus_id = getID(Request);
-                if(busProviderTripService.isOwner(tripID, bus_id) == false)
+                int bp_id = getID(Request);
+                if(busProviderTripService.isOwnerOfTrip(tripID, bp_id) == false)
                 {
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The busprovider is not owner of this trip" });
                 }
@@ -96,8 +101,8 @@ namespace API.Controllers
         {
             try
             {
-                int bus_id = getID(Request);
-                if(busProviderTripService.isOwner(tripID, bus_id) == false)
+                int bp_id = getID(Request);
+                if(busProviderTripService.isOwnerOfTrip(tripID, bp_id) == false)
                 {
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The busprovider is not owner of this trip" });
                 }

@@ -26,19 +26,17 @@ namespace BLL.Services
             var mapper = config.CreateMapper();
             return mapper.Map<tripDTO>(data);
         }
-        public static bool cofirmCancelTrip(int id)
+        public static bool acceptCancelTrip(int tripID)
         {
-            var exTrip = DataAccessFactory.getTrip().get(id);
-            exTrip.status = "cancelled";
-            return DataAccessFactory.getTrip().update(exTrip);
+            var tripData = DataAccessFactory.getTrip().get(tripID);
+            tripData.status = "cancelled";
+            return DataAccessFactory.getTrip().update(tripData);
         }
-        public static bool confirmAddTrip(tripDTO obj)
+        public static bool acceptAddTrip(int tripID)
         {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<tripDTO, trip>());
-            var mapper = config.CreateMapper();
-            var newObj = mapper.Map<trip>(obj);
-            obj.status = "added";
-            return DataAccessFactory.getTrip().create(newObj);
+            var tripData = DataAccessFactory.getTrip().get(tripID);
+            tripData.status = "added";
+            return DataAccessFactory.getTrip().update(tripData);
         }
         /*public static bool updateTrip(tripDTO obj)
         {
