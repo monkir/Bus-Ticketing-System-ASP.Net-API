@@ -1669,44 +1669,13 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "b863d141-618a-4e21-b813-6a015f27a3cd",
+										"value": "95293d7e-98e1-4bc5-b37a-b9c4d6322c31",
 										"type": "text"
 									}
 								],
 								"body": {
 									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "name",
-											"value": "Muzahidul Islam",
-											"type": "text"
-										},
-										{
-											"key": "salary",
-											"value": "50000",
-											"type": "text"
-										},
-										{
-											"key": "dob",
-											"value": "13-Aug-1998",
-											"type": "text"
-										},
-										{
-											"key": "admin_id",
-											"value": "1",
-											"type": "text"
-										},
-										{
-											"key": "username",
-											"value": "muzahid",
-											"type": "text"
-										},
-										{
-											"key": "password",
-											"value": "123",
-											"type": "text"
-										}
-									]
+									"urlencoded": []
 								},
 								"url": {
 									"raw": "https://localhost:44304/api/busprovider/trip/all",
@@ -1953,6 +1922,147 @@
 			]
 		},
 		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Ticket",
+					"item": [
+						{
+							"name": "Purchase",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "e5250ad8-2085-4b6c-9d59-43fe525fd480",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "seat_no[]",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "seat_no[]",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "seat_no[]",
+											"value": "6",
+											"type": "text"
+										},
+										{
+											"key": "cupon",
+											"value": "",
+											"description": "optional",
+											"type": "text"
+										},
+										{
+											"key": "trip_id",
+											"value": "5",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/customer/ticket/parchase",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"customer",
+										"ticket",
+										"parchase"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "trip in details",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "d142fac5-10a5-4e27-b918-c6277adde476",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/customer/ticket/trip/5",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"customer",
+										"ticket",
+										"trip",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "trip in details Copy",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "d142fac5-10a5-4e27-b918-c6277adde476",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/customer/ticket/cupon/1",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"customer",
+										"ticket",
+										"cupon",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "user login",
 			"request": {
 				"method": "POST",
@@ -1962,7 +2072,7 @@
 					"urlencoded": [
 						{
 							"key": "username",
-							"value": "muzahid",
+							"value": "mayesha",
 							"type": "text"
 						},
 						{

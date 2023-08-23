@@ -17,6 +17,7 @@ namespace DAL
         public static IRepo<employee, int, bool> getEmployee() { return new employeeRepo(); }
         public static IRepo<notice, int, bool> getNotice() { return new noticeRepo(); }
         public static IRepo<place, int, bool> getPlace() { return new placeRepo(); }
+        public static IRepo<ticket, int, bool> getTicket() {  return new ticketRepo(); }
         public static IRepo<trip, int, bool> getTrip() { return new tripRepo(); }
         public static IRepo<token, int, token> getToken() { return new tokenRepo(); }
         public static IRepo<user, int, user> getUser() { return new userRepo(); }

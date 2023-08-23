@@ -51,14 +51,17 @@
     <Compile Include="DTOs\employeeDTO.cs" />
     <Compile Include="DTOs\noticeDTO.cs" />
     <Compile Include="DTOs\placeDTO.cs" />
+    <Compile Include="DTOs\ticketDTO.cs" />
     <Compile Include="DTOs\tokenDTO.cs" />
     <Compile Include="DTOs\tripDTO.cs" />
+    <Compile Include="DTOs\tripInDetailsDTO.cs" />
     <Compile Include="DTOs\userDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\admin\adminCuponService.cs" />
     <Compile Include="Services\admin\adminEmployeeService.cs" />
     <Compile Include="Services\busProvider\busProviderBusService.cs" />
     <Compile Include="Services\busProvider\busProviderTripService.cs" />
+    <Compile Include="Services\customer\customerTicketService.cs" />
     <Compile Include="Services\employee\employeeBusProviderService.cs" />
     <Compile Include="Services\employee\employeeNoticeService.cs" />
     <Compile Include="Services\employee\employeePlaceService.cs" />
@@ -74,8 +77,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\customer\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

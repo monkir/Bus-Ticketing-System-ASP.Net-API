@@ -10,7 +10,7 @@ namespace DAL.EF.Models
     public class ticket
     {
         public int id { get; set; }
-        public List<int> seat_no { get; set; }
+        public string seat_no { get; set; }
         public string status { get; set; }
 
     // Discount-cupon used in this ticket

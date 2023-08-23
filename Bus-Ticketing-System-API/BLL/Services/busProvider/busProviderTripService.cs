@@ -32,9 +32,10 @@ namespace BLL.Services
         {
             
             var buses = DataAccessFactory.getBusProvider().get(bpID).buses;
-            var data = new List<trip>();
-            foreach(var b in buses)
-                data.AddRange(b.trips.ToList());
+            //var data = buses.SelectMany(b => b.trips).ToList();
+            var data = (from b in buses
+                    from t in b.trips
+                    select t).ToList();
             var config = new MapperConfiguration(cfg => cfg.CreateMap<trip, tripDTO>());
             var mapper = config.CreateMapper();
             return mapper.Map<List<tripDTO>>(data);
