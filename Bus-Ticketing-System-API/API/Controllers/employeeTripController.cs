@@ -42,6 +42,19 @@ namespace API.Controllers
         {
             try
             {
+                var tripObj = employeeTripService.GetTrip(tripID);
+                if(tripObj == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, new { message = "This trip is not founded" });
+                }
+                if (tripObj.status == "added")
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "This trip is already added" });
+                }
+                if (tripObj.status != "adding-pending")
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "This trip cannot be added" });
+                }
                 //obj.bus_id = getID(Request);
                 var data = employeeTripService.acceptAddTrip(tripID);
                 string message = data ? "New trip is accepted to be added" : "Accepting new trip to be added is failed";
@@ -59,6 +72,20 @@ namespace API.Controllers
         {
             try
             {
+
+                var tripObj = employeeTripService.GetTrip(tripID);
+                if (tripObj == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, new { message = "This trip is not founded" });
+                }
+                if (tripObj.status == "cancalled")
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "This trip is already cancalled" });
+                }
+                if (tripObj.status != "cancelling-pending")
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "This trip cannot be cancalled" });
+                }
                 //obj.bus_id = getID(Request);
                 var data = employeeTripService.acceptCancelTrip(tripID);
                 string message = data ? "A trip is accepted to be cancelled" : "Accepting a trip to be cancelled is failed";

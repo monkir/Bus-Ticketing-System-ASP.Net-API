@@ -81,12 +81,12 @@ namespace API.Controllers
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The busprovider is not owner of this trip" });
                 }
                 string tripStatus = busProviderTripService.GetTrip(tripID).status;
-                if(tripStatus != "adding/pending")
+                if(tripStatus != "adding-pending")
                 {
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "This trip cannot be deleted" });
                 }
-                var data = busProviderTripService.cancelTrip(tripID);
-                string message = data ? "The trip is requested to be cancelled" : "New trip is not cancelled";
+                var data = busProviderTripService.deleteTrip(tripID);
+                string message = data ? "The trip is deleted" : "New trip is not deleted";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message });
             }
             catch (Exception ex)
@@ -107,7 +107,7 @@ namespace API.Controllers
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The busprovider is not owner of this trip" });
                 }
                 string tripStatus = busProviderTripService.GetTrip(tripID).status;
-                if(tripStatus == "cancelling/pending")
+                if(tripStatus == "cancelling-pending")
                 {
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "This trip is already requested to be cancalled" });
                 }

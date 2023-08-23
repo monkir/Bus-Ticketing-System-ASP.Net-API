@@ -12,7 +12,6 @@ namespace BLL.DTOs
     {
         public int id { get; set; }
         public int ticketPrice { get; set; }
-        [DefaultValue("adding/pending")]
         public string status { get; set; }
 
     // The employee who will approve or decline of adding or cancelling trip 
