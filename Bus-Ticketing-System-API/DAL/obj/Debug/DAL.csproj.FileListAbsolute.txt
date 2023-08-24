@@ -33,3 +33,4 @@ D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DA
 D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.Migrations.tripstatus.resources
 D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.Migrations.ticket_seat_no.resources
 D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.Migrations.discountCupon_changes.resources
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.Migrations.tripticketrefund.resources

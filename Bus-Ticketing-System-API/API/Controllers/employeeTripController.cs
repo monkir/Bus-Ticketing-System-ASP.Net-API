@@ -67,6 +67,36 @@ namespace API.Controllers
 
         }
         [HttpPost]
+        [Route("done/{tripID}")]
+        public HttpResponseMessage doneTrip(int tripID)
+        {
+            try
+            {
+                var tripObj = employeeTripService.GetTrip(tripID);
+                if(tripObj == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, new { message = "This trip is not founded" });
+                }
+                if (tripObj.status == "done")
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "This trip is already done" });
+                }
+                if (tripObj.status != "added")
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "This trip cannot be done" });
+                }
+                //obj.bus_id = getID(Request);
+                var data = employeeTripService.doneTrip(tripID);
+                string message = data ? "Trip has been done successfully" : "Trip has not been done unsuccessfully";
+                return Request.CreateResponse(HttpStatusCode.OK, new { message = message });
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
+            }
+
+        }
+        [HttpPost]
         [Route("accept/cancel/{tripID}")]
         public HttpResponseMessage confirmCancelTrip(int tripID)
         {

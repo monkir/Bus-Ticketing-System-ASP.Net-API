@@ -11,6 +11,8 @@ namespace DAL.EF.Models
     {
         public int id { get; set; }
         public string seat_no { get; set; }
+        public int ammount { get; set; }
+
         public string status { get; set; }
 
     // Discount-cupon used in this ticket

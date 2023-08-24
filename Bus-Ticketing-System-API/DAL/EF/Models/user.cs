@@ -27,5 +27,8 @@ namespace DAL.EF.Models
 
     // If user role is bus-provider
         public virtual busProvider busProvider { get; set; }
+    // *************   List    **************
+    // List of transactions by the user
+        public virtual List<transaction> transactions { get; set; }
     }
 }

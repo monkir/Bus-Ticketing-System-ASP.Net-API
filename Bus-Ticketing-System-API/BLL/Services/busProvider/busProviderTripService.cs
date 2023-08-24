@@ -47,22 +47,64 @@ namespace BLL.Services
             var mapper = config.CreateMapper();
             return mapper.Map<tripDTO>(data);
         }
+        // add amount to account
+        private static bool addAccount(int bp_id, int ammount, string details)
+        {
+            var obj = new transaction()
+            {
+                details = "Added: " + details,
+                amount = ammount,
+                userID = bp_id
+            };
+            return DataAccessFactory.getTransaction().create(obj);
+        }
+        // cut amount from account
+        private static bool cutAccount(int bp_id, int ammount, string details)
+        {
+            var obj = new transaction()
+            {
+                details = "Cut: " + details,
+                amount = (-ammount),
+                time = DateTime.Now,
+                userID = bp_id
+            };
+            return DataAccessFactory.getTransaction().create(obj);
+        }
         public static bool addTrip(tripDTO obj)
         {
+            int bp_id = DataAccessFactory.getBus().get(obj.bus_id).bp_id;
+            if (cutAccount(bp_id, 2000, "for adding trip") == false)
+            {
+                return false;
+            }
             var config = new MapperConfiguration(cfg => cfg.CreateMap<tripDTO, trip>());
             var mapper = config.CreateMapper();
             var newObj = mapper.Map<trip>(obj);
             newObj.status = "adding-pending";
             return DataAccessFactory.getTrip().create(newObj);
         }
-        public static bool deleteTrip(int tripID)
+        public static bool undoAddTrip(int tripID)
         {
+            int bp_id = DataAccessFactory.getTrip().get(tripID).bus.bp_id;
+            if (addAccount(bp_id, 2000, "for undoing add trip") == false)
+            {
+                return false;
+            }
             return DataAccessFactory.getTrip().delete(tripID);
+            /*var exTrip = DataAccessFactory.getTrip().get(tripID);
+            exTrip.status = "cancelling-pending";
+            return DataAccessFactory.getTrip().update(exTrip);*/
         }
         public static bool cancelTrip(int tripID)
         {
             var exTrip = DataAccessFactory.getTrip().get(tripID);
             exTrip.status = "cancelling-pending";
+            return DataAccessFactory.getTrip().update(exTrip);
+        }
+        public static bool undoCancelTrip(int tripID)
+        {
+            var exTrip = DataAccessFactory.getTrip().get(tripID);
+            exTrip.status = "added";
             return DataAccessFactory.getTrip().update(exTrip);
         }
         /*public static bool updateTrip(tripDTO obj)

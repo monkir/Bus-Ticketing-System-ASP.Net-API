@@ -14,6 +14,8 @@ namespace DAL.EF.Models
         public int ticketPrice { get; set; }
         [DefaultValue("adding/pending")]
         public string status { get; set; }
+        public DateTime startTime { get; set; }
+        public DateTime endTime { get; set; }
 
     // The employee who will approve or decline of adding or cancelling trip 
         [ForeignKey("employee")]

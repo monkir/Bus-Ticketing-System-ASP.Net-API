@@ -13,13 +13,15 @@ namespace DAL
     {
         public static IRepo<bus, int, bool> getBus() { return new busRepo(); }
         public static IRepo<busProvider, int, bool> getBusProvider() { return new busProviderRepo(); }
+        public static IRepo<customer, int, bool> getCustomer() {  return new customerRepo(); }
         public static IRepo<discountCupon, int, bool> getDiscountCupon() { return new discountCuponRepo(); }
         public static IRepo<employee, int, bool> getEmployee() { return new employeeRepo(); }
         public static IRepo<notice, int, bool> getNotice() { return new noticeRepo(); }
         public static IRepo<place, int, bool> getPlace() { return new placeRepo(); }
         public static IRepo<ticket, int, bool> getTicket() {  return new ticketRepo(); }
-        public static IRepo<trip, int, bool> getTrip() { return new tripRepo(); }
         public static IRepo<token, int, token> getToken() { return new tokenRepo(); }
+        public static IRepo<transaction, int, bool> getTransaction() {  return new transactionRepo(); }
+        public static IRepo<trip, int, bool> getTrip() { return new tripRepo(); }
         public static IRepo<user, int, user> getUser() { return new userRepo(); }
         public static IAuth GetAuth() { return new userRepo(); }
     }

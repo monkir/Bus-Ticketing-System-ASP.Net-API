@@ -1336,6 +1336,39 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "done by id",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "ba4ef954-51e2-4788-a2c5-692c2af0fbcb",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/employee/trip/done/5",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"employee",
+										"trip",
+										"done",
+										"5"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				}
@@ -1820,6 +1853,66 @@
 							"response": []
 						},
 						{
+							"name": "undo add by id",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "b863d141-618a-4e21-b813-6a015f27a3cd",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "ticketPrice",
+											"value": "500",
+											"type": "text"
+										},
+										{
+											"key": "emp_id",
+											"value": "1002",
+											"type": "text"
+										},
+										{
+											"key": "depot_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "dest_id",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "bus_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/busprovider/trip/add/undo/5",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"busprovider",
+										"trip",
+										"add",
+										"undo",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "cancel by id",
 							"request": {
 								"method": "POST",
@@ -1842,6 +1935,36 @@
 										"busprovider",
 										"trip",
 										"cancel",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "undo cancel by id",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "b863d141-618a-4e21-b813-6a015f27a3cd",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://localhost:44304/api/busprovider/trip/cancel/undo/3",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"busprovider",
+										"trip",
+										"cancel",
+										"undo",
 										"3"
 									]
 								}
@@ -1987,6 +2110,225 @@
 							"response": []
 						},
 						{
+							"name": "cancel",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "e5250ad8-2085-4b6c-9d59-43fe525fd480",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "seat_no[]",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "seat_no[]",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "seat_no[]",
+											"value": "6",
+											"type": "text"
+										},
+										{
+											"key": "cupon",
+											"value": "",
+											"description": "optional",
+											"type": "text"
+										},
+										{
+											"key": "trip_id",
+											"value": "5",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/customer/ticket/cancel/4",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"customer",
+										"ticket",
+										"cancel",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "e5250ad8-2085-4b6c-9d59-43fe525fd480",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "seat_no[]",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "seat_no[]",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "seat_no[]",
+											"value": "6",
+											"type": "text"
+										},
+										{
+											"key": "cupon",
+											"value": "",
+											"description": "optional",
+											"type": "text"
+										},
+										{
+											"key": "trip_id",
+											"value": "5",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/customer/ticket/get/1",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"customer",
+										"ticket",
+										"get",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "e5250ad8-2085-4b6c-9d59-43fe525fd480",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "seat_no[]",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "seat_no[]",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "seat_no[]",
+											"value": "6",
+											"type": "text"
+										},
+										{
+											"key": "cupon",
+											"value": "",
+											"description": "optional",
+											"type": "text"
+										},
+										{
+											"key": "trip_id",
+											"value": "5",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/customer/ticket/all",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"customer",
+										"ticket",
+										"all"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Trip and Token",
+					"item": [
+						{
+							"name": "my trip",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "70a5b079-ae40-4ebf-a1f3-0c6bc4f2b94c",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/customer/trip/my",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"customer",
+										"trip",
+										"my"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "trip in details",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -1996,7 +2338,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "d142fac5-10a5-4e27-b918-c6277adde476",
+										"value": "70a5b079-ae40-4ebf-a1f3-0c6bc4f2b94c",
 										"type": "text"
 									}
 								],
@@ -2005,7 +2347,7 @@
 									"urlencoded": []
 								},
 								"url": {
-									"raw": "https://localhost:44304/api/customer/ticket/trip/5",
+									"raw": "https://localhost:44304/api/customer/trip",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -2014,16 +2356,14 @@
 									"path": [
 										"api",
 										"customer",
-										"ticket",
-										"trip",
-										"5"
+										"trip"
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "trip in details Copy",
+							"name": "cupon",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -2032,7 +2372,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "d142fac5-10a5-4e27-b918-c6277adde476",
+										"value": "70a5b079-ae40-4ebf-a1f3-0c6bc4f2b94c",
 										"type": "text"
 									}
 								],
@@ -2041,7 +2381,7 @@
 									"urlencoded": []
 								},
 								"url": {
-									"raw": "https://localhost:44304/api/customer/ticket/cupon/1",
+									"raw": "https://localhost:44304/api/customer/cupon/1",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -2050,7 +2390,6 @@
 									"path": [
 										"api",
 										"customer",
-										"ticket",
 										"cupon",
 										"1"
 									]

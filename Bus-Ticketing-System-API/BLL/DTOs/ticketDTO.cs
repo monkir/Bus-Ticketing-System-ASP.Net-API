@@ -11,6 +11,7 @@ namespace BLL.DTOs
     {
         public int id { get; set; }
         public List<int> seat_no { get; set; }
+        public int ammount { get; set; }
         public string status { get; set; }
 
         // Discount-cupon used in this ticket
