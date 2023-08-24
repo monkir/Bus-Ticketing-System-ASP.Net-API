@@ -34,6 +34,7 @@ namespace BLL.Services
             {
                 details = "Added: " + details,
                 amount = ammount,
+                time = DateTime.Now,
                 userID = bp_id
             };
             return DataAccessFactory.getTransaction().create(obj);

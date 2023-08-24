@@ -17,7 +17,7 @@ namespace BLL.DTOs
         public DateTime endTime { get; set; }
 
         // The employee who will approve or decline of adding or cancelling trip 
-        public int? emp_id { get; set; }
+        //public int? emp_id { get; set; }
     // The place from where the bus will take off
         public int depot_id { get; set; }
 

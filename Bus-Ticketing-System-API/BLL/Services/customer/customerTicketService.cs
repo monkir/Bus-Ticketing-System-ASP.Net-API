@@ -14,19 +14,40 @@ namespace BLL.Services
     {
         public static bool isOwnerOfTicket(int cust_id, int tikcetID)
         {
-           return DataAccessFactory.getTicket().get(tikcetID).cust_id == cust_id;
+           var ticketObj = DataAccessFactory.getTicket().get(tikcetID);
+            return ticketObj == null ? false : ticketObj.cust_id == cust_id;
         }
         public static ticketDTO GetTicket(int tikcetID)
         {
             var data = DataAccessFactory.getTicket().get(tikcetID);
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<ticket, ticketDTO>());
+            var config = new MapperConfiguration
+                (
+                    cfg => cfg.CreateMap<ticket, ticketDTO>()
+                    .ForMember
+                    (
+                        dst => dst.seat_no, opt => opt.MapFrom
+                        (
+                            src => src.seat_no.Split(',').Select(s => Convert.ToInt32(s)).ToList()
+                        )
+                    )
+                );
             var mapper = config.CreateMapper();
             return mapper.Map<ticketDTO>(data);
         }
         public static List<ticketDTO> GetTicketList(int cust_ID)
         {
             var data = DataAccessFactory.getCustomer().get(cust_ID).tickets;
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<ticket, ticketDTO>());
+            var config = new MapperConfiguration
+                (
+                    cfg => cfg.CreateMap<ticket, ticketDTO>()
+                    .ForMember
+                    (
+                        dst => dst.seat_no, opt => opt.MapFrom
+                        (
+                            src => src.seat_no.Split(',').Select(s => Convert.ToInt32(s)).ToList()
+                        )
+                    )
+                );
             var mapper = config.CreateMapper();
             return mapper.Map<List<ticketDTO>>(data);
         }
@@ -40,8 +61,8 @@ namespace BLL.Services
                     return false;
             }
             var purchasedTicket = (from t in tripObj.tickets
-                                   where t.status.Equals("booked")
                                    from s in t.seat_no.Split(',')
+                                   where t.status.Equals("booked")
                                    select int.Parse(s)).ToList();
             return purchasedTicket.Intersect(reqSeat).Count() == 0;
         }
@@ -59,15 +80,15 @@ namespace BLL.Services
         }
         private static int calculateRefund(int ammount, DateTime time)
         {
-            if (DateTime.Now.AddDays(-3).CompareTo(time) > 0)
+            if (DateTime.Now.AddDays(3).CompareTo(time) < 0)
                 return ammount * 90 / 100;
-            if (DateTime.Now.AddDays(-2).CompareTo(time) > 0)
+            if (DateTime.Now.AddDays(2).CompareTo(time) < 0)
                 return ammount * 70 / 100;
-            if (DateTime.Now.AddHours(-1).CompareTo(time) > 0)
+            if (DateTime.Now.AddHours(1).CompareTo(time) < 0)
                 return ammount * 50 / 100;
-            if (DateTime.Now.AddHours(-12).CompareTo(time) > 0)
+            if (DateTime.Now.AddHours(12).CompareTo(time) < 0)
                 return ammount * 25 / 100;
-            if (DateTime.Now.AddHours(-6).CompareTo(time) > 0)
+            if (DateTime.Now.AddHours(6).CompareTo(time) < 0)
                 return ammount * 10 / 100;
             return 0;
         }
@@ -101,22 +122,24 @@ namespace BLL.Services
             {
                 details = "Added: " + details,
                 amount = ammount,
+                time = DateTime.Now,
                 userID = id
             };
             return DataAccessFactory.getTransaction().create(obj);
         }
         public static bool cancelTicket(int ticketId)
         {
-            var obj = DataAccessFactory.getTicket().get(ticketId);
-            int refund= calculateRefund(obj.ammount, obj.trip.startTime);
+            var ticketObj = DataAccessFactory.getTicket().get(ticketId);
+            int refund= calculateRefund(ticketObj.ammount, ticketObj.trip.startTime);
             if(refund > 0)
             {
-                if(addAccount(obj.cust_id, obj.ammount, "Refund") == false)
+                if(addAccount(ticketObj.cust_id, refund, "Refund") == false)
                 {
                     return false;
                 }
             }
-            return false;
+            ticketObj.status = "cancalled";
+            return DataAccessFactory.getTicket().update(ticketObj);
         }
         public static List<tripInDetailsDTO> getTripInDetails()
         {

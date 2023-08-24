@@ -1,4 +1,5 @@
-﻿using API.Models;
+﻿using API.Auth;
+using API.Models;
 using BLL.Services;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,11 @@ namespace API.Controllers
 {
     public class userController : ApiController
     {
+        private int getID(HttpRequestMessage request)
+        {
+            string tokenString = request.Headers.Authorization.ToString();
+            return authService.authorizeUser(tokenString).userid;
+        }
         [HttpPost]
         [Route("api/login")]
         public HttpResponseMessage login(loginDTO login)
@@ -26,12 +32,6 @@ namespace API.Controllers
                 return Request.CreateResponse(HttpStatusCode.OK, message);
             }
             return Request.CreateResponse(HttpStatusCode.NotFound, new { Message = "Invalid credential"});
-        }
-        [HttpGet]
-        [Route("api/logout")]
-        public HttpResponseMessage logout()
-        {
-            throw new NotImplementedException();
         }
     }
 }

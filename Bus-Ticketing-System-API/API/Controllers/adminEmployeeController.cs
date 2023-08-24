@@ -48,6 +48,10 @@ namespace API.Controllers
         {
             try
             {
+                if(adminEmployeeService.getEmployee(obj.id) == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The cupon doesn't exits" });
+                }
                 obj.admin_id = getID(Request);
                 var data = adminEmployeeService.updateEmployee(obj);
                 string message = data ? "The employee data is updated" : "The employee data is not updated";
@@ -64,6 +68,10 @@ namespace API.Controllers
         {
             try
             {
+                if (adminEmployeeService.getEmployee(id) == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The cupon doesn't exits" });
+                }
                 var data = adminEmployeeService.deleteEmployee(id);
                 string message = data ? "The employee data is deleted" : "The employee data is not deleted";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message });

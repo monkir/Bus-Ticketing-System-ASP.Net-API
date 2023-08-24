@@ -14,6 +14,11 @@ namespace API.Controllers
     [employeeAuth]
     public class employeeTripController : ApiController
     {
+        private int getID(HttpRequestMessage request)
+        {
+            string tokenString = request.Headers.Authorization.ToString();
+            return authService.authorizeUser(tokenString).userid;
+        }
         [HttpGet]
         [Route("all")]
         public HttpResponseMessage allTrip()

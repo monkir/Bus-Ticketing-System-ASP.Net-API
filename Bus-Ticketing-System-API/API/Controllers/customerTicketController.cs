@@ -79,10 +79,10 @@ namespace API.Controllers
                 var obj = customerTicketService.GetTicket(ticketID);
                 if (obj.status.Equals("cancalled"))
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The ticket is already cancalled" });
-                if (obj.status.Equals("booked"))
+                if (obj.status.Equals("booked") == false)
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The ticket can not be cancalled" });
                 var data = customerTicketService.cancelTicket(ticketID);
-                var message = data ? "The ticket is booked" : "The ticket is not booked";
+                var message = data ? "The ticket is cancalled" : "The ticket is not cancalled";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message});
             }
             catch (Exception ex)
@@ -95,7 +95,7 @@ namespace API.Controllers
         [Route("get/{ticketID}")]
         public HttpResponseMessage getTicket(int ticketID)
         {
-            try
+            //try
             {
                 int cust_id = getID(Request);
                 if(customerTicketService.isOwnerOfTicket(cust_id, ticketID) == false)
@@ -103,9 +103,9 @@ namespace API.Controllers
                 var data = customerTicketService.GetTicket(ticketID);
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
-            catch (Exception ex)
+            //catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
+                //return Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
             }
         }
         [HttpGet]
