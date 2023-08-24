@@ -49,6 +49,10 @@ namespace API.Controllers
         {
             try
             {
+                if (employeePlaceService.GetPlace(obj.id) == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The place doesn't exits" });
+                }
                 obj.emp_id = getID(Request);
                 var data = employeePlaceService.updatePlace(obj);
                 string message = data ? "place is updated" : "place is not updated";
@@ -66,6 +70,10 @@ namespace API.Controllers
         {
             try
             {
+                if (employeePlaceService.GetPlace(id) == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The place doesn't exits" });
+                }
                 var data = employeePlaceService.deletePlace(id);
                 string message = data ? "place is deleted" : "place is not deleted";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message });
@@ -82,6 +90,10 @@ namespace API.Controllers
         {
             try
             {
+                if (employeePlaceService.GetPlace(id) == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The place doesn't exits" });
+                }
                 var data = employeePlaceService.GetPlace(id);
                 //string message = data ? "place is deleted" : "place is not deleted";
                 return Request.CreateResponse(HttpStatusCode.OK, data);

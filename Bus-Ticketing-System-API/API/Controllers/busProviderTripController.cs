@@ -70,8 +70,8 @@ namespace API.Controllers
         }
 
         [HttpDelete]
-        [Route("delete/{tripid}")]
-        public HttpResponseMessage deleteTrip(int tripID)
+        [Route("add/undo/{tripid}")]
+        public HttpResponseMessage undoAddTrip(int tripID)
         {
             try
             {
@@ -85,7 +85,7 @@ namespace API.Controllers
                 {
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "This trip cannot be deleted" });
                 }
-                var data = busProviderTripService.deleteTrip(tripID);
+                var data = busProviderTripService.undoAddTrip(tripID);
                 string message = data ? "The trip is deleted" : "New trip is not deleted";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message });
             }
@@ -116,6 +116,36 @@ namespace API.Controllers
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "This trip cannot be cancalled" });
                 }
                 var data = busProviderTripService.cancelTrip(tripID);
+                string message = data ? "The trip is requested to be cancelled" : "New trip is not cancelled";
+                return Request.CreateResponse(HttpStatusCode.OK, new { message = message });
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
+            }
+        }
+
+        [HttpPost]
+        [Route("cancel/undo/{tripid}")]
+        public HttpResponseMessage undoCancelTrip(int tripID)
+        {
+            try
+            {
+                int bp_id = getID(Request);
+                if(busProviderTripService.isOwnerOfTrip(tripID, bp_id) == false)
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The busprovider is not owner of this trip" });
+                }
+                string tripStatus = busProviderTripService.GetTrip(tripID).status;
+                if(tripStatus == "added")
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The trip is already in added list" });
+                }
+                if(tripStatus != "cancelling-pending")
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "This trip is not in cancelling list" });
+                }
+                var data = busProviderTripService.undoCancelTrip(tripID);
                 string message = data ? "The trip is requested to be cancelled" : "New trip is not cancelled";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message });
             }

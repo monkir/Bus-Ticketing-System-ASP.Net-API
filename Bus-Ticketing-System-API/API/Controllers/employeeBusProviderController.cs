@@ -48,6 +48,10 @@ namespace API.Controllers
         {
             try
             {
+                if (employeeBusProviderService.getBusProvider(obj.id) == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The bus provider doesn't exits" });
+                }
                 obj.emp_id = getID(Request);
                 var data = employeeBusProviderService.updateBusProvider(obj);
                 string message = data ? "The busprovider data is updated" : "The busprovider data is not updated";
@@ -64,6 +68,10 @@ namespace API.Controllers
         {
             try
             {
+                if (employeeBusProviderService.getBusProvider(id) == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The bus provider doesn't exits" });
+                }
                 var data = employeeBusProviderService.deleteBusProvider(id);
                 string message = data ? "The busprovider data is deleted" : "The busprovider data is not deleted";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message });

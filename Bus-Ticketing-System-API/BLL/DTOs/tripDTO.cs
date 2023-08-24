@@ -13,9 +13,11 @@ namespace BLL.DTOs
         public int id { get; set; }
         public int ticketPrice { get; set; }
         public string status { get; set; }
+        public DateTime startTime { get; set; }
+        public DateTime endTime { get; set; }
 
-    // The employee who will approve or decline of adding or cancelling trip 
-        public int? emp_id { get; set; }
+        // The employee who will approve or decline of adding or cancelling trip 
+        //public int? emp_id { get; set; }
     // The place from where the bus will take off
         public int depot_id { get; set; }
 
