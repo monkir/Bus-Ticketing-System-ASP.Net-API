@@ -32,6 +32,11 @@ namespace API.Controllers
         {
             try
             {
+
+                if (userServices.usernameExist(obj.username))
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The user id is already exist" });
+                }
                 obj.admin_id = getID(Request);
                 var data = adminEmployeeService.addEmpoloyee(obj);
                 string message = data ? "New employee is added" : "New employee is not added";
@@ -48,7 +53,12 @@ namespace API.Controllers
         {
             try
             {
-                if(adminEmployeeService.getEmployee(obj.id) == null)
+
+                if (userServices.usernameExist(obj.username))
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The user id is already exist" });
+                }
+                if (adminEmployeeService.getEmployee(obj.id) == null)
                 {
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The cupon doesn't exits" });
                 }

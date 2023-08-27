@@ -36,6 +36,16 @@ namespace BLL.Services
             obj.expireTime = DateTime.Now;
             return DataAccessFactory.getToken().update(obj);
         }
+        public static bool changePassword(int userID, string oldPassword, string newPassword) 
+        {
+            var userObj = DataAccessFactory.getUser().get(userID);
+            if(userObj.password.Equals(oldPassword))
+            {
+                userObj.password = newPassword;
+                return DataAccessFactory.getUser().update(userObj);
+            }
+            return true;
+        }
         public static tokenDTO authorizeUser(string tkString)
         {
             var tk = (from t in DataAccessFactory.getToken().All()

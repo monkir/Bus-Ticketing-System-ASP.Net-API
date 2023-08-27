@@ -28,6 +28,14 @@ namespace API.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
         [HttpGet]
+        [Route("all/details")]
+        public HttpResponseMessage allTripDetails()
+        {
+            int bp_id = getID(Request);
+            var data = busProviderTripService.allTripDetails(bp_id);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+        }
+        [HttpGet]
         [Route("get/{id}")]
         public HttpResponseMessage findTrip(int id)
         {
@@ -38,6 +46,25 @@ namespace API.Controllers
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The busprovider is not owner of this trip" });
                 }
                 var data = busProviderTripService.GetTrip(id);
+                //string message = data ? "bus is deleted" : "bus is not deleted";
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
+        [HttpGet]
+        [Route("get/{id}/details")]
+        public HttpResponseMessage findTripDetails(int id)
+        {
+            try
+            {
+                if (busProviderTripService.isOwnerOfTrip(id, getID(Request)) == false)
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The busprovider is not owner of this trip" });
+                }
+                var data = busProviderTripService.getTripDetails(id);
                 //string message = data ? "bus is deleted" : "bus is not deleted";
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }

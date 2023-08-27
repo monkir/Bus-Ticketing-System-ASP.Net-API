@@ -99,6 +99,7 @@
     <Compile Include="Auth\userAuth.cs" />
     <Compile Include="Controllers\adminCuponController.cs" />
     <Compile Include="Controllers\adminEmployeeController.cs" />
+    <Compile Include="Controllers\customerController.cs" />
     <Compile Include="Controllers\userAccountController.cs" />
     <Compile Include="Controllers\busProviderBusController.cs" />
     <Compile Include="Controllers\busProviderTripController.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\changePasswordDTO.cs" />
     <Compile Include="Models\loginDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

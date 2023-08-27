@@ -32,6 +32,11 @@ namespace API.Controllers
         {
             try
             {
+
+                if (userServices.usernameExist(obj.username))
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The user id is already exist" });
+                }
                 obj.emp_id = getID(Request);
                 var data = employeeBusProviderService.addBusProvider(obj);
                 string message = data ? "New busprovider is added" : "New busprovider is not added";
@@ -48,6 +53,11 @@ namespace API.Controllers
         {
             try
             {
+
+                if (userServices.usernameExist(obj.username))
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The user id is already exist" });
+                }
                 if (employeeBusProviderService.getBusProvider(obj.id) == null)
                 {
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The bus provider doesn't exits" });

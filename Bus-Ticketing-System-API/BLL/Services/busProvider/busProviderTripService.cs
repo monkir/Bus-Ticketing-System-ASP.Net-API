@@ -20,6 +20,14 @@ namespace BLL.Services
                 return false;
             return obj.bus.bp_id.Equals(bpID);
         }
+        private static List<int> convertSeat(string seats)
+        {
+            return seats.Split(',').Select(s => Convert.ToInt32(s)).ToList();
+        }
+        private static string convertSeat(List<int> seats)
+        {
+            return string.Join(",", seats.Select(s => s.ToString()));
+        }
         public static bool isOwnerOfBus(int busID, int bpID)
         {
             var obj = DataAccessFactory.getBus().get(busID);
@@ -39,6 +47,34 @@ namespace BLL.Services
             var config = new MapperConfiguration(cfg => cfg.CreateMap<trip, tripDTO>());
             var mapper = config.CreateMapper();
             return mapper.Map<List<tripDTO>>(data);
+        }
+        public static List<tripInDetailsDTO> allTripDetails(int bpID)
+        {
+            
+            var buses = DataAccessFactory.getBusProvider().get(bpID).buses;
+            //var data = buses.SelectMany(b => b.trips).ToList();
+            var tripData = (from b in buses
+                    from t in b.trips
+                    select t).ToList();
+            //var tripData = DataAccessFactory.getTrip().get(tripID);
+            var config = new MapperConfiguration(
+                    cfg =>
+                    {
+                        cfg.CreateMap<trip, tripInDetailsDTO>()
+                        .ForMember
+                        (
+                            dst => dst.bookedSeat,
+                            opt => opt.MapFrom
+                            (
+                                src => src.tickets.Where(t => t.status.Equals("booked")).SelectMany(t => convertSeat(t.seat_no)).ToList()
+                            )
+                        )
+                        ;
+                        cfg.CreateMap<place, placeDTO>();
+                    }
+                );
+            var mapper = config.CreateMapper();
+            return mapper.Map<List<tripInDetailsDTO>>(tripData);
         }
         public static tripDTO GetTrip(int tripID)
         {
@@ -106,6 +142,28 @@ namespace BLL.Services
             var exTrip = DataAccessFactory.getTrip().get(tripID);
             exTrip.status = "added";
             return DataAccessFactory.getTrip().update(exTrip);
+        }
+        public static tripInDetailsDTO getTripDetails(int tripID)
+        {
+            var tripData = DataAccessFactory.getTrip().get(tripID);
+            var config = new MapperConfiguration(
+                    cfg =>
+                    {
+                        cfg.CreateMap<trip, tripInDetailsDTO>()
+                        .ForMember
+                        (
+                            dst => dst.bookedSeat,
+                            opt => opt.MapFrom
+                            (
+                                src => src.tickets.Where(t => t.status.Equals("booked")).SelectMany(t => convertSeat(t.seat_no)).ToList()
+                            )
+                        )
+                        ;
+                        cfg.CreateMap<place, placeDTO>();
+                    }
+                );
+            var mapper = config.CreateMapper();
+            return mapper.Map<tripInDetailsDTO>(tripData);
         }
         /*public static bool updateTrip(tripDTO obj)
         {
