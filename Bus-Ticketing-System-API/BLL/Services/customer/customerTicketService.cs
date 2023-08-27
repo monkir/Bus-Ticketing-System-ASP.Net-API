@@ -17,6 +17,14 @@ namespace BLL.Services
            var ticketObj = DataAccessFactory.getTicket().get(tikcetID);
             return ticketObj == null ? false : ticketObj.cust_id == cust_id;
         }
+        private static List<int> convertSeat(string seats)
+        {
+            return seats.Split(',').Select(s => Convert.ToInt32(s)).ToList();
+        }
+        private static string convertSeat(List<int> seats)
+        {
+            return string.Join(",", seats.Select(s => s.ToString()));
+        }
         public static ticketDTO GetTicket(int tikcetID)
         {
             var data = DataAccessFactory.getTicket().get(tikcetID);
@@ -27,7 +35,8 @@ namespace BLL.Services
                     (
                         dst => dst.seat_no, opt => opt.MapFrom
                         (
-                            src => src.seat_no.Split(',').Select(s => Convert.ToInt32(s)).ToList()
+                            //src => src.seat_no.Split(',').Select(s => Convert.ToInt32(s)).ToList()
+                            src => convertSeat(src.seat_no)
                         )
                     )
                 );
@@ -44,7 +53,8 @@ namespace BLL.Services
                     (
                         dst => dst.seat_no, opt => opt.MapFrom
                         (
-                            src => src.seat_no.Split(',').Select(s => Convert.ToInt32(s)).ToList()
+                            //src => src.seat_no.Split(',').Select(s => Convert.ToInt32(s)).ToList()
+                            src => convertSeat(src.seat_no)
                         )
                     )
                 );
@@ -104,9 +114,17 @@ namespace BLL.Services
                 {
                     obj.ammount -= calculateDiscount(obj.ammount, (int)obj.dc_id);
                 }
-                var config = new MapperConfiguration(
-                    cfg => cfg.CreateMap<ticketDTO, ticket>()
-                    .ForMember(dst => dst.seat_no, opt => opt.MapFrom(src => string.Join(",", src.seat_no.Select(s => s.ToString()).ToArray())))
+                var config = new MapperConfiguration
+                    (
+                        cfg => cfg.CreateMap<ticketDTO, ticket>()
+                        .ForMember
+                        (
+                            dst => dst.seat_no, opt => opt.MapFrom
+                            (
+                                //src => string.Join(",", src.seat_no.Select(s => s.ToString()).ToArray()))
+                                src => convertSeat(src.seat_no)
+                            )
+                        )
                     );
                 var mapper = config.CreateMapper();
                 var convertedObj = mapper.Map<ticket>(obj);
@@ -146,12 +164,25 @@ namespace BLL.Services
             var tripData = DataAccessFactory.getTrip().All().
                 Where(
                         t => t.status.Equals("added") 
-                        && t.startTime.AddHours(-1).CompareTo(DateTime.Now) > 0 
+                        && DateTime.Now.AddHours(+1).CompareTo(t.startTime) < 0
                     ).ToList();
+            var seat = (from t in tripData
+                        from tk in t.tickets
+                        from s in convertSeat(tk.seat_no)
+                        select s).ToList();
             var config = new MapperConfiguration(
                     cfg =>
                     {
-                        cfg.CreateMap<trip, tripInDetailsDTO>();
+                        cfg.CreateMap<trip, tripInDetailsDTO>()
+                        .ForMember
+                        (
+                            dst => dst.bookedSeat, 
+                            opt => opt.MapFrom
+                            (
+                                src => src.tickets.Where(t => t.status.Equals("booked")).SelectMany(t => convertSeat(t.seat_no)).ToList()
+                            )
+                        )
+                        ;
                         cfg.CreateMap<place, placeDTO>();
                     }
                 );
@@ -164,7 +195,16 @@ namespace BLL.Services
             var config = new MapperConfiguration(
                     cfg =>
                     {
-                        cfg.CreateMap<trip, tripInDetailsDTO>();
+                        cfg.CreateMap<trip, tripInDetailsDTO>()
+                        .ForMember
+                        (
+                            dst => dst.bookedSeat,
+                            opt => opt.MapFrom
+                            (
+                                src => src.tickets.Where(t => t.status.Equals("booked")).SelectMany(t => convertSeat(t.seat_no)).ToList()
+                            )
+                        )
+                        ;
                         cfg.CreateMap<place, placeDTO>();
                     }
                 );

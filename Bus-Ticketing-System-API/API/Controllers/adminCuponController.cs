@@ -43,7 +43,7 @@ namespace API.Controllers
             
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("api/admin/cupon/update")]
         public HttpResponseMessage updateCupon(discountCuponDTO obj)
         {

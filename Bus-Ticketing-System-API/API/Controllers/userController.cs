@@ -33,5 +33,15 @@ namespace API.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.NotFound, new { Message = "Invalid credential"});
         }
+        [HttpPost]
+        [Route("api/logout")]
+        [userAuth]
+        public HttpResponseMessage logout()
+        {
+            string tokenString = Request.Headers.Authorization.ToString();
+            if(authService.userLogout(tokenString))
+                return Request.CreateResponse(HttpStatusCode.OK, new { Message = "Successfully logout" });
+            return Request.CreateResponse(HttpStatusCode.NotFound, new { Message = "Logout b"});
+        }
     }
 }

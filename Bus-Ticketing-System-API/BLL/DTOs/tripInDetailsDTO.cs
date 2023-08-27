@@ -10,5 +10,6 @@ namespace BLL.DTOs
     {
         public placeDTO depot { get; set; }
         public placeDTO destination { get; set; }
+        public List<int> bookedSeat { get; set; } = new List<int>();
     }
 }

@@ -44,7 +44,7 @@ namespace API.Controllers
             }
 
         }
-        [HttpPost]
+        [HttpPut]
         [Route("update")]
         public HttpResponseMessage updateBus(busDTO obj)
         {

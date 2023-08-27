@@ -26,7 +26,7 @@ namespace API.Controllers
             var data = adminEmployeeService.allEmployee();
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
-        [HttpPost]
+        [HttpPut]
         [Route("add")]
         public HttpResponseMessage addEmployee(employeeDTO obj) 
         {

@@ -13,7 +13,7 @@
 					"name": "Cupon",
 					"item": [
 						{
-							"name": "Admin cupon all",
+							"name": "all",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -41,7 +41,7 @@
 							"response": []
 						},
 						{
-							"name": "Admin cupon get by id",
+							"name": "get by id",
 							"request": {
 								"method": "GET",
 								"header": [],
@@ -64,7 +64,7 @@
 							"response": []
 						},
 						{
-							"name": "Admin cupon create",
+							"name": "create",
 							"request": {
 								"method": "POST",
 								"header": [
@@ -123,7 +123,7 @@
 							"response": []
 						},
 						{
-							"name": "Admin cupon delete",
+							"name": "delete",
 							"request": {
 								"method": "DELETE",
 								"header": [
@@ -177,9 +177,9 @@
 							"response": []
 						},
 						{
-							"name": "Admin cupon update",
+							"name": "update",
 							"request": {
-								"method": "POST",
+								"method": "PUT",
 								"header": [
 									{
 										"key": "Authorization",
@@ -240,7 +240,7 @@
 					"name": "Employee",
 					"item": [
 						{
-							"name": "Admin employee add",
+							"name": "add",
 							"request": {
 								"method": "POST",
 								"header": [],
@@ -297,7 +297,7 @@
 							"response": []
 						},
 						{
-							"name": "Admin employee update",
+							"name": "update",
 							"request": {
 								"method": "PUT",
 								"header": [],
@@ -359,7 +359,7 @@
 							"response": []
 						},
 						{
-							"name": "Admin employee all",
+							"name": "all",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -425,7 +425,7 @@
 							"response": []
 						},
 						{
-							"name": "Admin employee get by id",
+							"name": "get by id",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -486,7 +486,7 @@
 							"response": []
 						},
 						{
-							"name": "Admin employee delete by id",
+							"name": "delete by id",
 							"request": {
 								"method": "DELETE",
 								"header": [],
@@ -554,7 +554,7 @@
 					"name": "Notice",
 					"item": [
 						{
-							"name": "Employee notice all",
+							"name": "all",
 							"request": {
 								"method": "GET",
 								"header": [],
@@ -576,7 +576,7 @@
 							"response": []
 						},
 						{
-							"name": "Employee notice get by id",
+							"name": "get by id",
 							"request": {
 								"method": "GET",
 								"header": [],
@@ -599,7 +599,7 @@
 							"response": []
 						},
 						{
-							"name": "Employee notice create",
+							"name": "create",
 							"request": {
 								"method": "POST",
 								"header": [],
@@ -641,7 +641,7 @@
 							"response": []
 						},
 						{
-							"name": "Employee notice delete",
+							"name": "delete",
 							"request": {
 								"method": "DELETE",
 								"header": [],
@@ -668,9 +668,9 @@
 							"response": []
 						},
 						{
-							"name": "Employee notice update",
+							"name": "update",
 							"request": {
-								"method": "POST",
+								"method": "PUT",
 								"header": [],
 								"body": {
 									"mode": "urlencoded",
@@ -720,7 +720,7 @@
 					"name": "Place",
 					"item": [
 						{
-							"name": "Employee place all",
+							"name": "all",
 							"request": {
 								"method": "GET",
 								"header": [],
@@ -742,7 +742,7 @@
 							"response": []
 						},
 						{
-							"name": "Employee place get by id",
+							"name": "get by id",
 							"request": {
 								"method": "GET",
 								"header": [],
@@ -765,7 +765,7 @@
 							"response": []
 						},
 						{
-							"name": "Employee place create",
+							"name": "create",
 							"request": {
 								"method": "POST",
 								"header": [],
@@ -802,7 +802,7 @@
 							"response": []
 						},
 						{
-							"name": "Employee place delete",
+							"name": "delete",
 							"request": {
 								"method": "DELETE",
 								"header": [],
@@ -829,9 +829,9 @@
 							"response": []
 						},
 						{
-							"name": "Employee notice update",
+							"name": "update",
 							"request": {
-								"method": "POST",
+								"method": "PUT",
 								"header": [],
 								"body": {
 									"mode": "urlencoded",
@@ -1480,7 +1480,7 @@
 						{
 							"name": "update",
 							"request": {
-								"method": "POST",
+								"method": "PUT",
 								"header": [
 									{
 										"key": "Authorization",
@@ -1555,7 +1555,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "467d0472-69f8-4401-a02e-f0ae973249f2",
+										"value": "e39d49df-1441-4240-a403-3434b7004fdd",
 										"type": "text"
 									}
 								],
@@ -1621,7 +1621,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "4e282fa0-0e2f-4126-b7a1-6efc61099a44",
+										"value": "e39d49df-1441-4240-a403-3434b7004fdd",
 										"type": "text"
 									}
 								],
@@ -1661,7 +1661,7 @@
 									]
 								},
 								"url": {
-									"raw": "https://localhost:44304/api/busprovider/bus/get/3",
+									"raw": "https://localhost:44304/api/busprovider/bus/get/1",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -1672,7 +1672,75 @@
 										"busprovider",
 										"bus",
 										"get",
-										"3"
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get by id (trip list)",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "e39d49df-1441-4240-a403-3434b7004fdd",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Muzahidul Islam",
+											"type": "text"
+										},
+										{
+											"key": "salary",
+											"value": "50000",
+											"type": "text"
+										},
+										{
+											"key": "dob",
+											"value": "13-Aug-1998",
+											"type": "text"
+										},
+										{
+											"key": "admin_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "muzahid",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/busprovider/bus/get/1/trip",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"busprovider",
+										"bus",
+										"get",
+										"1",
+										"trip"
 									]
 								}
 							},
@@ -1726,7 +1794,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "eee83906-6a75-4d19-ad18-bd583324fc3c",
+										"value": "e39d49df-1441-4240-a403-3434b7004fdd",
 										"type": "text"
 									}
 								],
@@ -1761,7 +1829,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "b863d141-618a-4e21-b813-6a015f27a3cd",
+										"value": "e39d49df-1441-4240-a403-3434b7004fdd",
 										"type": "text"
 									}
 								],
@@ -2097,7 +2165,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "9dae4541-8130-40ad-b07c-87ef054d4db9",
+										"value": "14dc050f-3896-4f67-9971-db167a91dfd4",
 										"type": "text"
 									}
 								],
@@ -2127,7 +2195,7 @@
 										},
 										{
 											"key": "trip_id",
-											"value": "6",
+											"value": "7",
 											"type": "text"
 										}
 									]
@@ -2219,7 +2287,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "a6bd807f-b611-44fa-9ace-a00c6743c228",
+										"value": "5bfbfbc3-3c4c-4a06-87c6-583745ae32c7",
 										"type": "text"
 									}
 								],
@@ -2279,7 +2347,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "a6bd807f-b611-44fa-9ace-a00c6743c228",
+										"value": "a06533a8-6380-4377-a05c-1ea05235294b",
 										"type": "text"
 									}
 								],
@@ -2315,7 +2383,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "1ffb2cb4-4974-4c86-864e-fb33f6d5eaab",
+										"value": "5bfbfbc3-3c4c-4a06-87c6-583745ae32c7",
 										"type": "text"
 									}
 								],
@@ -2350,7 +2418,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "1ffb2cb4-4974-4c86-864e-fb33f6d5eaab",
+										"value": "a06533a8-6380-4377-a05c-1ea05235294b",
 										"type": "text"
 									}
 								],
@@ -2375,6 +2443,41 @@
 							"response": []
 						},
 						{
+							"name": "trip in details by id",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "a06533a8-6380-4377-a05c-1ea05235294b",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/customer/trip/7",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"customer",
+										"trip",
+										"7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "cupon",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -2384,7 +2487,41 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "70a5b079-ae40-4ebf-a1f3-0c6bc4f2b94c",
+										"value": "5bfbfbc3-3c4c-4a06-87c6-583745ae32c7",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/customer/cupon",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"customer",
+										"cupon"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cupon by ID",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "5bfbfbc3-3c4c-4a06-87c6-583745ae32c7",
 										"type": "text"
 									}
 								],
@@ -2429,7 +2566,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "106b1df2-8cb5-4b96-a662-629adecc9cb4",
+										"value": "5bfbfbc3-3c4c-4a06-87c6-583745ae32c7",
 										"type": "text"
 									}
 								],
@@ -2539,43 +2676,74 @@
 							"response": []
 						}
 					]
-				}
-			]
-		},
-		{
-			"name": "user login",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
+				},
+				{
+					"name": "Auth",
+					"item": [
 						{
-							"key": "username",
-							"value": "monkir",
-							"type": "text"
+							"name": "user login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "babu",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/login",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"response": []
 						},
 						{
-							"key": "password",
-							"value": "123",
-							"type": "text"
+							"name": "user logout",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "5bfbfbc3-3c4c-4a06-87c6-583745ae32c7",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://localhost:44304/api/logout",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"logout"
+									]
+								}
+							},
+							"response": []
 						}
 					]
-				},
-				"url": {
-					"raw": "https://localhost:44304/api/login",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "44304",
-					"path": [
-						"api",
-						"login"
-					]
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }

@@ -43,7 +43,7 @@ namespace API.Controllers
             }
 
         }
-        [HttpPost]
+        [HttpPut]
         [Route("update")]
         public HttpResponseMessage updateNotice(noticeDTO obj)
         {
