@@ -17,7 +17,7 @@ namespace API.Controllers
         private int getID(HttpRequestMessage request)
         {
             string tokenString = request.Headers.Authorization.ToString();
-            return authService.authorizeUser(tokenString).id;
+            return authService.authorizeUser(tokenString).userid;
         }
         [HttpGet]
         [Route("all")]
@@ -43,12 +43,16 @@ namespace API.Controllers
             }
 
         }
-        [HttpPost]
+        [HttpPut]
         [Route("update")]
         public HttpResponseMessage updateNotice(noticeDTO obj)
         {
             try
             {
+                if (employeeNoticeService.GetNotice(obj.id) == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The bus provider doesn't exits" });
+                }
                 obj.emp_id = getID(Request);
                 var data = employeeNoticeService.updateNotice(obj);
                 string message = data ? "notice is updated" : "notice is not updated";
@@ -66,6 +70,10 @@ namespace API.Controllers
         {
             try
             {
+                if (employeeNoticeService.GetNotice(id) == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The bus provider doesn't exits" });
+                }
                 var data = employeeNoticeService.deleteNotice(id);
                 string message = data ? "notice is deleted" : "notice is not deleted";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message });
@@ -82,6 +90,10 @@ namespace API.Controllers
         {
             try
             {
+                if (employeeNoticeService.GetNotice(id) == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The bus provider doesn't exits" });
+                }
                 var data = employeeNoticeService.GetNotice(id);
                 //string message = data ? "notice is deleted" : "notice is not deleted";
                 return Request.CreateResponse(HttpStatusCode.OK, data);

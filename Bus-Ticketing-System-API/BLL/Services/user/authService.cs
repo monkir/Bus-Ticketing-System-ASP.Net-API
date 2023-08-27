@@ -28,6 +28,24 @@ namespace BLL.Services
             var mapper = config.CreateMapper();
             return mapper.Map<tokenDTO>(tk);
         }
+        public static bool userLogout(string tokenString)
+        {
+            token obj = DataAccessFactory.getToken().All().Where(tk =>  tk.token_string == tokenString).SingleOrDefault();
+            if(obj == null) 
+                return false;
+            obj.expireTime = DateTime.Now;
+            return DataAccessFactory.getToken().update(obj);
+        }
+        public static bool changePassword(int userID, string oldPassword, string newPassword) 
+        {
+            var userObj = DataAccessFactory.getUser().get(userID);
+            if(userObj.password.Equals(oldPassword))
+            {
+                userObj.password = newPassword;
+                return DataAccessFactory.getUser().update(userObj);
+            }
+            return true;
+        }
         public static tokenDTO authorizeUser(string tkString)
         {
             var tk = (from t in DataAccessFactory.getToken().All()

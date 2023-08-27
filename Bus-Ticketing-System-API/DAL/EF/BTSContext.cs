@@ -20,6 +20,7 @@ namespace DAL.EF
         public DbSet<place> place { get; set; }
         public DbSet<ticket> ticket { get; set; }
         public DbSet<token> token { get; set; }
+        public DbSet<transaction> transaction { get; set; }
         public DbSet<trip> trip { get; set; }
         public DbSet<user> user { get; set; }
     }

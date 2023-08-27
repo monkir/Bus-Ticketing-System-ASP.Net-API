@@ -11,6 +11,7 @@ namespace DAL.EF.Models
     {
         public int id { get; set; }
         public string name { get; set; }
+        public string cupon { get; set; }
         public float percentage { get; set; }
         public int maxDiscount { get; set; }
 

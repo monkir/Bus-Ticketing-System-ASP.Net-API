@@ -17,7 +17,7 @@ namespace API.Controllers
         private int getID(HttpRequestMessage request)
         {
             string tokenString = request.Headers.Authorization.ToString();
-            return authService.authorizeUser(tokenString).id;
+            return authService.authorizeUser(tokenString).userid;
         }
         [HttpGet]
         [Route("all")]
@@ -28,16 +28,43 @@ namespace API.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
         [HttpGet]
+        [Route("all/details")]
+        public HttpResponseMessage allTripDetails()
+        {
+            int bp_id = getID(Request);
+            var data = busProviderTripService.allTripDetails(bp_id);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+        }
+        [HttpGet]
         [Route("get/{id}")]
         public HttpResponseMessage findTrip(int id)
         {
             try
             {
-                if (busProviderTripService.isOwner(id, getID(Request)) == false)
+                if (busProviderTripService.isOwnerOfTrip(id, getID(Request)) == false)
                 {
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The busprovider is not owner of this trip" });
                 }
-                var data = busProviderBusService.GetBus(id);
+                var data = busProviderTripService.GetTrip(id);
+                //string message = data ? "bus is deleted" : "bus is not deleted";
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
+        [HttpGet]
+        [Route("get/{id}/details")]
+        public HttpResponseMessage findTripDetails(int id)
+        {
+            try
+            {
+                if (busProviderTripService.isOwnerOfTrip(id, getID(Request)) == false)
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The busprovider is not owner of this trip" });
+                }
+                var data = busProviderTripService.getTripDetails(id);
                 //string message = data ? "bus is deleted" : "bus is not deleted";
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
@@ -52,7 +79,12 @@ namespace API.Controllers
         {
             try
             {
-                obj.bus_id = getID(Request);
+                int busID = obj.bus_id;
+                int bp_id = getID(Request);
+                if (busProviderTripService.isOwnerOfBus(busID, bp_id) == false)
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The busprovider is not owner of this trip" });
+                }
                 var data = busProviderTripService.addTrip(obj);
                 string message = data ? "New trip is requested to be added" : "New trip is not added";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message });
@@ -65,23 +97,23 @@ namespace API.Controllers
         }
 
         [HttpDelete]
-        [Route("delete/{tripid}")]
-        public HttpResponseMessage deleteTrip(int tripID)
+        [Route("add/undo/{tripid}")]
+        public HttpResponseMessage undoAddTrip(int tripID)
         {
             try
             {
-                int bus_id = getID(Request);
-                if(busProviderTripService.isOwner(tripID, bus_id) == false)
+                int bp_id = getID(Request);
+                if(busProviderTripService.isOwnerOfTrip(tripID, bp_id) == false)
                 {
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The busprovider is not owner of this trip" });
                 }
                 string tripStatus = busProviderTripService.GetTrip(tripID).status;
-                if(tripStatus != "adding/pending")
+                if(tripStatus != "adding-pending")
                 {
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "This trip cannot be deleted" });
                 }
-                var data = busProviderTripService.cancelTrip(tripID);
-                string message = data ? "The trip is requested to be cancelled" : "New trip is not cancelled";
+                var data = busProviderTripService.undoAddTrip(tripID);
+                string message = data ? "The trip is deleted" : "New trip is not deleted";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message });
             }
             catch (Exception ex)
@@ -96,13 +128,13 @@ namespace API.Controllers
         {
             try
             {
-                int bus_id = getID(Request);
-                if(busProviderTripService.isOwner(tripID, bus_id) == false)
+                int bp_id = getID(Request);
+                if(busProviderTripService.isOwnerOfTrip(tripID, bp_id) == false)
                 {
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The busprovider is not owner of this trip" });
                 }
                 string tripStatus = busProviderTripService.GetTrip(tripID).status;
-                if(tripStatus == "cancelling/pending")
+                if(tripStatus == "cancelling-pending")
                 {
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "This trip is already requested to be cancalled" });
                 }
@@ -111,6 +143,36 @@ namespace API.Controllers
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "This trip cannot be cancalled" });
                 }
                 var data = busProviderTripService.cancelTrip(tripID);
+                string message = data ? "The trip is requested to be cancelled" : "New trip is not cancelled";
+                return Request.CreateResponse(HttpStatusCode.OK, new { message = message });
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
+            }
+        }
+
+        [HttpPost]
+        [Route("cancel/undo/{tripid}")]
+        public HttpResponseMessage undoCancelTrip(int tripID)
+        {
+            try
+            {
+                int bp_id = getID(Request);
+                if(busProviderTripService.isOwnerOfTrip(tripID, bp_id) == false)
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The busprovider is not owner of this trip" });
+                }
+                string tripStatus = busProviderTripService.GetTrip(tripID).status;
+                if(tripStatus == "added")
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The trip is already in added list" });
+                }
+                if(tripStatus != "cancelling-pending")
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "This trip is not in cancelling list" });
+                }
+                var data = busProviderTripService.undoCancelTrip(tripID);
                 string message = data ? "The trip is requested to be cancelled" : "New trip is not cancelled";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message });
             }

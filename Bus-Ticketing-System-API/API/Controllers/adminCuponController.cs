@@ -16,7 +16,7 @@ namespace API.Controllers
         private int getID(HttpRequestMessage request)
         {
             string tokenString = request.Headers.Authorization.ToString();
-            return authService.authorizeUser(tokenString).id;
+            return authService.authorizeUser(tokenString).userid;
         }
         [HttpGet]
         [Route("api/admin/cupon/all")]
@@ -43,12 +43,16 @@ namespace API.Controllers
             
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("api/admin/cupon/update")]
         public HttpResponseMessage updateCupon(discountCuponDTO obj)
         {
             try
             {
+                if (adminCuponService.GetDiscountCupon(obj.id) == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The cupon doesn't exits" });
+                }
                 obj.admin_id = getID(Request);
                 var data = adminCuponService.updateDiscountCupon(obj);
                 string message = data ? "Cupon is updated" : "Cupon is not updated";
@@ -66,6 +70,10 @@ namespace API.Controllers
         {
             try
             {
+                if(adminCuponService.GetDiscountCupon(id) == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The cupon doesn't exits" });
+                }
                 var data = adminCuponService.deleteDiscountCupon(id);
                 string message = data ? "Cupon is deleted" : "Cupon is not deleted";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message});
@@ -82,6 +90,10 @@ namespace API.Controllers
         {
             try
             {
+                if (adminCuponService.GetDiscountCupon(id) == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The cupon doesn't exits" });
+                }
                 var data = adminCuponService.GetDiscountCupon(id);
                 //string message = data ? "Cupon is deleted" : "Cupon is not deleted";
                 return Request.CreateResponse(HttpStatusCode.OK, data);

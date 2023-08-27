@@ -2,6 +2,7 @@
 using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,7 +36,8 @@ namespace DAL.Repos
 
         public bool update(token obj)
         {
-            throw new NotImplementedException();
+            db.token.AddOrUpdate(obj);
+            return db.SaveChanges() > 0;
         }
     }
 }

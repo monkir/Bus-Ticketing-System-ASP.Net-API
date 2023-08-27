@@ -64,6 +64,7 @@
     <Compile Include="EF\Models\place.cs" />
     <Compile Include="EF\Models\ticket.cs" />
     <Compile Include="EF\Models\token.cs" />
+    <Compile Include="EF\Models\transaction.cs" />
     <Compile Include="EF\Models\trip.cs" />
     <Compile Include="EF\Models\user.cs" />
     <Compile Include="Interfaces\IAuth.cs" />
@@ -84,16 +85,31 @@
     <Compile Include="Migrations\202308171603572_trip-status.designer.cs">
       <DependentUpon>202308171603572_trip-status.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202308232036538_ticket_seat_no.cs" />
+    <Compile Include="Migrations\202308232036538_ticket_seat_no.designer.cs">
+      <DependentUpon>202308232036538_ticket_seat_no.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202308232054323_discountCupon_changes.cs" />
+    <Compile Include="Migrations\202308232054323_discountCupon_changes.designer.cs">
+      <DependentUpon>202308232054323_discountCupon_changes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202308240922207_trip-ticket-refund.cs" />
+    <Compile Include="Migrations\202308240922207_trip-ticket-refund.designer.cs">
+      <DependentUpon>202308240922207_trip-ticket-refund.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repos\busProviderRepo.cs" />
     <Compile Include="Repos\busRepo.cs" />
+    <Compile Include="Repos\customerRepo.cs" />
     <Compile Include="Repos\discountCuponRepo.cs" />
     <Compile Include="Repos\employeeRepo.cs" />
     <Compile Include="Repos\noticeRepo.cs" />
     <Compile Include="Repos\placeRepo.cs" />
     <Compile Include="Repos\repo.cs" />
+    <Compile Include="Repos\ticketRepo.cs" />
     <Compile Include="Repos\tokenRepo.cs" />
+    <Compile Include="Repos\transactionRepo.cs" />
     <Compile Include="Repos\tripRepo.cs" />
     <Compile Include="Repos\userRepo.cs" />
   </ItemGroup>
@@ -113,6 +129,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202308171603572_trip-status.resx">
       <DependentUpon>202308171603572_trip-status.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308232036538_ticket_seat_no.resx">
+      <DependentUpon>202308232036538_ticket_seat_no.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308232054323_discountCupon_changes.resx">
+      <DependentUpon>202308232054323_discountCupon_changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308240922207_trip-ticket-refund.resx">
+      <DependentUpon>202308240922207_trip-ticket-refund.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

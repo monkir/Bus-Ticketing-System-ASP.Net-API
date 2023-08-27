@@ -17,7 +17,7 @@ namespace API.Controllers
         private int getID(HttpRequestMessage request)
         {
             string tokenString = request.Headers.Authorization.ToString();
-            return authService.authorizeUser(tokenString).id;
+            return authService.authorizeUser(tokenString).userid;
         }
         [HttpGet]
         [Route("all")]
@@ -26,12 +26,17 @@ namespace API.Controllers
             var data = adminEmployeeService.allEmployee();
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
-        [HttpPost]
+        [HttpPut]
         [Route("add")]
         public HttpResponseMessage addEmployee(employeeDTO obj) 
         {
             try
             {
+
+                if (userServices.usernameExist(obj.username))
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The user id is already exist" });
+                }
                 obj.admin_id = getID(Request);
                 var data = adminEmployeeService.addEmpoloyee(obj);
                 string message = data ? "New employee is added" : "New employee is not added";
@@ -48,6 +53,15 @@ namespace API.Controllers
         {
             try
             {
+
+                if (userServices.usernameExist(obj.username))
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The user id is already exist" });
+                }
+                if (adminEmployeeService.getEmployee(obj.id) == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The cupon doesn't exits" });
+                }
                 obj.admin_id = getID(Request);
                 var data = adminEmployeeService.updateEmployee(obj);
                 string message = data ? "The employee data is updated" : "The employee data is not updated";
@@ -64,6 +78,10 @@ namespace API.Controllers
         {
             try
             {
+                if (adminEmployeeService.getEmployee(id) == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The cupon doesn't exits" });
+                }
                 var data = adminEmployeeService.deleteEmployee(id);
                 string message = data ? "The employee data is deleted" : "The employee data is not deleted";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message });

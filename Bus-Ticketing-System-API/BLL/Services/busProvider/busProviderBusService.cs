@@ -14,7 +14,8 @@ namespace BLL.Services
     {
         public static List<busDTO> allBus(int bp_id)
         {
-            var data = DataAccessFactory.getBusProvider().get(bp_id).buses;
+            var pb_data = DataAccessFactory.getBusProvider().get(bp_id);
+            var data = pb_data.buses.ToList();
             var config = new MapperConfiguration(cfg => cfg.CreateMap<bus, busDTO>());
             var mapper = config.CreateMapper();
             return mapper.Map<List<busDTO>>(data);
@@ -54,6 +55,11 @@ namespace BLL.Services
         public static bool isOwner(int busID, int busProviderID)
         {
             var obj = DataAccessFactory.getBus().get(busID);
+            //return obj != null ? obj.bp_id.Equals(busProviderID) : false;
+            if (obj == null)
+            {
+                return false;
+            }
             return obj.bp_id.Equals(busProviderID);
         }
     }

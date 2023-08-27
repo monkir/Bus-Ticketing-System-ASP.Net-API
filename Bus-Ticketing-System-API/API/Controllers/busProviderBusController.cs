@@ -17,7 +17,7 @@ namespace API.Controllers
         private int getID(HttpRequestMessage request)
         {
             string tokenString = request.Headers.Authorization.ToString();
-            return authService.authorizeUser(tokenString).id;
+            return authService.authorizeUser(tokenString).userid;
         }
         [HttpGet]
         [Route("all")]
@@ -44,7 +44,7 @@ namespace API.Controllers
             }
 
         }
-        [HttpPost]
+        [HttpPut]
         [Route("update")]
         public HttpResponseMessage updateBus(busDTO obj)
         {

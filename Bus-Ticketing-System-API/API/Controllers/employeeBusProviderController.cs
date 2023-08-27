@@ -17,7 +17,7 @@ namespace API.Controllers
         private int getID(HttpRequestMessage request)
         {
             string tokenString = request.Headers.Authorization.ToString();
-            return authService.authorizeUser(tokenString).id;
+            return authService.authorizeUser(tokenString).userid;
         }
         [HttpGet]
         [Route("all")]
@@ -32,6 +32,11 @@ namespace API.Controllers
         {
             try
             {
+
+                if (userServices.usernameExist(obj.username))
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The user id is already exist" });
+                }
                 obj.emp_id = getID(Request);
                 var data = employeeBusProviderService.addBusProvider(obj);
                 string message = data ? "New busprovider is added" : "New busprovider is not added";
@@ -48,6 +53,15 @@ namespace API.Controllers
         {
             try
             {
+
+                if (userServices.usernameExist(obj.username))
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The user id is already exist" });
+                }
+                if (employeeBusProviderService.getBusProvider(obj.id) == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The bus provider doesn't exits" });
+                }
                 obj.emp_id = getID(Request);
                 var data = employeeBusProviderService.updateBusProvider(obj);
                 string message = data ? "The busprovider data is updated" : "The busprovider data is not updated";
@@ -64,6 +78,10 @@ namespace API.Controllers
         {
             try
             {
+                if (employeeBusProviderService.getBusProvider(id) == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The bus provider doesn't exits" });
+                }
                 var data = employeeBusProviderService.deleteBusProvider(id);
                 string message = data ? "The busprovider data is deleted" : "The busprovider data is not deleted";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message });
