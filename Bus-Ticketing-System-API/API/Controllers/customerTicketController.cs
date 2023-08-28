@@ -7,11 +7,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Services.Description;
 
 namespace API.Controllers
 {
     [RoutePrefix("api/customer/ticket")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [customerAuth]
     public class customerTicketController : ApiController
     {

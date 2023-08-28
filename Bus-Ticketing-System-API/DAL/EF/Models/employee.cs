@@ -33,7 +33,7 @@ namespace DAL.EF.Models
     // list of bus providers created by employee
         public virtual List<busProvider> busProviders {get; set;}
 
-    // list of discount cupons created by employee
+    // list of notices created by employee
         public virtual List<notice> notices { get; set;}
     // list of places added by employee
         public virtual List<place> places { get; set;}

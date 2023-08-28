@@ -83,6 +83,17 @@
                         admin_id = random.Next(1, 3)
                     });
             }
+            for(int i = 0; i<20; i++)
+            {
+                context.notice.AddOrUpdate(
+                    new EF.Models.notice()
+                    {
+                        id = i + 1,
+                        title = "Notice " + i,
+                        description = "Hi, this is a random notice.\n" + Guid.NewGuid().ToString(),
+                        emp_id = random.Next(3, 10)
+                    });
+            }
             // Bus provider
             for(int i = 11; i < 15; i++)
             {

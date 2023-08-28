@@ -7,10 +7,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace API.Controllers
 {
     [RoutePrefix("api/employee/place")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [employeeAuth]
     public class employeePlaceController : ApiController
     {

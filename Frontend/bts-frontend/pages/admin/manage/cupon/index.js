@@ -27,7 +27,7 @@ export default function Example() {
                 headers: {'Authorization': sessionStorage.getItem('token_string')}
             }
         )
-        console.log(response.data)
+        // console.log(response.data)
         setData(response.data)
       }
       catch(e){
@@ -57,36 +57,8 @@ export default function Example() {
           </tr>
         </thead>
         <tbody>
-          {/* row 1 */}
-          <tr>
-            <th>1</th>
-            <td>Cy Ganderton</td>
-            <td>Quality Control Specialist</td>
-            <td>Cy Ganderton</td>
-            <td>Quality Control Specialist</td>
-            <td>Blue</td>
-          </tr>
-          {/* row 2 */}
-          <tr>
-            <th>2</th>
-            <td>Hart Hagerty</td>
-            <td>Desktop Support Technician</td>
-            <td>Hart Hagerty</td>
-            <td>Desktop Support Technician</td>
-            <td>Purple</td>
-          </tr>
-          {/* row 3 */}
-          <tr>
-            <th>3</th>
-            <td>Brice Swyre</td>
-            <td>Tax Accountant</td>
-            <td>Red</td>
-            <td>Tax Accountant</td>
-            <td>Red</td>
-          </tr>
-          {/* row 3 */}
           {data.map(item=>(
-            <tr>
+            <tr key={item.id}>
               <th>{item.id}</th>
               <td>{item.name}</td>
               <td>{item.cupon}</td>

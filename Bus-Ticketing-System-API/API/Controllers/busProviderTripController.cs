@@ -7,10 +7,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace API.Controllers
 {
     [RoutePrefix("api/busprovider/trip")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [busProviderAuth]
     public class busProviderTripController : ApiController
     {

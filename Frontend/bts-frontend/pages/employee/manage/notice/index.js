@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import MyHeader from "./../../component/header"
+import MyHeader from "@/pages/employee/component/header"
 import axios from "axios"
 
 const links = [
@@ -21,7 +21,7 @@ export default function Example() {
     async function fetchData(){
       try{
         const response = await axios.get(
-            'https://localhost:44304/api/admin/employee/all',
+            'https://localhost:44304/api/employee/notice/all',
             {
                 headers: {'Authorization': sessionStorage.getItem('token_string')}
             }
@@ -41,32 +41,28 @@ export default function Example() {
   }, [])
   return (
     <>
-    <MyHeader title="Bus Ticketing System" for="Manage Cupon"></MyHeader>
+    <MyHeader title="Bus Ticketing System" pagename="Manage Notice"></MyHeader>
     <div className="overflow-x-auto px-10">
+      <h1> {data.length == 0 ? "No data found": ""} </h1>
       <table className="table table-zebra">
         {/* head */}
         <thead>
           <tr>
             <th>ID</th>
-            <th>username</th>
-            <th>Name</th>
-            <th>Salary</th>
-            <th>DBO</th>
-            <th>Created BY</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Created By</th>
           </tr>
         </thead>
         <tbody>
           {data.map(item=>(
             <tr key={item.id}>
               <th>{item.id}</th>
-              <td>{item.username}</td>
-              <td>{item.name}</td>
-              <td>{item.salary}</td>
-              <td>{item.dob}</td>
-              <td>{item.admin_id}</td>
+              <td>{item.title}</td>
+              <td><pre>{item.description}</pre></td>
+              <td>{item.emp_id}</td>
             </tr>
           ))}
-          
         </tbody>
       </table>
     </div>
