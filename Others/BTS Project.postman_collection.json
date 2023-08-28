@@ -41,6 +41,35 @@
 							"response": []
 						},
 						{
+							"name": "all search",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "bdd821a3-0cbe-4f61-bfc1-d01ecbe7c36f",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://localhost:44304/api/admin/cupon/search/abc",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"admin",
+										"cupon",
+										"search",
+										"abc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "get by id",
 							"request": {
 								"method": "GET",
@@ -419,6 +448,73 @@
 										"admin",
 										"employee",
 										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all search",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "032a77ad-772f-4ce0-aa7c-74c31b648b9f",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Muzahidul Islam",
+											"type": "text"
+										},
+										{
+											"key": "salary",
+											"value": "50000",
+											"type": "text"
+										},
+										{
+											"key": "dob",
+											"value": "13-Aug-1998",
+											"type": "text"
+										},
+										{
+											"key": "admin_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "muzahid",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/admin/employee/search/abc",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"admin",
+										"employee",
+										"search",
+										"abc"
 									]
 								}
 							},
@@ -1042,6 +1138,73 @@
 							"response": []
 						},
 						{
+							"name": "all search",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "f1ea9525-34e6-4ff4-aa8b-f9a67abc91c5",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Muzahidul Islam",
+											"type": "text"
+										},
+										{
+											"key": "salary",
+											"value": "50000",
+											"type": "text"
+										},
+										{
+											"key": "dob",
+											"value": "13-Aug-1998",
+											"type": "text"
+										},
+										{
+											"key": "admin_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "muzahid",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/employee/busprovider/search/abc",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"employee",
+										"busprovider",
+										"search",
+										"abc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "get by id",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -1226,6 +1389,73 @@
 										"employee",
 										"trip",
 										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all search",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "ba4ef954-51e2-4788-a2c5-692c2af0fbcb",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Muzahidul Islam",
+											"type": "text"
+										},
+										{
+											"key": "salary",
+											"value": "50000",
+											"type": "text"
+										},
+										{
+											"key": "dob",
+											"value": "13-Aug-1998",
+											"type": "text"
+										},
+										{
+											"key": "admin_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "muzahid",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/employee/trip/search/abc",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"employee",
+										"trip",
+										"search",
+										"abc"
 									]
 								}
 							},
@@ -1613,6 +1843,73 @@
 							"response": []
 						},
 						{
+							"name": "all search",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "e39d49df-1441-4240-a403-3434b7004fdd",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Muzahidul Islam",
+											"type": "text"
+										},
+										{
+											"key": "salary",
+											"value": "50000",
+											"type": "text"
+										},
+										{
+											"key": "dob",
+											"value": "13-Aug-1998",
+											"type": "text"
+										},
+										{
+											"key": "admin_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "muzahid",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/busprovider/bus/search/abc",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"busprovider",
+										"bus",
+										"search",
+										"abc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "get by id",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -1815,6 +2112,42 @@
 										"busprovider",
 										"trip",
 										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all search",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "e39d49df-1441-4240-a403-3434b7004fdd",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/busprovider/trip/search/abc",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"busprovider",
+										"trip",
+										"search",
+										"abc"
 									]
 								}
 							},
@@ -2548,6 +2881,42 @@
 							"response": []
 						},
 						{
+							"name": "trip in details search",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "e42f9f30-2683-4d90-bba1-0c5633cf5613",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/customer/trip/search/abc",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"customer",
+										"trip",
+										"search",
+										"abc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "trip in details by id",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -2611,6 +2980,42 @@
 										"api",
 										"customer",
 										"cupon"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cupon search",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "5bfbfbc3-3c4c-4a06-87c6-583745ae32c7",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://localhost:44304/api/customer/cupon/search/abc",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44304",
+									"path": [
+										"api",
+										"customer",
+										"cupon",
+										"search",
+										"abc"
 									]
 								}
 							},

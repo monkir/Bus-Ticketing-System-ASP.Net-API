@@ -28,6 +28,13 @@ namespace API.Controllers
             var data = employeeBusProviderService.allBusProvider();
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
+        [HttpGet]
+        [Route("search/{search}")]
+        public HttpResponseMessage searchBusProvider(string search)
+        {
+            var data = employeeBusProviderService.searchBusProvider(search);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+        }
         [HttpPost]
         [Route("add")]
         public HttpResponseMessage addBusProvider(busProviderDTO obj)

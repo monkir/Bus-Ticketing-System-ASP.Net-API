@@ -38,6 +38,14 @@ namespace API.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
         [HttpGet]
+        [Route("search/{search}")]
+        public HttpResponseMessage searchTripDetails(string search)
+        {
+            int bp_id = getID(Request);
+            var data = busProviderTripService.searchTripDetails(bp_id, search);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+        }
+        [HttpGet]
         [Route("get/{id}")]
         public HttpResponseMessage findTrip(int id)
         {

@@ -22,6 +22,25 @@ namespace BLL.Services
             var mapper = config.CreateMapper();
             return mapper.Map<List<busProviderDTO>>(data);
         }
+        public static List<busProviderDTO> searchBusProvider(string search)
+        {
+            var data = DataAccessFactory.getBusProvider().All();
+            var config = new MapperConfiguration(
+                cfg => cfg.CreateMap<busProvider, busProviderDTO>().ForMember
+                (dest => dest.username, opt => opt.MapFrom(src => src.user.username))
+            );
+            var mapper = config.CreateMapper();
+            var convertedData = mapper.Map<List<busProviderDTO>>(data);
+            search = search.ToLower();
+            var filteredData = convertedData.Where(
+                bp =>
+                bp.id.ToString().ToLower().Contains(search)
+                && bp.username.ToString().ToLower().Contains(search)
+                && bp.company.ToString().ToLower().Contains(search)
+                && bp.emp_id.ToString().ToLower().Contains(search)
+                );
+            return filteredData.ToList();
+        }
         public static bool addBusProvider(busProviderDTO obj)
         {
             var config = new MapperConfiguration(

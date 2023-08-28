@@ -189,6 +189,49 @@ namespace BLL.Services
             var mapper = config.CreateMapper();
             return mapper.Map<List<tripInDetailsDTO>>(tripData);
         }
+        public static List<tripInDetailsDTO> searchTripInDetails(string search)
+        {
+            var tripData = DataAccessFactory.getTrip().All().
+                Where(
+                        t => t.status.Equals("added") 
+                        && DateTime.Now.AddHours(+1).CompareTo(t.startTime) < 0
+                    ).ToList();
+            var seat = (from t in tripData
+                        from tk in t.tickets
+                        from s in convertSeat(tk.seat_no)
+                        select s).ToList();
+            var config = new MapperConfiguration(
+                    cfg =>
+                    {
+                        cfg.CreateMap<trip, tripInDetailsDTO>()
+                        .ForMember
+                        (
+                            dst => dst.bookedSeat, 
+                            opt => opt.MapFrom
+                            (
+                                src => src.tickets.Where(t => t.status.Equals("booked")).SelectMany(t => convertSeat(t.seat_no)).ToList()
+                            )
+                        )
+                        ;
+                        cfg.CreateMap<place, placeDTO>();
+                    }
+                );
+            var mapper = config.CreateMapper();
+            var convertedData = mapper.Map<List<tripInDetailsDTO>>(tripData);
+            search = search.ToLower();
+            var searchedData = convertedData.Where(
+                t =>
+                t.id.ToString().ToLower().Contains(search)
+                && t.id.ToString().ToLower().Contains(search)
+                && t.ticketPrice.ToString().ToLower().Contains(search)
+                && t.status.ToString().ToLower().Contains(search)
+                && t.startTime.ToString().ToLower().Contains(search)
+                && t.endTime.ToString().ToLower().Contains(search)
+                && t.depot.name.ToString().ToLower().Contains(search)
+                && t.destination.name.ToString().ToLower().Contains(search)
+                );
+            return searchedData.ToList();
+        }
         public static tripInDetailsDTO getTripInDetails(int tripid)
         {
             var tripData = DataAccessFactory.getTrip().get(tripid);
@@ -235,6 +278,29 @@ namespace BLL.Services
                 );
             var mapper = config.CreateMapper();
             return mapper.Map<List<discountCuponDTO>>(tripData);
+        }
+        public static List<discountCuponDTO> searchCuponDetails(string search)
+        {
+            var tripData = DataAccessFactory.getDiscountCupon().All().ToList();
+            var config = new MapperConfiguration(
+                    cfg =>
+                    {
+                        cfg.CreateMap<discountCupon, discountCuponDTO>();
+                    }
+                );
+            var mapper = config.CreateMapper();
+            var convertedData = mapper.Map<List<discountCuponDTO>>(tripData);
+            search = search.ToLower();
+            var filteredData = convertedData.Where(
+                c =>
+                    c.id.ToString().Contains(search)
+                    && c.name.ToLower().Contains(search)
+                    && c.cupon.ToLower().Contains(search)
+                    && c.percentage.ToString().ToLower().Contains(search)
+                    && c.maxDiscount.ToString().ToLower().Contains(search)
+                    && c.admin_id.ToString().ToLower().Contains(search)
+                );
+            return filteredData.ToList();
         }
         public static discountCuponDTO getCuponDetails(int cuponID)
         {

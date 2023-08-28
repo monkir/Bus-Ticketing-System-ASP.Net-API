@@ -29,6 +29,14 @@ namespace API.Controllers
             var data = busProviderBusService.allBus(bp_id);
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
+        [HttpGet]
+        [Route("search/{search}")]
+        public HttpResponseMessage searchBus(string search)
+        {
+            int bp_id = getID(Request);
+            var data = busProviderBusService.searchBus(bp_id, search);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+        }
         [HttpPost]
         [Route("add")]
         public HttpResponseMessage addBus(busDTO obj)

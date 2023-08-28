@@ -19,6 +19,22 @@ namespace BLL.Services
             var mapper = config.CreateMapper();
             return mapper.Map<List<discountCuponDTO>>( data );
         }
+        public static List<discountCuponDTO> searchDiscountCupon(string search)
+        {
+            search = search.ToLower();
+            var data = DataAccessFactory.getDiscountCupon().All().Where(
+                c =>
+                    c.id.ToString().Contains(search)
+                    && c.name.ToLower().Contains(search)
+                    && c.cupon.ToLower().Contains(search)
+                    && c.percentage.ToString().ToLower().Contains(search)
+                    && c.maxDiscount.ToString().ToLower().Contains(search)
+                    && c.admin_id.ToString().ToLower().Contains(search)
+                );
+            var config = new MapperConfiguration( cfg => cfg.CreateMap<discountCupon, discountCuponDTO>() );
+            var mapper = config.CreateMapper();
+            return mapper.Map<List<discountCuponDTO>>( data );
+        }
         public static discountCuponDTO GetDiscountCupon(int id)
         {
             var data = DataAccessFactory.getDiscountCupon().get(id);

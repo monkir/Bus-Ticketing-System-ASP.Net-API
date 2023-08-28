@@ -19,6 +19,22 @@ namespace BLL.Services
             var mapper = config.CreateMapper();
             return mapper.Map<List<noticeDTO>>(data);
         }
+        public static List<noticeDTO> searchNotice(string search)
+        {
+            var data = DataAccessFactory.getNotice().All();
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<notice, noticeDTO>());
+            var mapper = config.CreateMapper();
+            var convertedData = mapper.Map<List<noticeDTO>>(data);
+            search = search.ToLower();
+            var filteredData = convertedData.Where(
+                n =>
+                n.id.ToString().ToLower().Contains(search)
+                && n.title.ToString().ToLower().Contains(search)
+                && n.description.ToString().ToLower().Contains(search)
+                && n.emp_id.ToString().ToLower().Contains(search)
+                );
+            return filteredData.ToList();
+        }
         public static noticeDTO GetNotice(int id)
         {
             var data = DataAccessFactory.getNotice().get(id);

@@ -76,6 +76,47 @@ namespace BLL.Services
             var mapper = config.CreateMapper();
             return mapper.Map<List<tripInDetailsDTO>>(tripData);
         }
+        public static List<tripInDetailsDTO> searchTripDetails(int bpID, string search)
+        {
+            
+            var buses = DataAccessFactory.getBusProvider().get(bpID).buses;
+            //var data = buses.SelectMany(b => b.trips).ToList();
+            var tripData = (from b in buses
+                    from t in b.trips
+                    select t).ToList();
+            //var tripData = DataAccessFactory.getTrip().get(tripID);
+            var config = new MapperConfiguration(
+                    cfg =>
+                    {
+                        cfg.CreateMap<trip, tripInDetailsDTO>()
+                        .ForMember
+                        (
+                            dst => dst.bookedSeat,
+                            opt => opt.MapFrom
+                            (
+                                src => src.tickets.Where(t => t.status.Equals("booked")).SelectMany(t => convertSeat(t.seat_no)).ToList()
+                            )
+                        )
+                        ;
+                        cfg.CreateMap<place, placeDTO>();
+                    }
+                );
+            var mapper = config.CreateMapper();
+            var convertedData =  mapper.Map<List<tripInDetailsDTO>>(tripData);
+            search = search.ToLower();
+            var searchedData = convertedData.Where(
+                t =>
+                t.id.ToString().ToLower().Contains(search)
+                && t.id.ToString().ToLower().Contains(search)
+                && t.ticketPrice.ToString().ToLower().Contains(search)
+                && t.status.ToString().ToLower().Contains(search)
+                && t.startTime.ToString().ToLower().Contains(search)
+                && t.endTime.ToString().ToLower().Contains(search)
+                && t.depot.name.ToString().ToLower().Contains(search)
+                && t.destination.name.ToString().ToLower().Contains(search)
+                );
+            return searchedData.ToList();
+        }
         public static tripDTO GetTrip(int tripID)
         {
             var data = DataAccessFactory.getTrip().get(tripID);

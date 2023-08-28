@@ -28,6 +28,13 @@ namespace API.Controllers
             var data = adminEmployeeService.allEmployee();
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
+        [HttpGet]
+        [Route("search/{search}")]
+        public HttpResponseMessage searchEmployee(string search)
+        {
+            var data = adminEmployeeService.searchEmployee(search);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+        }
         [HttpPut]
         [Route("add")]
         public HttpResponseMessage addEmployee(employeeDTO obj) 

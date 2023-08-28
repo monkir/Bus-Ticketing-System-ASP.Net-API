@@ -20,6 +20,26 @@ namespace BLL.Services
             var mapper = config.CreateMapper();
             return mapper.Map<List<busDTO>>(data);
         }
+        public static List<busDTO> searchBus(int bp_id,string search)
+        {
+            var pb_data = DataAccessFactory.getBusProvider().get(bp_id);
+            var data = pb_data.buses.ToList();
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<bus, busDTO>());
+            var mapper = config.CreateMapper();
+            var convertedData = mapper.Map<List<busDTO>>(data);
+            search = search.ToLower();
+            var filteredData = convertedData.Where(
+                b =>
+                b.id.ToString().Contains(search)
+                && b.brand.ToString().Contains(search)
+                && b.model.ToString().Contains(search)
+                && b.serialNo.ToString().Contains(search)
+                && b.category.ToString().Contains(search)
+                && b.totalSeat.ToString().Contains(search)
+                && b.bp_id.ToString().Contains(search)
+                );
+            return filteredData.ToList();
+        }
         public static busDTO GetBus(int id)
         {
             var data = DataAccessFactory.getBus().get(id);

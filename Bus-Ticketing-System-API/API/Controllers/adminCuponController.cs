@@ -28,19 +28,10 @@ namespace API.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
         [HttpGet]
-        [Route("api/admin/cupon/search")]
+        [Route("api/admin/cupon/search/{search}")]
         public HttpResponseMessage searchCupon(string search)
         {
-            search = search.ToLower();
-            var data = adminCuponService.allDiscountCupon().Where(
-                c =>
-                    c.id.ToString().Contains(search)
-                    && c.name.ToLower().Contains(search)
-                    && c.cupon.ToLower().Contains(search)
-                    && c.percentage.ToString().ToLower().Contains(search)
-                    && c.maxDiscount.ToString().ToLower().Contains(search)
-                    && c.admin_id.ToString().ToLower().Contains(search)
-                );
+            var data = adminCuponService.searchDiscountCupon(search);
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
         [HttpPost]

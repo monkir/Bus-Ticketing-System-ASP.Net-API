@@ -41,7 +41,7 @@ export default function Example() {
   }, [])
   return (
     <>
-    <MyHeader title="Bus Ticketing System" for="Manage Cupon"></MyHeader>
+    <MyHeader title="Bus Ticketing System" pagename="Admin Panel: Manage Employee"></MyHeader>
     <div className="overflow-x-auto px-10">
       <table className="table table-zebra">
         {/* head */}

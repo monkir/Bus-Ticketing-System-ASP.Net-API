@@ -28,6 +28,13 @@ namespace API.Controllers
             var data = employeeNoticeService.allNotice();
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
+        [HttpGet]
+        [Route("search/{search}")]
+        public HttpResponseMessage searchNotice(string search)
+        {
+            var data = employeeNoticeService.searchNotice(search);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+        }
         [HttpPost]
         [Route("add")]
         public HttpResponseMessage addNotice(noticeDTO obj)

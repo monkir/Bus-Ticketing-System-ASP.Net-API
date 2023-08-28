@@ -35,6 +35,20 @@ namespace API.Controllers
             }
         }
         [HttpGet]
+        [Route("trip/search/{search}")]
+        public HttpResponseMessage searchTripInDetails(string search)
+        {
+            try
+            {
+                var data = customerTicketService.searchTripInDetails(search);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception e)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, e);
+            }
+        }
+        [HttpGet]
         [Route("trip/my")]
         public HttpResponseMessage myTripInDetails()
         {
@@ -70,6 +84,20 @@ namespace API.Controllers
             try
             {
                 var data = customerTicketService.getCuponDetails();
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception e)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, e);
+            }
+        }
+        [HttpGet]
+        [Route("cupon/search/{search}")]
+        public HttpResponseMessage CuponDetails(string search)
+        {
+            try
+            {
+                var data = customerTicketService.searchCuponDetails(search);
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception e)
