@@ -310,3 +310,6 @@ C:\Users\forha\source\repos\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-Sys
 C:\Users\forha\source\repos\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\API\obj\Debug\API.csproj.CopyComplete
 C:\Users\forha\source\repos\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\API\obj\Debug\API.dll
 C:\Users\forha\source\repos\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\API\obj\Debug\API.pdb
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\API\bin\System.Web.Cors.dll
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\API\bin\System.Web.Http.Cors.dll
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\API\bin\System.Web.Http.Cors.xml

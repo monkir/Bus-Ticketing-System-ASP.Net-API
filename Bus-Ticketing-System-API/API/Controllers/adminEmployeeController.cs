@@ -7,11 +7,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace API.Controllers
 {
     [adminAuth]
     [RoutePrefix("api/admin/employee")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class adminEmployeeController : ApiController
     {
         private int getID(HttpRequestMessage request)
