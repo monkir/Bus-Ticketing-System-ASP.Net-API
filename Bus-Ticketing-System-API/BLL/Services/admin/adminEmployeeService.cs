@@ -41,11 +41,11 @@ namespace BLL.Services
             var filteredData = searchedData.Where(
                 e =>
                 e.id.ToString().Contains(search)
-                && e.username.ToLower().Contains(search)
-                && e.username.ToLower().Contains(search)
-                && e.salary.ToString().Contains(search)
-                && e.dob.ToString().ToLower().Contains(search)
-                && e.salary.ToString().Contains(search)
+                || e.username.ToLower().Contains(search)
+                || e.username.ToLower().Contains(search)
+                || e.salary.ToString().Contains(search)
+                || e.dob.ToString().ToLower().Contains(search)
+                || e.salary.ToString().Contains(search)
                 );
             return filteredData.ToList();
         }

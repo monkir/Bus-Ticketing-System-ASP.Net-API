@@ -1,4 +1,3 @@
-import { redirect } from "next/dist/server/api-utils";
 import MyFooter from "./component/footer"
 import MyHeader from "./component/header"
 import axios from "axios"
@@ -23,7 +22,7 @@ import { useRouter } from "next/router";
         sessionStorage.setItem("userrole", response.data.userrole)
         sessionStorage.setItem("token_string", response.data.token.token_string)
         setMessage("Login is successfull")
-        setTimeout(() => { router.push('/'+response.data.userrole)  }, 5000);
+        setTimeout(() => { router.push('/'+response.data.userrole)  }, 2000);
       }
       catch(e){
         try{

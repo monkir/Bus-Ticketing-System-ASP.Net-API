@@ -25,11 +25,11 @@ namespace BLL.Services
             var data = DataAccessFactory.getDiscountCupon().All().Where(
                 c =>
                     c.id.ToString().Contains(search)
-                    && c.name.ToLower().Contains(search)
-                    && c.cupon.ToLower().Contains(search)
-                    && c.percentage.ToString().ToLower().Contains(search)
-                    && c.maxDiscount.ToString().ToLower().Contains(search)
-                    && c.admin_id.ToString().ToLower().Contains(search)
+                    || c.name.ToLower().Contains(search)
+                    || c.cupon.ToLower().Contains(search)
+                    || c.percentage.ToString().ToLower().Contains(search)
+                    || c.maxDiscount.ToString().ToLower().Contains(search)
+                    || c.admin_id.ToString().ToLower().Contains(search)
                 );
             var config = new MapperConfiguration( cfg => cfg.CreateMap<discountCupon, discountCuponDTO>() );
             var mapper = config.CreateMapper();

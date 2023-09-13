@@ -35,9 +35,9 @@ namespace BLL.Services
             var filteredData = convertedData.Where(
                 bp =>
                 bp.id.ToString().ToLower().Contains(search)
-                && bp.username.ToString().ToLower().Contains(search)
-                && bp.company.ToString().ToLower().Contains(search)
-                && bp.emp_id.ToString().ToLower().Contains(search)
+                || bp.username.ToString().ToLower().Contains(search)
+                || bp.company.ToString().ToLower().Contains(search)
+                || bp.emp_id.ToString().ToLower().Contains(search)
                 );
             return filteredData.ToList();
         }

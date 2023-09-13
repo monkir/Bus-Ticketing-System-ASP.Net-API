@@ -20,7 +20,7 @@ namespace BLL.Services
             token tk = new token()
             {
                 token_string = Guid.NewGuid().ToString(),
-                expireTime = DateTime.Now.AddMinutes(20),
+                expireTime = DateTime.Now.AddMinutes(2),
                 userid = obj.id
             };
             DataAccessFactory.getToken().create(tk);

@@ -118,15 +118,11 @@ the “**Bus Provider**” has the following features:
 
 ![](image/image.002.png)
 
-![Diagram, schematic
-
-Description automatically generated](image/image.003.png)
+![Diagram, schematic Description automatically generated](image/image.003.png)
 
 ~~Figure: ER Diagram (old)~~
 
-![Diagram
-
-Description automatically generated](image/image.004.png)
+![Diagram Description automatically generated](image/image.004.png)
 
 ~~Figure: Use Case Diagram (old)~~
 

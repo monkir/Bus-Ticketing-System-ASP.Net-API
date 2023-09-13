@@ -107,13 +107,13 @@ namespace BLL.Services
             var searchedData = convertedData.Where(
                 t =>
                 t.id.ToString().ToLower().Contains(search)
-                && t.id.ToString().ToLower().Contains(search)
-                && t.ticketPrice.ToString().ToLower().Contains(search)
-                && t.status.ToString().ToLower().Contains(search)
-                && t.startTime.ToString().ToLower().Contains(search)
-                && t.endTime.ToString().ToLower().Contains(search)
-                && t.depot.name.ToString().ToLower().Contains(search)
-                && t.destination.name.ToString().ToLower().Contains(search)
+                || t.id.ToString().ToLower().Contains(search)
+                || t.ticketPrice.ToString().ToLower().Contains(search)
+                || t.status.ToString().ToLower().Contains(search)
+                || t.startTime.ToString().ToLower().Contains(search)
+                || t.endTime.ToString().ToLower().Contains(search)
+                || t.depot.name.ToString().ToLower().Contains(search)
+                || t.destination.name.ToString().ToLower().Contains(search)
                 );
             return searchedData.ToList();
         }

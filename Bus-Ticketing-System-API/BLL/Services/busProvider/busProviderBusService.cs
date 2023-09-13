@@ -31,12 +31,12 @@ namespace BLL.Services
             var filteredData = convertedData.Where(
                 b =>
                 b.id.ToString().Contains(search)
-                && b.brand.ToString().Contains(search)
-                && b.model.ToString().Contains(search)
-                && b.serialNo.ToString().Contains(search)
-                && b.category.ToString().Contains(search)
-                && b.totalSeat.ToString().Contains(search)
-                && b.bp_id.ToString().Contains(search)
+                || b.brand.ToString().Contains(search)
+                || b.model.ToString().Contains(search)
+                || b.serialNo.ToString().Contains(search)
+                || b.category.ToString().Contains(search)
+                || b.totalSeat.ToString().Contains(search)
+                || b.bp_id.ToString().Contains(search)
                 );
             return filteredData.ToList();
         }

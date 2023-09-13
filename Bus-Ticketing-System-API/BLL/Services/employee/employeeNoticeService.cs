@@ -29,9 +29,9 @@ namespace BLL.Services
             var filteredData = convertedData.Where(
                 n =>
                 n.id.ToString().ToLower().Contains(search)
-                && n.title.ToString().ToLower().Contains(search)
-                && n.description.ToString().ToLower().Contains(search)
-                && n.emp_id.ToString().ToLower().Contains(search)
+                || n.title.ToString().ToLower().Contains(search)
+                || n.description.ToString().ToLower().Contains(search)
+                || n.emp_id.ToString().ToLower().Contains(search)
                 );
             return filteredData.ToList();
         }

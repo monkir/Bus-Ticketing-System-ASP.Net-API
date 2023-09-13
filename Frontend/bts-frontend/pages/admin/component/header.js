@@ -1,8 +1,24 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function MyHeader(props) {
-  
+    const router = useRouter()
+    useEffect(()=>{
+        function bpAuth(){
+            const userrole = sessionStorage.getItem('userrole')
+            if(userrole == null)
+            {
+                router.push('/')
+            }
+            if( userrole != 'admin')
+            {
+                router.push('/'+userrole)
+            }
+        }
+        bpAuth()
+    },[])
     return(
         <>
         <Head>

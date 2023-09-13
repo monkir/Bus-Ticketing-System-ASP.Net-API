@@ -222,13 +222,13 @@ namespace BLL.Services
             var searchedData = convertedData.Where(
                 t =>
                 t.id.ToString().ToLower().Contains(search)
-                && t.id.ToString().ToLower().Contains(search)
-                && t.ticketPrice.ToString().ToLower().Contains(search)
-                && t.status.ToString().ToLower().Contains(search)
-                && t.startTime.ToString().ToLower().Contains(search)
-                && t.endTime.ToString().ToLower().Contains(search)
-                && t.depot.name.ToString().ToLower().Contains(search)
-                && t.destination.name.ToString().ToLower().Contains(search)
+                || t.id.ToString().ToLower().Contains(search)
+                || t.ticketPrice.ToString().ToLower().Contains(search)
+                || t.status.ToString().ToLower().Contains(search)
+                || t.startTime.ToString().ToLower().Contains(search)
+                || t.endTime.ToString().ToLower().Contains(search)
+                || t.depot.name.ToString().ToLower().Contains(search)
+                || t.destination.name.ToString().ToLower().Contains(search)
                 );
             return searchedData.ToList();
         }
@@ -294,11 +294,11 @@ namespace BLL.Services
             var filteredData = convertedData.Where(
                 c =>
                     c.id.ToString().Contains(search)
-                    && c.name.ToLower().Contains(search)
-                    && c.cupon.ToLower().Contains(search)
-                    && c.percentage.ToString().ToLower().Contains(search)
-                    && c.maxDiscount.ToString().ToLower().Contains(search)
-                    && c.admin_id.ToString().ToLower().Contains(search)
+                    || c.name.ToLower().Contains(search)
+                    || c.cupon.ToLower().Contains(search)
+                    || c.percentage.ToString().ToLower().Contains(search)
+                    || c.maxDiscount.ToString().ToLower().Contains(search)
+                    || c.admin_id.ToString().ToLower().Contains(search)
                 );
             return filteredData.ToList();
         }
