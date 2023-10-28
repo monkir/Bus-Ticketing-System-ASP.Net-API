@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import MyHeader from "@/pages/employee/component/header"
+import EmployeeHeader from "@/pages/employee/component/header"
 import axios from "axios"
 
 const links = [
@@ -23,7 +23,7 @@ export default function Example() {
     try{
       if(searchValue != ""){
         const response = await axios.get(
-          'https://localhost:44304/api/employee/notice/search/'+searchValue,
+          process.env.NEXT_PUBLIC_api_root+'/api/employee/notice/search/'+searchValue,
           {
               headers: {'Authorization': sessionStorage.getItem('token_string')}
           }
@@ -32,7 +32,7 @@ export default function Example() {
       }
       else{
         const response = await axios.get(
-          'https://localhost:44304/api/employee/notice/all',
+          process.env.NEXT_PUBLIC_api_root+'/api/employee/notice/all',
           {
               headers: {'Authorization': sessionStorage.getItem('token_string')}
           }
@@ -65,7 +65,7 @@ export default function Example() {
   }
   return (
     <>
-    <MyHeader title="Bus Ticketing System" pagename="Employee: Manage Notice"></MyHeader>
+    <EmployeeHeader title="Bus Ticketing System" pagename="Employee: Manage Notice"></EmployeeHeader>
     <div className="overflow-x-auto px-10 min-h-[70vh]">
       {/* Search Box */}
       <div className="grid justify-items-stretch">

@@ -10,7 +10,7 @@ export default function Example() {
     try{
       if(searchValue != ""){
         const response = await axios.get(
-          'https://localhost:44304/api/busprovider/trip/search/'+searchValue,
+          process.env.NEXT_PUBLIC_api_root+'/api/busprovider/trip/search/'+searchValue,
           {
               headers: {'Authorization': sessionStorage.getItem('token_string')}
           }
@@ -19,7 +19,7 @@ export default function Example() {
       }
       else{
         const response = await axios.get(
-          'https://localhost:44304/api/busprovider/trip/all/details',
+          process.env.NEXT_PUBLIC_api_root+'/api/busprovider/trip/all/details',
           {
               headers: {'Authorization': sessionStorage.getItem('token_string')}
           }

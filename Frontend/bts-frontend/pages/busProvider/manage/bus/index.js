@@ -3,18 +3,6 @@ import MyHeader from "@/pages/busProvider/component/header"
 import axios from "axios"
 import { info } from "autoprefixer"
 
-const links = [
-  { name: 'Open roles', href: '#' },
-  { name: 'Internship program', href: '#' },
-  { name: 'Our values', href: '#' },
-  { name: 'Meet our leadership', href: '#' },
-]
-const stats = [
-  { name: 'Offices worldwide', value: '12' },
-  { name: 'Full-time colleagues', value: '300+' },
-  { name: 'Hours per week', value: '40' },
-  { name: 'Paid time off', value: 'Unlimited' },
-]
 
 export default function Example() {
   const [data, setData] = useState([])
@@ -24,7 +12,7 @@ export default function Example() {
     try{
       if(searchValue != ""){
         const response = await axios.get(
-          'https://localhost:44304/api/busProvider/bus/search/'+searchValue,
+          process.env.NEXT_PUBLIC_api_root+'/api/busProvider/bus/search/'+searchValue,
           {
               headers: {'Authorization': sessionStorage.getItem('token_string')}
           }
@@ -33,7 +21,7 @@ export default function Example() {
       }
       else{
         const response = await axios.get(
-          'https://localhost:44304/api/busProvider/bus/all',
+          process.env.NEXT_PUBLIC_api_root+'/api/busProvider/bus/all',
           {
               headers: {'Authorization': sessionStorage.getItem('token_string')}
           }

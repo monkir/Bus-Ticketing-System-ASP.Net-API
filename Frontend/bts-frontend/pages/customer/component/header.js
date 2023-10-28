@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-export default function MyHeader(props) {
+export default function CustomerHeader(props) {
     const router = useRouter()
     useEffect(()=>{
         function bpAuth(){
@@ -40,7 +40,8 @@ export default function MyHeader(props) {
             </div>
         </div>
         <div className="navbar-center">
-            <a className="btn btn-ghost normal-case text-xl">{props.pagename}</a>
+            <Link href={"/customer"} className="btn btn-ghost normal-case text-xl">{props.pagename}</Link>
+            <Link href={"/customer/trip"} className="btn btn-ghost normal-case text-xl">My Trip?</Link>
         </div>
         <div className="navbar-end">
             <button className="btn btn-ghost btn-circle">

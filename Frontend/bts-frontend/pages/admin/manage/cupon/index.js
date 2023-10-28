@@ -11,7 +11,7 @@ export default function Example() {
     try{
       if(searchValue != ""){
         const response = await axios.get(
-          'https://localhost:44304/api/admin/cupon/search/'+searchValue,
+          process.env.NEXT_PUBLIC_api_root+'/api/admin/cupon/search/'+searchValue,
           {
               headers: {'Authorization': sessionStorage.getItem('token_string')}
           }
@@ -20,7 +20,7 @@ export default function Example() {
       }
       else{
         const response = await axios.get(
-          'https://localhost:44304/api/admin/cupon/all'+searchValue,
+          process.env.NEXT_PUBLIC_api_root+'/api/admin/cupon/all'+searchValue,
           {
               headers: {'Authorization': sessionStorage.getItem('token_string')}
           }
