@@ -33,7 +33,7 @@ export default function Example() {
             }
             else {
                 const response = await axios.get(
-                    process.env.NEXT_PUBLIC_api_root + '/api/customer/trip',
+                    process.env.NEXT_PUBLIC_api_root + '/api/customer/trip/my',
                     {
                         headers: { 'Authorization': sessionStorage.getItem('token_string') }
                     }
@@ -66,19 +66,19 @@ export default function Example() {
     }
     return (
         <>
-            <CustomerHeader title="Bus Ticketing System" pagename="Customer: Find Trip" />
+            <CustomerHeader title="Bus Ticketing System" pagename="Customer: My trips" />
             <div className="overflow-x-auto px-10 min-h-[70vh]">
                 {/* Search Box */}
                 <div className="grid justify-items-stretch">
-                    <div className=" flex justify-self-center w-1/2">
-                        <Link className="btn btn-active btn-outline w-1/4" href={'/customer/trip/my'}>My Trips</Link>
-                        <input
+                    <div className=" flex justify-self-center w-1/4">
+                        <Link className="btn btn-active btn-outline w-full" href={'/customer/trip'}>Find Trips</Link>
+                        {/* <input
                             type="text"
                             name="search"
                             className="block w-3/4 rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                             placeholder="search"
                             onChange={search}
-                        />
+                        /> */}
                     </div>
                 </div>
                 <h1> {data.length == 0 ? "No data found" : ""} </h1>

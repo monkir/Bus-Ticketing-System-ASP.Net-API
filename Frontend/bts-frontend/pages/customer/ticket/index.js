@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import CustomerHeader from "../component/header"
 import axios from "axios"
 import Link from "next/link"
+import CustomerFooter from "../component/footer"
 
 const links = [
     { name: 'Open roles', href: '#' },
@@ -24,7 +25,7 @@ export default function Example() {
         try {
             if (searchValue != "") {
                 const response = await axios.get(
-                    process.env.NEXT_PUBLIC_api_root + '/api/customer/trip/search/' + searchValue,
+                    process.env.NEXT_PUBLIC_api_root + '/api/customer/ticket/search/' + searchValue,
                     {
                         headers: { 'Authorization': sessionStorage.getItem('token_string') }
                     }
@@ -33,7 +34,7 @@ export default function Example() {
             }
             else {
                 const response = await axios.get(
-                    process.env.NEXT_PUBLIC_api_root + '/api/customer/trip',
+                    process.env.NEXT_PUBLIC_api_root + '/api/customer/ticket/all',
                     {
                         headers: { 'Authorization': sessionStorage.getItem('token_string') }
                     }
@@ -66,32 +67,17 @@ export default function Example() {
     }
     return (
         <>
-            <CustomerHeader title="Bus Ticketing System" pagename="Customer: Find Trip" />
+            <CustomerHeader title="Bus Ticketing System" pagename="Customer: My tickets" />
             <div className="overflow-x-auto px-10 min-h-[70vh]">
-                {/* Search Box */}
-                <div className="grid justify-items-stretch">
-                    <div className=" flex justify-self-center w-1/2">
-                        <Link className="btn btn-active btn-outline w-1/4" href={'/customer/trip/my'}>My Trips</Link>
-                        <input
-                            type="text"
-                            name="search"
-                            className="block w-3/4 rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            placeholder="search"
-                            onChange={search}
-                        />
-                    </div>
-                </div>
                 <h1> {data.length == 0 ? "No data found" : ""} </h1>
                 <table className="table table-zebra">
                     {/* head */}
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>From</th>
-                            <th>To</th>
-                            <th>Start at</th>
-                            <th>End at</th>
-                            <th>Price</th>
+                            <th>Ammount</th>
+                            <th>Status</th>
+                            <th>Trip_id</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -99,18 +85,17 @@ export default function Example() {
                         {data.map(item => (
                             <tr key={item.id}>
                                 <th>{item.id}</th>
-                                <td>{item.depot.name}</td>
-                                <td>{item.destination.name}</td>
-                                <td>{item.startTime}</td>
-                                <td>{item.endTime}</td>
-                                <td>{item.ticketPrice}</td>
-                                <td><Link href={"/customer/trip/book/" + item.id}>Book</Link></td>
+                                <td>{item.ammount}</td>
+                                <td>{item.status}</td>
+                                <td>{item.trip_id}</td>
+                                <td><Link href={"/customer/ticket/details/" + item.id}>details</Link></td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
                 <p className="text-2xl text-center">{message}</p>
             </div>
+            <CustomerFooter/>
         </>
 
     )

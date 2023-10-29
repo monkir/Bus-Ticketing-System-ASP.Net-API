@@ -53,12 +53,12 @@ export default function Example() {
   }
   return (
     <>
-      <EmployeeHeader title="Bus Ticketing System" pagename="Employee: Manage Bus Provider"/>
+      <EmployeeHeader title="Bus Ticketing System" pagename="Employee: Manage Bus Provider" />
       <div className="overflow-x-auto px-10 min-h-[70vh]">
-        {/* Search Box */}
         <div className="grid justify-items-stretch">
           <div className=" flex justify-self-center w-1/2">
             <Link className="btn btn-active btn-outline w-1/4" href={'/employee/manage/busprovider/add'}>Add busProvider</Link>
+            {/* Search Box */}
             <input
               type="text"
               name="search"
