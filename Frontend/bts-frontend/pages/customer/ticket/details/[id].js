@@ -9,17 +9,43 @@ export default function BookSeat() {
     const router = useRouter()
     const numbers = Array.from({ length: 40 }, (value, index) => index + 1);
     const [data, setData] = useState()
-    const [ticketData, setTicketData] = useState()
+    const [ticketData, setTicketData] = useState();
     const [bookedSeat, setBookedSeat] = useState([]);
     const [ticketSeat, setTicketSeat] = useState([]);
+    const [tripId, setTripId] = useState();
     const [message, setMessage] = useState("")
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const id = router.query.id
-    async function fetchData() {
+    const { id } = router.query
+    async function fetchTicketData() {
+        // Fetching ticket Data
+        try {
+            const response = await axios.get(
+                process.env.NEXT_PUBLIC_api_root + '/api/customer/ticket/get/' + id,
+                {
+                    headers: { 'Authorization': sessionStorage.getItem('token_string') }
+                }
+            )
+            setTicketData(response.data)
+            setTicketSeat(response.data.seat_no)
+            setTripId(response.data.trip_id)
+            console.log(data)
+            // console.log(response.data)
+        }
+        catch (e) {
+            try {
+                console.log(e);
+                setMessage(e.response.data.Message)
+            }
+            catch {
+                console.log(e);
+                setMessage("API is not connected")
+            }
+        }
+    }
+    async function fetchTripData() {
         // Fetching Trip Data
         try {
             const response = await axios.get(
-                process.env.NEXT_PUBLIC_api_root + '/api/customer/trip/' + id,
+                process.env.NEXT_PUBLIC_api_root + '/api/customer/trip/' + tripId,
                 {
                     headers: { 'Authorization': sessionStorage.getItem('token_string') }
                 }
@@ -39,36 +65,16 @@ export default function BookSeat() {
                 setMessage("API is not connected")
             }
         }
-        // Fetching ticket Data
-        try {
-            const response = await axios.get(
-                process.env.NEXT_PUBLIC_api_root + '/api/customer/ticket/get/' + id,
-                {
-                    headers: { 'Authorization': sessionStorage.getItem('token_string') }
-                }
-            )
-            setTicketData(response.data)
-            setTicketSeat(response.data.seat_no)
-            console.log(data)
-            // console.log(response.data)
-        }
-        catch (e) {
-            try {
-                console.log(e);
-                setMessage(e.response.data.Message)
-            }
-            catch {
-                console.log(e);
-                setMessage("API is not connected")
-            }
-        }
     }
     useEffect(() => {
         if (id !== undefined) {
-            fetchData();
+            fetchTicketData();
+            if(tripId !== undefined){
+                fetchTripData();
+            }
         }
         // console.log(router.query.id)
-    }, [id])
+    }, [id, tripId])
     return (
         <>
             <CustomerHeader title="Bus Ticketing System" pagename="Employee: Manage Notice" />
@@ -103,10 +109,10 @@ export default function BookSeat() {
                                         {numbers.map((i) =>
                                             <li key={i}>
                                                 {
-                                                    bookedSeat.includes(i)
-                                                        ? <input type="checkbox" disabled id={"seat" + i} name="seat_no[]" value={i} className="hidden peer" />
-                                                        : ticketSeat.includes(i)
-                                                            ? <input type="checkbox" checked={true} readOnly id={"seat" + i} name="seat_no[]" value={i} className="hidden peer" />
+                                                    ticketSeat.includes(i)
+                                                        ? <input type="checkbox" checked={true} readOnly id={"seat" + i} name="seat_no[]" value={i} className="hidden peer" />
+                                                        : bookedSeat.includes(i)
+                                                            ? <input type="checkbox" disabled id={"seat" + i} name="seat_no[]" value={i} className="hidden peer" />
                                                             : <input type="checkbox" checked={false} readOnly id={"seat" + i} name="seat_no[]" value={i} className="hidden peer" />
                                                 }
                                                 <label htmlFor={"seat" + i} className="inline-flex items-center justify-center w-full p-5 text-gray-500 bg-white peer-checked:bg-blue-400 peer-disabled:bg-red-300 border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">

@@ -45,7 +45,7 @@ namespace API.Controllers
                 {
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The ticket can not be purchased now (at least 1 hours before)" });
                 }
-                if(ticket.cupon != null)
+                if(ticket.cupon != null && ticket.cupon != "")
                 {
                     ticket.dc_id = customerTicketService.getCuponIDbyString(ticket.cupon);
                     if(ticket.dc_id == 0)
