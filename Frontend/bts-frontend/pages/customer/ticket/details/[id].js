@@ -69,7 +69,7 @@ export default function BookSeat() {
     useEffect(() => {
         if (id !== undefined) {
             fetchTicketData();
-            if(tripId !== undefined){
+            if (tripId !== undefined) {
                 fetchTripData();
             }
         }
@@ -81,13 +81,6 @@ export default function BookSeat() {
             <div className="overflow-x-auto px-10 min-h-[70vh]">
                 <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
                     <div className="mx-auto w-1/2">
-                        <h3 className="mb-5 text-lg font-medium text-gray-900 dark:text-white">Choose technology:</h3>
-                        <div>
-                            <h1>GeeksforGeeks</h1>
-                            <h2>pathname:- {router.pathname}</h2>
-                            <h2>asPath:- {router.asPath}</h2>
-                            <h2>asPath:- {router?.query?.id}</h2>
-                        </div>
                         {
                             data == null
                                 ? "Data lis loading"
@@ -114,6 +107,15 @@ export default function BookSeat() {
                                                         : bookedSeat.includes(i)
                                                             ? <input type="checkbox" disabled id={"seat" + i} name="seat_no[]" value={i} className="hidden peer" />
                                                             : <input type="checkbox" checked={false} readOnly id={"seat" + i} name="seat_no[]" value={i} className="hidden peer" />
+                                                    // <input type="checkbox" id={"seat" + i} name="seat_no[]" value={i} className="hidden peer" checked={true} readOnly
+                                                    //     {
+                                                    //     ...ticketSeat.includes(i)
+                                                    //         ? "checked={true} readOnly"
+                                                    //         : bookedSeat.includes(i)
+                                                    //             ? "disabled"
+                                                    //             : "checked={false} readOnly"
+                                                    //     }
+                                                    // />
                                                 }
                                                 <label htmlFor={"seat" + i} className="inline-flex items-center justify-center w-full p-5 text-gray-500 bg-white peer-checked:bg-blue-400 peer-disabled:bg-red-300 border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                                     <div className="block">

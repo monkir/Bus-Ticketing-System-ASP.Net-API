@@ -77,6 +77,7 @@ export default function Example() {
               <th>username</th>
               <th>Company Name</th>
               <th>Added By</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -86,6 +87,9 @@ export default function Example() {
                 <td>{item.username}</td>
                 <td>{item.company}</td>
                 <td>{item.emp_id}</td>
+                <td>
+                  <Link href={"/employee/manage/busprovider/edit/"+item.id}>Edit</Link>
+                </td>
               </tr>
             ))}
 

@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import CustomerHeader from "../../component/header";
 import CustomerFooter from "../../component/footer";
 import { useForm } from "react-hook-form";
-import { toast } from "react-toastify"
+import Link from "next/link";
 
 export default function BookSeat() {
     const router = useRouter()
@@ -12,7 +12,7 @@ export default function BookSeat() {
     const [data, setData] = useState()
     const [bookedSeat, setBookedSeat] = useState([]);
     const [cuponUsed, setCuponUsed] = useState(false)
-    const [message, setMessage] = useState("")
+    const [message, setMessage] = useState("hi")
     const { register, handleSubmit, formState: { errors } } = useForm();
     const id = router.query.id
     async function fetchData() {
@@ -31,11 +31,11 @@ export default function BookSeat() {
         catch (e) {
             try {
                 console.log(e);
-                //   setMessage(e.response.data.Message)
+                setMessage(e.response.data.Message)
             }
             catch {
                 console.log(e);
-                // setMessage("API is not connected")
+                setMessage("API is not connected")
             }
         }
     }
@@ -54,22 +54,13 @@ export default function BookSeat() {
                 }
             )
             setMessage("Seat is booked successfully");
-            toast.info('🦄 Wow so easy!', {
-                position: "top-center",
-                autoClose: false,
-                hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: true,
-                draggable: false,
-                progress: undefined,
-                theme: "light",
-                });
-            setTimeout(() => { router.push('/customer/trip') }, 2000);
+            document.getElementById('my_modal_1').showModal();
+            // setTimeout(() => { router.push('/customer/trip') }, 2000);
         }
         catch (e) {
             try {
-                console.log(e)
-                setMessage(e.response.data.Message)
+                console.log(e);
+                setMessage(e.response.data.message);
             }
             catch {
                 setMessage("API is not connected")
@@ -88,13 +79,6 @@ export default function BookSeat() {
             <div className="overflow-x-auto px-10 min-h-[70vh]">
                 <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
                     <div className="mx-auto w-1/2">
-                        <h3 className="mb-5 text-lg font-medium text-gray-900 dark:text-white">Choose technology:</h3>
-                        <div>
-                            <h1>GeeksforGeeks</h1>
-                            <h2>pathname:- {router.pathname}</h2>
-                            <h2>asPath:- {router.asPath}</h2>
-                            <h2>asPath:- {router?.query?.id}</h2>
-                        </div>
                         {
                             data == null
                                 ? "Data lis loading"
@@ -122,6 +106,7 @@ export default function BookSeat() {
                                                 </>
                                                 : ""
                                             }
+                                            <span className=" text-red-700">{message}</span><br />
                                             <input className="btn btn-primary" name="submit" type="submit" value={"Purchase"} />
 
                                         </ul>
@@ -149,6 +134,17 @@ export default function BookSeat() {
 
                 </div>
             </div>
+            {/* Modal */}
+            <dialog id="my_modal_1" className="modal" onClose={()=>{router.push('/customer/trip')}}>
+                
+                <div className="modal-box">
+                    <h3 className="font-bold text-lg">Hello!</h3>
+                    <p className="py-4">Ticket is purchased successfully</p>
+                    <div className="modal-action">
+                        <button onClick={()=>{router.push('/customer/trip')}} className="btn">Ok</button>
+                    </div>
+                </div>
+            </dialog>
             <CustomerFooter />
         </>
     )

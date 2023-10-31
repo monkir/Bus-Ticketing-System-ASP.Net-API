@@ -62,16 +62,17 @@ namespace API.Controllers
         {
             try
             {
-
-                if (userServices.usernameExist(obj.username))
-                {
-                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The user id is already exist" });
-                }
-                if (employeeBusProviderService.getBusProvider(obj.id) == null)
+                var exObj = employeeBusProviderService.getBusProvider(obj.id);
+                if (exObj == null)
                 {
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The bus provider doesn't exits" });
                 }
+                if (exObj.username.Equals(obj.username) == false && userServices.usernameExist(obj.username))
+                {
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The user id is already exist" });
+                }
                 obj.emp_id = getID(Request);
+                obj.password = exObj.password;
                 var data = employeeBusProviderService.updateBusProvider(obj);
                 string message = data ? "The busprovider data is updated" : "The busprovider data is not updated";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message });

@@ -102,6 +102,10 @@ namespace BLL.Services
                         dest => dest.username,
                         opt => opt.MapFrom(src => src.user.username)
                     )
+                    .ForMember(
+                        dest => dest.password,
+                        opt => opt.MapFrom(src => src.user.password)
+                    )
                 );
             var mapper = config.CreateMapper();
             return mapper.Map<busProviderDTO>(bpData);

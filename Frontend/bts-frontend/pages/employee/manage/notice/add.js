@@ -18,7 +18,7 @@ export default function App() {
         }
         try {
             const response = await axios.post(
-                process.env.NEXT_PUBLIC_api_root + '/api/employee/busprovider/add',
+                process.env.NEXT_PUBLIC_api_root + '/api/employee/notice/add',
                 content,
                 {
                     headers: { 'Authorization': sessionStorage.getItem('token_string') }
@@ -26,7 +26,7 @@ export default function App() {
             )
             setMessage("Bus Provider is added successfully")
             document.getElementById('my_modal_1').showModal();
-            // setTimeout(() => { router.push('/employee/manage/busprovider') }, 2000);
+            // setTimeout(() => { router.push('/employee/manage/notice') }, 2000);
         }
         catch (e) {
             try {
@@ -60,53 +60,43 @@ export default function App() {
 
                         <form onSubmit={handleSubmit(onSubmit)} className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full'>
                             <div className="form-control w-full max-w-xs">
-                                {/* Company name */}
-                                <div className='mb-4'>
-
-                                </div>
-                                <input type="text" placeholder="company" className="input input-bordered w-full max-w-xs"
-                                    {...register("company", { required: { value: true, message: "Company name is required" } })} />
+                                {/* title name */}
+                                <input type="text" placeholder="title" className="input input-bordered w-full max-w-xs"
+                                    {...register("title", { required: { value: true, message: "title is required" } })} />
                                 <label className="label">
                                     <span className="label-text-alt text-red-500 text-xs italic">
-                                        {errors.company?.message}
+                                        {errors.title?.message}
                                     </span>
                                 </label>
-                                {/* User name */}
-                                <input type="text" placeholder="username" className="input input-bordered w-full max-w-xs"
-                                    {...register("username", { required: { value: true, message: "User name is required" } })} />
+                                {/* description */}
+                                <textarea type="text" placeholder="description" className="input input-bordered w-full max-w-xs"
+                                    {...register("description", { required: { value: true, message: "description is required" } })} />
                                 <label className="label">
                                     <span className="label-text-alt text-red-500 text-xs italic">
-                                        {errors.username?.message}
-                                    </span>
-                                </label>
-                                {/* password */}
-                                <input type="text" placeholder="password" className="input input-bordered w-full max-w-xs"
-                                    {...register("password", { required: { value: true, message: "password is required" } })} />
-                                <label className="label">
-                                    <span className="label-text-alt text-red-500 text-xs italic">
-                                        {errors.password?.message}
+                                        {errors.description?.message}
                                     </span>
                                 </label>
                             </div>
                             <div>
                                 <span>{message}</span>
                             </div>
-                            <input 
-                            type="submit"
-                            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                            <input
+                                type="submit"
+                                value='Publish'
+                                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             />
                         </form>
                     </div>
                 </div>
             </div>
             {/* Modal */}
-            <dialog id="my_modal_1" className="modal" onClose={()=>{router.push('/employee/manage/busprovider')}}>
-                
+            <dialog id="my_modal_1" className="modal" onClose={() => { router.push('/employee/manage/notice') }}>
+
                 <div className="modal-box">
                     <h3 className="font-bold text-lg">Hello!</h3>
-                    <p className="py-4">Bus provider is added successfully</p>
+                    <p className="py-4">New notice is published successfully</p>
                     <div className="modal-action">
-                        <button onClick={()=>{router.push('/employee/manage/busprovider')}} className="btn">Ok</button>
+                        <button onClick={() => { router.push('/employee/manage/notice') }} className="btn">Ok</button>
                     </div>
                 </div>
             </dialog>
