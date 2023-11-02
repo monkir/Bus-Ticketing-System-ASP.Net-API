@@ -71,9 +71,10 @@ namespace BLL.Services
                     cfg.CreateMap<busProviderDTO, busProvider>();
                 });
             var mapper = config.CreateMapper();
-            userData = mapper.Map<user>(obj);
-            userData.userRole = "busProvider";
-            bool userIsUpdated = DataAccessFactory.getUser().update(userData);
+            var updateData = mapper.Map<user>(obj);
+            updateData.userRole = userData.userRole;
+            updateData.password = userData.password;
+            bool userIsUpdated = DataAccessFactory.getUser().update(updateData);
             var bpData = mapper.Map<busProvider>(obj);
             bpData.id = userData.id;
             bool bpIsUpdated = DataAccessFactory.getBusProvider().update(bpData);

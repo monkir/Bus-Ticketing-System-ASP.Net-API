@@ -14,7 +14,7 @@ namespace DAL.EF.Models
 
     // The employee who post this notice
         [ForeignKey("employee")]
-        public int emp_id { get; set; }
+        public int? emp_id { get; set; }
         public virtual employee employee { get; set; }
 
     // List of depots

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-export default function MyHeader(props) {
+export default function AdminHeader(props) {
     const router = useRouter()
     useEffect(()=>{
         function bpAuth(){

@@ -27,7 +27,7 @@ namespace DAL.EF.Models
 
     // Admin who added this employee
         [ForeignKey("admin")]
-        public int admin_id { get; set; }
+        public int? admin_id { get; set; }
         public virtual admin admin { get; set; }
 
     // list of bus providers created by employee

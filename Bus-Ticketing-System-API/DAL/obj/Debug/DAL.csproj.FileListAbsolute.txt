@@ -10,9 +10,6 @@ D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DA
 D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.csproj.CopyComplete
 D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.dll
 D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.pdb
-D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.Migrations.init.resources
-D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
-D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.Migrations.moreentity.resources
 D:\AIUB\ASP.NET Framework\Bus-Ticketing-System-.Net-Core-API-main\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
 D:\AIUB\ASP.NET Framework\Bus-Ticketing-System-.Net-Core-API-main\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.Migrations.init.resources
 D:\AIUB\ASP.NET Framework\Bus-Ticketing-System-.Net-Core-API-main\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.Migrations.moreentity.resources
@@ -29,8 +26,5 @@ D:\AIUB\ASP.NET Framework\Bus-Ticketing-System-.Net-Core-API-main\Bus-Ticketing-
 D:\AIUB\ASP.NET Framework\Bus-Ticketing-System-.Net-Core-API-main\Bus-Ticketing-System-API\DAL\bin\Debug\EntityFramework.SqlServer.xml
 D:\AIUB\ASP.NET Framework\Bus-Ticketing-System-.Net-Core-API-main\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.csproj.CopyComplete
 D:\AIUB\ASP.NET Framework\Bus-Ticketing-System-.Net-Core-API-main\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.Migrations.place_model_correction.resources
-D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.Migrations.place_model_correction.resources
-D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.Migrations.tripstatus.resources
-D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.Migrations.ticket_seat_no.resources
-D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.Migrations.discountCupon_changes.resources
-D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.Migrations.tripticketrefund.resources
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.Migrations.init.resources
+D:\aiub\0. Github\Bus-Ticketing-System-.Net-Core-API\Bus-Ticketing-System-API\DAL\obj\Debug\DAL.csproj.GenerateResource.cache

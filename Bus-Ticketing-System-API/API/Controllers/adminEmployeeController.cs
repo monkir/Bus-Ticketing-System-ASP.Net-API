@@ -35,7 +35,7 @@ namespace API.Controllers
             var data = adminEmployeeService.searchEmployee(search);
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
-        [HttpPut]
+        [HttpPost]
         [Route("add")]
         public HttpResponseMessage addEmployee(employeeDTO obj) 
         {
@@ -62,8 +62,8 @@ namespace API.Controllers
         {
             try
             {
-
-                if (userServices.usernameExist(obj.username))
+                var exObj = adminEmployeeService.getEmployee(obj.id);
+                if (exObj.username.Equals(obj.username) == false && userServices.usernameExist(obj.username))
                 {
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The user id is already exist" });
                 }

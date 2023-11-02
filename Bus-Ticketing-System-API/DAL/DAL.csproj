@@ -69,33 +69,9 @@
     <Compile Include="EF\Models\user.cs" />
     <Compile Include="Interfaces\IAuth.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
-    <Compile Include="Migrations\202308100753215_init.cs" />
-    <Compile Include="Migrations\202308100753215_init.designer.cs">
-      <DependentUpon>202308100753215_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202308121359198_more-entity.cs" />
-    <Compile Include="Migrations\202308121359198_more-entity.designer.cs">
-      <DependentUpon>202308121359198_more-entity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202308131621530_place_model_correction.cs" />
-    <Compile Include="Migrations\202308131621530_place_model_correction.designer.cs">
-      <DependentUpon>202308131621530_place_model_correction.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202308171603572_trip-status.cs" />
-    <Compile Include="Migrations\202308171603572_trip-status.designer.cs">
-      <DependentUpon>202308171603572_trip-status.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202308232036538_ticket_seat_no.cs" />
-    <Compile Include="Migrations\202308232036538_ticket_seat_no.designer.cs">
-      <DependentUpon>202308232036538_ticket_seat_no.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202308232054323_discountCupon_changes.cs" />
-    <Compile Include="Migrations\202308232054323_discountCupon_changes.designer.cs">
-      <DependentUpon>202308232054323_discountCupon_changes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202308240922207_trip-ticket-refund.cs" />
-    <Compile Include="Migrations\202308240922207_trip-ticket-refund.designer.cs">
-      <DependentUpon>202308240922207_trip-ticket-refund.cs</DependentUpon>
+    <Compile Include="Migrations\202311011634048_init.cs" />
+    <Compile Include="Migrations\202311011634048_init.designer.cs">
+      <DependentUpon>202311011634048_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -118,29 +94,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202308100753215_init.resx">
-      <DependentUpon>202308100753215_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202308121359198_more-entity.resx">
-      <DependentUpon>202308121359198_more-entity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202308131621530_place_model_correction.resx">
-      <DependentUpon>202308131621530_place_model_correction.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202308171603572_trip-status.resx">
-      <DependentUpon>202308171603572_trip-status.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202308232036538_ticket_seat_no.resx">
-      <DependentUpon>202308232036538_ticket_seat_no.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202308232054323_discountCupon_changes.resx">
-      <DependentUpon>202308232054323_discountCupon_changes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202308240922207_trip-ticket-refund.resx">
-      <DependentUpon>202308240922207_trip-ticket-refund.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202311011634048_init.resx">
+      <DependentUpon>202311011634048_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

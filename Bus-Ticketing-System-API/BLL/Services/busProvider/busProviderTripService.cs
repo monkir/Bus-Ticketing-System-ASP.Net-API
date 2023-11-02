@@ -15,7 +15,7 @@ namespace BLL.Services
         public static bool isOwnerOfTrip(int tripID, int bpID)
         {
             var obj = DataAccessFactory.getTrip().get(tripID);
-            //return obj != null ? obj.bus_id == bpID : false;
+            //return obj != null  obj.bus_id == bpID : false;
             if(obj == null)
                 return false;
             return obj.bus.bp_id.Equals(bpID);
@@ -31,7 +31,7 @@ namespace BLL.Services
         public static bool isOwnerOfBus(int busID, int bpID)
         {
             var obj = DataAccessFactory.getBus().get(busID);
-            //return obj != null ? obj.bp_id == bpID : false;
+            //return obj != null  obj.bp_id == bpID : false;
             if (obj == null)
                 return false;
             return obj.bp_id.Equals(bpID);
@@ -125,7 +125,7 @@ namespace BLL.Services
             return mapper.Map<tripDTO>(data);
         }
         // add amount to account
-        private static bool addAccount(int bp_id, int ammount, string details)
+        private static bool addAccount(int? bp_id, int ammount, string details)
         {
             var obj = new transaction()
             {
@@ -136,7 +136,7 @@ namespace BLL.Services
             return DataAccessFactory.getTransaction().create(obj);
         }
         // cut amount from account
-        private static bool cutAccount(int bp_id, int ammount, string details)
+        private static bool cutAccount(int? bp_id, int ammount, string details)
         {
             var obj = new transaction()
             {
@@ -149,7 +149,7 @@ namespace BLL.Services
         }
         public static bool addTrip(tripDTO obj)
         {
-            int bp_id = DataAccessFactory.getBus().get(obj.bus_id).bp_id;
+            int? bp_id = DataAccessFactory.getBus().get(obj.bus_id).bp_id;
             if (cutAccount(bp_id, 2000, "for adding trip") == false)
             {
                 return false;
@@ -162,7 +162,7 @@ namespace BLL.Services
         }
         public static bool undoAddTrip(int tripID)
         {
-            int bp_id = DataAccessFactory.getTrip().get(tripID).bus.bp_id;
+            int? bp_id = DataAccessFactory.getTrip().get(tripID).bus.bp_id;
             if (addAccount(bp_id, 2000, "for undoing add trip") == false)
             {
                 return false;

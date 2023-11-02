@@ -41,7 +41,7 @@ namespace BLL.Services
             var filteredData = searchedData.Where(
                 e =>
                 e.id.ToString().Contains(search)
-                || e.username.ToLower().Contains(search)
+                || e.name.ToLower().Contains(search)
                 || e.username.ToLower().Contains(search)
                 || e.salary.ToString().Contains(search)
                 || e.dob.ToString().ToLower().Contains(search)
@@ -79,9 +79,10 @@ namespace BLL.Services
                     cfg.CreateMap<employeeDTO, employee>();
                 });
             var mapper = config.CreateMapper();
-            userData = mapper.Map<user>(obj);
-            userData.userRole = "employee";
-            bool userIsUpdated = DataAccessFactory.getUser().update(userData);
+            var updatedData = mapper.Map<user>(obj);
+            updatedData.userRole = "employee";
+            updatedData.password = userData.password;
+            bool userIsUpdated = DataAccessFactory.getUser().update(updatedData);
             var empData = mapper.Map<employee>(obj);
             empData.id = userData.id;
             bool adminIsUpdated = DataAccessFactory.getEmployee().update(empData);

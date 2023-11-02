@@ -22,12 +22,12 @@ namespace DAL.EF.Models
 
     // The trip of ticket is for
         [ForeignKey("trip")]
-        public int trip_id { get; set; }
+        public int? trip_id { get; set; }
         public virtual trip trip { get; set; }
 
     // THe customer who bought this ticket
         [ForeignKey("customer")]
-        public int cust_id { get; set; }
+        public int? cust_id { get; set; }
         public virtual customer customer { get; set; }
     }
 }

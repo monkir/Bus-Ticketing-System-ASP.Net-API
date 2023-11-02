@@ -23,17 +23,17 @@ namespace DAL.EF.Models
         public virtual employee employee { get; set; }
     // The place from where the bus will take off
         [ForeignKey("depot")]
-        public int depot_id { get; set; }
+        public int? depot_id { get; set; }
         public virtual place depot { get; set; }
 
     // The place to where this bus will go
         [ForeignKey("destination")]
-        public int dest_id { get; set; }
+        public int? dest_id { get; set; }
         public virtual place destination { get; set; }
 
     // The bus by which this trip is done
         [ForeignKey("bus")]
-        public int bus_id { get; set; }
+        public int? bus_id { get; set; }
         public virtual bus bus { get; set; }
 
     // The list of tickets of this bus

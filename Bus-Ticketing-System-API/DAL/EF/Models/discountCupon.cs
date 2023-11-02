@@ -17,7 +17,7 @@ namespace DAL.EF.Models
 
     // The admin id who created this token
         [ForeignKey("admin")]
-        public int admin_id { get; set; }
+        public int? admin_id { get; set; }
         public virtual admin admin { get; set; }
 
     // List of tickets where this token is used

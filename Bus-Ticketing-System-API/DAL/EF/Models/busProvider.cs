@@ -22,7 +22,7 @@ namespace DAL.EF.Models
 
     // The employee who add this bus-provider
         [ForeignKey("employee")]
-        public int emp_id { get; set; }
+        public int? emp_id { get; set; }
         public virtual employee employee { get; set; }
 
     // The list of buses provided by this bus-provider

@@ -6,6 +6,7 @@ import Link from "next/link"
 export default function Example() {
   const [data, setData] = useState([])
   const [message, setMessage] = useState('This is message')
+  const [deleteId, setDeleteId] = useState()
 
   async function fetchData(searchValue = "") {
     try {
@@ -28,6 +29,29 @@ export default function Example() {
         setData(response.data)
       }
 
+    }
+    catch (e) {
+      try {
+        console.log(e)
+        setMessage(e.response.data.Message)
+      }
+      catch {
+        console.log(e)
+        setMessage("API is not connected")
+      }
+    }
+  }
+
+  async function deleteData() {
+    try {
+      const response = await axios.delete(
+        process.env.NEXT_PUBLIC_api_root + '/api/employee/busprovider/delete/' + deleteId,
+        {
+          headers: { 'Authorization': sessionStorage.getItem('token_string') }
+        }
+      )
+      setMessage(response.data.message);
+      fetchData();
     }
     catch (e) {
       try {
@@ -69,6 +93,7 @@ export default function Example() {
           </div>
         </div>
         <h1 className="justify-center"> {data.length == 0 ? "No data found" : data.length + " data found "} </h1>
+        <p className="text-2xl text-red-600 text-center">{message}</p>
         <table className="table table-zebra">
           {/* head */}
           <thead>
@@ -88,15 +113,30 @@ export default function Example() {
                 <td>{item.company}</td>
                 <td>{item.emp_id}</td>
                 <td>
-                  <Link href={"/employee/manage/busprovider/edit/"+item.id}>Edit</Link>
+                  <Link className=" btn btn-info mx-1" href={"/employee/manage/busprovider/edit/" + item.id}>Edit</Link>
+                  {/* <span className=" btn btn-warning mx-1" onClick={() => { setDeleteId(item.id); document.getElementById('my_modal_1').showModal(); }} >Delete</span> */}
                 </td>
               </tr>
             ))}
 
           </tbody>
         </table>
-        <p className="text-2xl text-center">{message}</p>
       </div>
+      {/* Delete Modal */}
+      <dialog id="my_modal_1" className="modal">
+
+        <div className="modal-box">
+          <h3 className="font-bold text-lg">Hello!</h3>
+          <p className="py-4">Sure to delete notice of id {deleteId}</p>
+          <div className="modal-action">
+            <form method="dialog">
+              {/* if there is a button in form, it will close the modal */}
+              <button onClick={() => { setDeleteId(undefined); setMessage("Notice is not deleted") }} className="btn btn-info mx-1">Cancel</button>
+              {/* <button onClick={() => { deleteData() }} className="btn btn-warning mx-1">Ok</button> */}
+            </form>
+          </div>
+        </div>
+      </dialog>
     </>
 
   )

@@ -18,7 +18,7 @@ namespace DAL.EF.Models
 
     // The bus-provider who provided this bus
         [ForeignKey("busProvider")]
-        public int bp_id { get; set; }
+        public int? bp_id { get; set; }
         public virtual busProvider busProvider { get; set; }
 
     // List of trips done with this bus

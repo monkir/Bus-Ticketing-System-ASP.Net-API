@@ -49,7 +49,7 @@
                 });
             Random random = new Random();
             //cupon 
-            for(int i = 0; i < 20; i++)
+            for (int i = 0; i < 20; i++)
             {
                 context.discountCupon.AddOrUpdate(
                     new EF.Models.discountCupon()
@@ -63,7 +63,7 @@
                     });
             }
             //employee
-            for(int i = 3; i < 10; i++)
+            for (int i = 3; i < 10; i++)
             {
                 context.user.AddOrUpdate(
                     new EF.Models.user()
@@ -83,7 +83,7 @@
                         admin_id = random.Next(1, 3)
                     });
             }
-            for(int i = 0; i<20; i++)
+            for (int i = 0; i < 20; i++)
             {
                 context.notice.AddOrUpdate(
                     new EF.Models.notice()
@@ -95,7 +95,7 @@
                     });
             }
             // Bus provider
-            for(int i = 11; i < 15; i++)
+            for (int i = 11; i < 15; i++)
             {
                 context.user.AddOrUpdate(
                     new EF.Models.user()
@@ -116,8 +116,8 @@
             // Bus
             string[] brands = { "Mercedes-Benz", "Volvo", "Scania", "Hunday" };
             string[] categories = { "ac", "non-ac" };
-            int[] seats = { 30, 40, 50, 60 };
-            for(int i = 1; i < 10; i++)
+            //int[] seats = { 30, 40, 50, 60 };
+            for (int i = 1; i < 10; i++)
             {
                 context.bus.AddOrUpdate(
                     new EF.Models.bus()
@@ -126,14 +126,14 @@
                         brand = brands[random.Next(brands.Count())],
                         model = "model" + random.Next(3),
                         serialNo = Guid.NewGuid().ToString(),
-                        totalSeat = seats[random.Next(seats.Count())],
+                        totalSeat = 40,
                         category = categories[random.Next(categories.Count())],
                         bp_id = random.Next(11, 15),
                     });
             }
             //places
             string[] places = { "Dhaka", "Chittagong", "Sylhet", "Rajshahi", "Barishal", "Khulna", "Kumilla", "Rangpur" };
-            for(int i = 0; i<places.Count();  i++)
+            for (int i = 0; i < places.Count(); i++)
             {
                 context.place.AddOrUpdate(
                     new EF.Models.place()
@@ -144,10 +144,10 @@
                     });
             }
             // trips
-            for(int i = 0; i < 100; i++)
+            for (int i = 0; i < 100; i++)
             {
                 DateTime stime = DateTime.Now.Date.AddDays(random.Next(-5, 20)).AddHours(random.Next(0, 24));
-                DateTime eTime = stime.AddHours(random.Next(0,24));
+                DateTime eTime = stime.AddHours(random.Next(0, 24));
                 context.trip.AddOrUpdate(
                     new EF.Models.trip()
                     {
@@ -164,7 +164,7 @@
                     });
             }
             // Customer
-            for(int i = 16; i < 20; i++)
+            for (int i = 16; i < 20; i++)
             {
                 context.user.AddOrUpdate(
                     new EF.Models.user()

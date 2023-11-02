@@ -23,5 +23,6 @@ namespace DAL.EF
         public DbSet<transaction> transaction { get; set; }
         public DbSet<trip> trip { get; set; }
         public DbSet<user> user { get; set; }
+
     }
 }

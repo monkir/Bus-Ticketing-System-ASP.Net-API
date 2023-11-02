@@ -15,7 +15,7 @@ namespace DAL.EF.Models
 
     // User
         [ForeignKey("user")]
-        public int userid { get; set; }
+        public int? userid { get; set; }
         public virtual user user { get; set; }
     }
 }
