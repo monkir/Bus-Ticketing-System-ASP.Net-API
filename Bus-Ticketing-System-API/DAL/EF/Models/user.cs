@@ -13,22 +13,22 @@ namespace DAL.EF.Models
         public string username { get; set; }
         public string password { get; set; }
 
-    //user role maybe admin/employee/bus-providers/customer
+        //user role maybe admin/employee/bus-providers/customer
         public string userRole { get; set; }
 
-    // If user role is admin
+        // If user role is admin
         public virtual admin admin { get; set; }
 
-    // If user role is employee
+        // If user role is employee
         public virtual employee employee { get; set; }
 
-    // If user role is customer
+        // If user role is customer
         public virtual customer customer { get; set; }
 
-    // If user role is bus-provider
+        // If user role is bus-provider
         public virtual busProvider busProvider { get; set; }
-    // *************   List    **************
-    // List of transactions by the user
+        // *************   List    **************
+        // List of transactions by the user
         public virtual List<transaction> transactions { get; set; }
     }
 }

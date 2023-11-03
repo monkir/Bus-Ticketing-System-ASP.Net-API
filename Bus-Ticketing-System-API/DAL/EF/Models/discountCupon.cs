@@ -15,12 +15,12 @@ namespace DAL.EF.Models
         public float percentage { get; set; }
         public int maxDiscount { get; set; }
 
-    // The admin id who created this token
+        // The admin id who created this token
         [ForeignKey("admin")]
-        public int? admin_id { get; set; }
+        public int admin_id { get; set; }
         public virtual admin admin { get; set; }
 
-    // List of tickets where this token is used
+        // List of tickets where this token is used
         public virtual List<ticket> tickets { get; set; }
         public discountCupon()
         {

@@ -191,5 +191,13 @@ namespace API.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }
         }
+
+        [HttpGet]
+        [Route("places")]
+        public HttpResponseMessage allPlace()
+        {
+            var data = busProviderTripService.allPlace();
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+        }
     }
 }

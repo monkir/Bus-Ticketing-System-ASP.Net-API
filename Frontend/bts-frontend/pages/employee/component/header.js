@@ -40,6 +40,7 @@ export default function EmployeeHeader(props) {
                     <Link className="btn btn-ghost normal-case text-xl" href={"/employee"}>Employee Panel</Link>
                     <Link className="btn btn-ghost normal-case text-xl" href={"/employee/manage/busprovider"}>Manage Bus Provider</Link>
                     <Link className="btn btn-ghost normal-case text-xl" href={"/employee/manage/notice"}>Manage Notice</Link>
+                    <Link className="btn btn-ghost normal-case text-xl" href={"/employee/manage/trip"}>Manage Trip</Link>
                 </div>
                 <div className="navbar-end">
                     <button className="btn btn-ghost btn-circle">

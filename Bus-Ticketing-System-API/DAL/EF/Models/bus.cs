@@ -16,12 +16,12 @@ namespace DAL.EF.Models
         public string category { get; set; }//AC or NON-AC
         public int totalSeat { get; set; }
 
-    // The bus-provider who provided this bus
+        // The bus-provider who provided this bus
         [ForeignKey("busProvider")]
-        public int? bp_id { get; set; }
+        public int bp_id { get; set; }
         public virtual busProvider busProvider { get; set; }
 
-    // List of trips done with this bus
+        // List of trips done with this bus
         public virtual List<trip> trips { get; set; }
         public bus()
         {

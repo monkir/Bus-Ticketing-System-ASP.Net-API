@@ -125,18 +125,19 @@ namespace BLL.Services
             return mapper.Map<tripDTO>(data);
         }
         // add amount to account
-        private static bool addAccount(int? bp_id, int ammount, string details)
+        private static bool addAccount(int bp_id, int ammount, string details)
         {
             var obj = new transaction()
             {
                 details = "Added: " + details,
                 amount = ammount,
-                userID = bp_id
+                userID = bp_id,
+                time = DateTime.Now,
             };
             return DataAccessFactory.getTransaction().create(obj);
         }
         // cut amount from account
-        private static bool cutAccount(int? bp_id, int ammount, string details)
+        private static bool cutAccount(int bp_id, int ammount, string details)
         {
             var obj = new transaction()
             {
@@ -149,7 +150,7 @@ namespace BLL.Services
         }
         public static bool addTrip(tripDTO obj)
         {
-            int? bp_id = DataAccessFactory.getBus().get(obj.bus_id).bp_id;
+            int bp_id = DataAccessFactory.getBus().get(obj.bus_id).bp_id;
             if (cutAccount(bp_id, 2000, "for adding trip") == false)
             {
                 return false;
@@ -162,7 +163,7 @@ namespace BLL.Services
         }
         public static bool undoAddTrip(int tripID)
         {
-            int? bp_id = DataAccessFactory.getTrip().get(tripID).bus.bp_id;
+            int bp_id = DataAccessFactory.getTrip().get(tripID).bus.bp_id;
             if (addAccount(bp_id, 2000, "for undoing add trip") == false)
             {
                 return false;
@@ -213,5 +214,12 @@ namespace BLL.Services
             var newObj = mapper.Map<trip>(obj);
             return DataAccessFactory.getTrip().update(newObj);
         }*/
+        public static List<placeDTO> allPlace()
+        {
+            var data = DataAccessFactory.getPlace().All();
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<place, placeDTO>());
+            var mapper = config.CreateMapper();
+            return mapper.Map<List<placeDTO>>(data);
+        }
     }
 }

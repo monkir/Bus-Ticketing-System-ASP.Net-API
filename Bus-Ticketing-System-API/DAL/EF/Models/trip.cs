@@ -17,29 +17,29 @@ namespace DAL.EF.Models
         public DateTime startTime { get; set; }
         public DateTime endTime { get; set; }
 
-    // The employee who will approve or decline of adding or cancelling trip 
+        // The employee who will approve or decline of adding or cancelling trip 
         [ForeignKey("employee")]
         public int? emp_id { get; set; }
         public virtual employee employee { get; set; }
-    // The place from where the bus will take off
+        // The place from where the bus will take off
         [ForeignKey("depot")]
-        public int? depot_id { get; set; }
+        public int depot_id { get; set; }
         public virtual place depot { get; set; }
 
-    // The place to where this bus will go
+        // The place to where this bus will go
         [ForeignKey("destination")]
-        public int? dest_id { get; set; }
+        public int dest_id { get; set; }
         public virtual place destination { get; set; }
 
-    // The bus by which this trip is done
+        // The bus by which this trip is done
         [ForeignKey("bus")]
-        public int? bus_id { get; set; }
+        public int bus_id { get; set; }
         public virtual bus bus { get; set; }
 
-    // The list of tickets of this bus
+        // The list of tickets of this bus
         public virtual List<ticket> tickets { get; set; }
-        public trip() 
-        { 
+        public trip()
+        {
             tickets = new List<ticket>();
         }
     }

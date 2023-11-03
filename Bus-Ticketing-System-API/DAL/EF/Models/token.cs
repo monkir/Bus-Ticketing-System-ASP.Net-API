@@ -13,9 +13,9 @@ namespace DAL.EF.Models
         public string token_string { get; set; }
         public DateTime expireTime { get; set; }
 
-    // User
+        // User
         [ForeignKey("user")]
-        public int? userid { get; set; }
+        public int userid { get; set; }
         public virtual user user { get; set; }
     }
 }

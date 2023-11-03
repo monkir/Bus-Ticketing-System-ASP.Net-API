@@ -14,29 +14,29 @@ namespace DAL.EF.Models
         public int id { get; set; }
         public string name { get; set; }
 
-    // user
+        // user
         /*[ForeignKey("user")]
         public int user_id { get; set; }*/
         public virtual user user { get; set; }
 
-    // salary
+        // salary
         public int salary { get; set; }
 
-    // dob
+        // dob
         public DateTime dob { get; set; }
 
-    // Admin who added this employee
+        // Admin who added this employee
         [ForeignKey("admin")]
-        public int? admin_id { get; set; }
+        public int admin_id { get; set; }
         public virtual admin admin { get; set; }
 
-    // list of bus providers created by employee
-        public virtual List<busProvider> busProviders {get; set;}
+        // list of bus providers created by employee
+        public virtual List<busProvider> busProviders { get; set; }
 
-    // list of notices created by employee
-        public virtual List<notice> notices { get; set;}
-    // list of places added by employee
-        public virtual List<place> places { get; set;}
+        // list of notices created by employee
+        public virtual List<notice> notices { get; set; }
+        // list of places added by employee
+        public virtual List<place> places { get; set; }
         public employee()
         {
             busProviders = new List<busProvider>();

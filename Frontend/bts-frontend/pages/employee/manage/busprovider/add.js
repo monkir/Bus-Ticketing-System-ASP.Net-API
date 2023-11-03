@@ -31,7 +31,7 @@ export default function App() {
         catch (e) {
             try {
                 console.log(e)
-                setMessage(e.response.data.Message)
+                setMessage(e.response.data.message)
             }
             catch {
                 setMessage("API is not connected")

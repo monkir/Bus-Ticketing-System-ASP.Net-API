@@ -14,12 +14,12 @@ namespace DAL.EF.Models
         public int id { get; set; }
         public string name { get; set; }
 
-    // user
+        // user
         /*[ForeignKey("user")]
         public int? user_id { get; set; }*/
         public virtual user user { get; set; }
 
-    // List of ticket bought by this customer
+        // List of ticket bought by this customer
         public virtual List<ticket> tickets { get; set; }
         public customer()
         {

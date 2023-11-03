@@ -13,15 +13,15 @@ namespace DAL.EF.Models
         [Key, ForeignKey("user")]
         public int id { get; set; }
 
-    //user
+        //user
         /*[ForeignKey("user")]
         public int? user_id { get; set; }*/
         public virtual user user { get; set; }
 
-    // List of employee added by this admin
+        // List of employee added by this admin
         public virtual List<employee> employees { get; set; }
 
-    // List of notices created by this admin
+        // List of notices created by this admin
         public virtual List<discountCupon> discountCupons { get; set; }
         public admin()
         {

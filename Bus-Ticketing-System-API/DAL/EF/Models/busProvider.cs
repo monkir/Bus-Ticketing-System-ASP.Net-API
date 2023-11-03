@@ -14,18 +14,18 @@ namespace DAL.EF.Models
         public int id { get; set; }
         public string company { get; set; }
 
-    // user
+        // user
         /*[ForeignKey("user")]
         public int? user_id { get; set; }*/
         public virtual user user { get; set; }
 
 
-    // The employee who add this bus-provider
+        // The employee who add this bus-provider
         [ForeignKey("employee")]
-        public int? emp_id { get; set; }
+        public int emp_id { get; set; }
         public virtual employee employee { get; set; }
 
-    // The list of buses provided by this bus-provider
+        // The list of buses provided by this bus-provider
         public virtual List<bus> buses { get; set; }
         public busProvider()
         {

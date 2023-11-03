@@ -9,13 +9,13 @@ namespace DAL.EF.Models
 {
     public class notice
     {
-        public int id {  get; set; }
+        public int id { get; set; }
         public string title { get; set; }
         public string description { get; set; }
 
-    // The employee who post this notice
+        // The employee who post this notice
         [ForeignKey("employee")]
-        public int? emp_id { get; set; }
+        public int emp_id { get; set; }
         public virtual employee employee { get; set; }
     }
 }

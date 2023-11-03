@@ -15,19 +15,19 @@ namespace DAL.EF.Models
 
         public string status { get; set; }
 
-    // Discount-cupon used in this ticket
+        // Discount-cupon used in this ticket
         [ForeignKey("discountCupon")]
         public int? dc_id { get; set; }
-        public virtual discountCupon discountCupon { get; set;}
+        public virtual discountCupon discountCupon { get; set; }
 
-    // The trip of ticket is for
+        // The trip of ticket is for
         [ForeignKey("trip")]
-        public int? trip_id { get; set; }
+        public int trip_id { get; set; }
         public virtual trip trip { get; set; }
 
-    // THe customer who bought this ticket
+        // THe customer who bought this ticket
         [ForeignKey("customer")]
-        public int? cust_id { get; set; }
+        public int cust_id { get; set; }
         public virtual customer customer { get; set; }
     }
 }

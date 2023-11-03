@@ -82,8 +82,8 @@ export default function App() {
                                     </span>
                                 </label>
                                 {/* category */}
-                                <select {...register("category", { required: { value: true, message: "category is required" } })}>
-                                    <option value={''} selected disabled>Select Category</option>
+                                <select defaultValue={''} {...register("category", { required: { value: true, message: "category is required" } })}>
+                                    <option value={''} disabled>Select Category</option>
                                     <option value={'AC'}>AC</option>
                                     <option value={'Non-AC'}>Non-AC</option>
                                 </select>
@@ -93,8 +93,8 @@ export default function App() {
                                     </span>
                                 </label>
                                 {/* totalSeat */}
-                                <input type="number" placeholder="totalSeat" defaultValue={40} className="input input-bordered w-full max-w-xs"
-                                    {...register("totalSeat", { required: { value: true, message: "totalSeat is required" } })} />
+                                <input type="number" placeholder="totalSeat" defaultValue={40} disabled className="input input-bordered w-full max-w-xs"
+                                    {...register("totalSeat",{value: 40}, { required: { value: true, message: "totalSeat is required" } })} />
                                 <label className="label">
                                     <span className="label-text-alt text-red-500 text-xs italic">
                                         {errors.totalSeat?.message}

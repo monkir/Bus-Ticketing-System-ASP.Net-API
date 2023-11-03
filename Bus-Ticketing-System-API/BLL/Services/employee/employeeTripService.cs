@@ -28,7 +28,7 @@ namespace BLL.Services
         }
 
         // add amount to account
-        private static bool addAccount(int? bp_id, int ammount, string details)
+        private static bool addAccount(int bp_id, int ammount, string details)
         {
             var obj = new transaction()
             {
