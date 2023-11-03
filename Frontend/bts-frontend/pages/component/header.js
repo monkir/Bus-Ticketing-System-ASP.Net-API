@@ -24,9 +24,8 @@ export default function MyHeader(props) {
             </div>
         </div>
         <div className="navbar-center">
-            <a className="btn btn-ghost normal-case text-xl">{props.pagename}</a>
-            <a className="btn btn-ghost normal-case text-xl">Test 1</a>
-            <a className="btn btn-ghost normal-case text-xl">Test 2</a>
+            <Link className="btn btn-ghost normal-case text-xl"  href={"/login"}>Login</Link>
+            <Link className="btn btn-ghost normal-case text-xl"  href={"/registration"}>Registration</Link>
         </div>
         <div className="navbar-end">
             <button className="btn btn-ghost btn-circle">

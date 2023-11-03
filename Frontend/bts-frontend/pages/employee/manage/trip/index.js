@@ -57,7 +57,8 @@ export default function Example() {
             headers: { 'Authorization': sessionStorage.getItem('token_string') }
           }
         )
-        setData(response.data.message)
+        setMessage(response.data.message)
+        fetchData()
 
     }
     catch (e) {
@@ -131,7 +132,7 @@ export default function Example() {
       <div className="overflow-x-auto px-10 min-h-[70vh]">
         <div className="grid justify-items-stretch">
           <div className=" flex justify-self-center w-1/2">
-            <Link className="btn btn-active btn-outline w-1/4" href={'/busProvider/manage/trip/add'}>Add New Trip</Link>
+            {/* <Link className="btn btn-active btn-outline w-1/4" href={'/busProvider/manage/trip/add'}>Add New Trip</Link> */}
             {/* Search Box */}
             <input
               type="text"

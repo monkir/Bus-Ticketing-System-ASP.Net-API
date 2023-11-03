@@ -91,6 +91,7 @@ export default function Example() {
                             <th>To</th>
                             <th>Start at</th>
                             <th>End at</th>
+                            <th>Seat</th>
                             <th>Price</th>
                             <th>Action</th>
                         </tr>
@@ -103,6 +104,7 @@ export default function Example() {
                                 <td>{item.destination.name}</td>
                                 <td>{item.startTime}</td>
                                 <td>{item.endTime}</td>
+                                <td>{item.bookedSeat.length}/40</td>
                                 <td>{item.ticketPrice}</td>
                                 <td><Link href={"/customer/trip/book/" + item.id}>Book</Link></td>
                             </tr>

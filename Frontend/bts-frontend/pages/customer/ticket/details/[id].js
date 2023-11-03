@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import CustomerHeader from "../../component/header";
 import CustomerFooter from "../../component/footer";
 import { useForm } from "react-hook-form";
+import Link from "next/link";
 
 export default function BookSeat() {
     const router = useRouter()
@@ -92,11 +93,13 @@ export default function BookSeat() {
                                         Bus To: {data?.destination?.name}<br />
                                         Bus Start at: {data?.startTime}<br />
                                         Bus End at: {data?.endTime}<br />
+                                        Bus Status: {data?.status}<br />
 
                                         Trip ID: {ticketData?.id}<br />
                                         Price: {ticketData?.ammount}<br />
                                         Status: {ticketData?.status}<br />
                                         Cupon: {ticketData?.cupon}<br />
+                                        <Link className='btn btn-info' href={'/customer/ticket'}>Back</Link>
                                     </ul>
                                     <ul className="grid gap-6 md:grid-cols-4">
                                         {numbers.map((i) =>

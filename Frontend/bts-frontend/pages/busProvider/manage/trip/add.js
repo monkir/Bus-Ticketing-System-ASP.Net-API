@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import BusProviderHeader from '../../component/header';
 import BusProviderFooter from '../../component/footer';
 import moment from 'moment/moment';
+import Link from 'next/link';
 
 export default function App() {
     const [message, setMessage] = useState('');
@@ -61,10 +62,10 @@ export default function App() {
     }
 
     useEffect(() => {
-        if(placesData == null) {
+        if (placesData == null) {
             fetchPlacesData()
         }
-        if(busData == null) {
+        if (busData == null) {
             fetchBusData()
         }
     }, [placesData, busData])
@@ -97,7 +98,7 @@ export default function App() {
             }
         }
     }
-    const currentDateTime = ()=>{
+    const currentDateTime = () => {
         return moment().format(moment.HTML5_FMT.DATETIME_LOCAL)
     }
     return (
@@ -124,8 +125,8 @@ export default function App() {
                                     {/* depot_id */}
                                     <select defaultValue={''} {...register("depot_id", { required: { value: true, message: "depot_id is required" } })}>
                                         <option value={''} disabled>Select Depot</option>
-                                        {placesData.map(item=>(
-                                            <option key={item.id} value={item.id}>{item.id+ ": "+ item.name}</option>
+                                        {placesData.map(item => (
+                                            <option key={item.id} value={item.id}>{item.id + ": " + item.name}</option>
                                         ))}
                                     </select>
                                     <label className="label">
@@ -136,8 +137,8 @@ export default function App() {
                                     {/* dest_id */}
                                     <select defaultValue={''} {...register("dest_id", { required: { value: true, message: "dest_id is required" } })}>
                                         <option value={''} disabled>Select Destination</option>
-                                        {placesData.map(item=>(
-                                            <option key={item.id} value={item.id}>{item.id+ ": "+ item.name}</option>
+                                        {placesData.map(item => (
+                                            <option key={item.id} value={item.id}>{item.id + ": " + item.name}</option>
                                         ))}
                                     </select>
                                     <label className="label">
@@ -148,8 +149,8 @@ export default function App() {
                                     {/* bus_id */}
                                     <select defaultValue={''} {...register("bus_id", { required: { value: true, message: "bus_id is required" } })}>
                                         <option value={''} disabled>Select Bus</option>
-                                        {busData.map(item=>(
-                                            <option key={item.id} value={item.id}>{item.id+ ": "+ item.brand+ ": "+item.model}</option>
+                                        {busData.map(item => (
+                                            <option key={item.id} value={item.id}>{item.id + ": " + item.brand + ": " + item.model}</option>
                                         ))}
                                     </select>
                                     <label className="label">
@@ -175,11 +176,11 @@ export default function App() {
                                     </label>
                                     {/* ticketPrice */}
                                     <input type="number" placeholder="ticketPrice" className="input input-bordered w-full max-w-xs"
-                                        {...register("ticketPrice", 
-                                        { 
-                                            required: { value: true, message: "ticketPrice is required" } ,
-                                            min: {value: 100, message: "Minimum ticket price is 100"}
-                                        })} />
+                                        {...register("ticketPrice",
+                                            {
+                                                required: { value: true, message: "ticketPrice is required" },
+                                                min: { value: 100, message: "Minimum ticket price is 100" }
+                                            })} />
                                     <label className="label">
                                         <span className="label-text-alt text-red-500 text-xs italic">
                                             {errors.ticketPrice?.message}
@@ -189,10 +190,14 @@ export default function App() {
                                 <div>
                                     <span>{message}</span>
                                 </div>
-                                <input
-                                    type="submit"
-                                    className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                                />
+                                <div class="grid grid-flow-col justify-stretch space-x-2 mx-2">
+                                    <Link className='btn btn-info' href={'/busProvider/manage/trip'}>Cancel</Link>
+                                    <input
+                                        type="submit"
+                                        value="Edit"
+                                        className="btn btn-warning"
+                                    />
+                                </div>
                             </form>
                         }
                     </div>

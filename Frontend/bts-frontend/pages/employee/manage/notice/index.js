@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import EmployeeHeader from "@/pages/employee/component/header"
 import axios from "axios"
 import Link from "next/link"
+import EmployeeFooter from "../../component/footer"
 
 export default function Example() {
   const [data, setData] = useState([])
@@ -120,6 +121,7 @@ export default function Example() {
           </tbody>
         </table>
       </div>
+      <EmployeeFooter/>
       {/* Delete Modal */}
       <dialog id="my_modal_1" className="modal">
 

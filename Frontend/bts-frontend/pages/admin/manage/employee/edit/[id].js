@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import AdminHeader from '@/pages/admin/component/header';
 import AdminFooter from '@/pages/admin/component/footer';
+import Link from 'next/link';
 
 export default function App() {
     const [message, setMessage] = useState('');
@@ -67,8 +68,8 @@ export default function App() {
             fetchData()
         }
     }, [id])
-    
-    const dateToShortDate = (date)=>{
+
+    const dateToShortDate = (date) => {
         const d = new Date(date);
         return d.toISOString().split('T')[0];
     }
@@ -145,10 +146,14 @@ export default function App() {
                                                 {message}
                                             </span>
                                         </div>
-                                        <input
-                                            type="submit"
-                                            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                                        />
+                                        <div class="grid grid-flow-col justify-stretch space-x-2 mx-2">
+                                            <Link className='btn btn-info' href={'/admin/manage/employee'}>Cancel</Link>
+                                            <input
+                                                type="submit"
+                                                value="Edit"
+                                                className="btn btn-warning"
+                                            />
+                                        </div>
                                     </form>
                                 </>
                         }
@@ -161,7 +166,7 @@ export default function App() {
 
                 <div className="modal-box">
                     <h3 className="font-bold text-lg">Hello!</h3>
-                    <p className="py-4">Bus provider is updated successfully</p>
+                    <p className="py-4">Employee is updated successfully</p>
                     <div className="modal-action">
                         <button onClick={() => { router.push('/admin/manage/employee') }} className="btn">Ok</button>
                     </div>

@@ -44,7 +44,7 @@ namespace BLL.Services
                 userObj.password = newPassword;
                 return DataAccessFactory.getUser().update(userObj);
             }
-            return true;
+            return false;
         }
         public static tokenDTO authorizeUser(string tkString)
         {

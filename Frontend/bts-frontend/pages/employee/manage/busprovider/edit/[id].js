@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import EmployeeHeader from '@/pages/employee/component/header';
 import EmployeeFooter from '@/pages/employee/component/footer';
+import Link from 'next/link';
 
 export default function App() {
     const [message, setMessage] = useState('');
@@ -124,10 +125,14 @@ export default function App() {
                                                 {message}
                                             </span>
                                         </div>
-                                        <input
-                                            type="submit"
-                                            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                                        />
+                                        <div class="grid grid-flow-col justify-stretch space-x-2 mx-2">
+                                            <Link className='btn btn-info' href={'/employee/manage/busprovider'}>Cancel</Link>
+                                            <input
+                                                type="submit"
+                                                value="Edit"
+                                                className="btn btn-warning"
+                                            />
+                                        </div>
                                     </form>
                                 </>
                         }

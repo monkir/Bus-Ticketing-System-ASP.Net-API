@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import EmployeeHeader from '@/pages/employee/component/header';
 import EmployeeFooter from '../../component/footer';
+import Link from 'next/link';
 
 export default function App() {
     const [message, setMessage] = useState('');
@@ -91,22 +92,26 @@ export default function App() {
                             <div>
                                 <span>{message}</span>
                             </div>
-                            <input 
-                            type="submit"
-                            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                            />
+                            <div class="grid grid-flow-col justify-stretch space-x-2 mx-2">
+                                <Link className='btn btn-info' href={'/employee/manage/busprovider'}>Cancel</Link>
+                                <input
+                                    type="submit"
+                                    value="Create"
+                                    className="btn btn-warning"
+                                />
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
             {/* Modal */}
-            <dialog id="my_modal_1" className="modal" onClose={()=>{router.push('/employee/manage/busprovider')}}>
-                
+            <dialog id="my_modal_1" className="modal" onClose={() => { router.push('/employee/manage/busprovider') }}>
+
                 <div className="modal-box">
                     <h3 className="font-bold text-lg">Hello!</h3>
                     <p className="py-4">Bus provider is added successfully</p>
                     <div className="modal-action">
-                        <button onClick={()=>{router.push('/employee/manage/busprovider')}} className="btn">Ok</button>
+                        <button onClick={() => { router.push('/employee/manage/busprovider') }} className="btn">Ok</button>
                     </div>
                 </div>
             </dialog>

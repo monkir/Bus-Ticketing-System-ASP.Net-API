@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import AdminHeader from '@/pages/admin/component/header';
 import AdminFooter from '@/pages/admin/component/footer';
+import Link from 'next/link';
 
 export default function App() {
     const [message, setMessage] = useState('');
@@ -146,10 +147,14 @@ export default function App() {
                                                 {message}
                                             </span>
                                         </div>
-                                        <input
-                                            type="submit"
-                                            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                                        />
+                                        <div class="grid grid-flow-col justify-stretch space-x-2 mx-2">
+                                            <Link className='btn btn-info' href={'/admin/manage/cupon'}>Cancel</Link>
+                                            <input
+                                                type="submit"
+                                                value="Edit"
+                                                className="btn btn-warning"
+                                            />
+                                        </div>
                                     </form>
                                 </>
                         }

@@ -13,8 +13,8 @@ export default function BookSeat() {
     const [bookedSeat, setBookedSeat] = useState([]);
     const [cuponUsed, setCuponUsed] = useState(false)
     const [message, setMessage] = useState("hi")
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const id = router.query.id
+    const { register, handleSubmit, unregister, watch, formState: { errors } } = useForm();
+    const id = router.query.id;
     async function fetchData() {
         try {
             const response = await axios.get(
@@ -40,6 +40,10 @@ export default function BookSeat() {
         }
     }
     const onSubmit = async data => {
+        if (cuponUsed == false) {
+            data['cupon'] = ''
+            console.log("cuponUsed is false")
+        }
         console.log(data);
         let content = {}
         for (const key in data) {
@@ -95,7 +99,7 @@ export default function BookSeat() {
                                             {errors?.seat_no?.message}<br />
                                             <input type="hidden" name="trip_id" value={data?.id}
                                                 {...register("trip_id", { required: { value: true, message: "trip_id is required" } })} />
-                                            <input type="checkbox" onClick={() => setCuponUsed(!cuponUsed)} />
+                                            <input type="checkbox" onChange={() => setCuponUsed(!cuponUsed)} />
                                             <label htmlFor="trip_id">Use Cupon</label><br />
                                             {cuponUsed
                                                 ?
@@ -107,8 +111,15 @@ export default function BookSeat() {
                                                 : ""
                                             }
                                             <span className=" text-red-700">{message}</span><br />
-                                            <input className="btn btn-primary" name="submit" type="submit" value={"Purchase"} />
 
+                                            <div class="grid grid-flow-col justify-stretch space-x-2 mx-2">
+                                                <Link className='btn btn-info' href={'/customer/trip'}>Cancel</Link>
+                                                <input
+                                                    type="submit"
+                                                    value="Purchase"
+                                                    className="btn btn-warning"
+                                                />
+                                            </div>
                                         </ul>
                                         <ul className="grid gap-6 md:grid-cols-4">
                                             {numbers.map((i) =>
@@ -135,13 +146,13 @@ export default function BookSeat() {
                 </div>
             </div>
             {/* Modal */}
-            <dialog id="my_modal_1" className="modal" onClose={()=>{router.push('/customer/trip')}}>
-                
+            <dialog id="my_modal_1" className="modal" onClose={() => { router.push('/customer/trip') }}>
+
                 <div className="modal-box">
                     <h3 className="font-bold text-lg">Hello!</h3>
                     <p className="py-4">Ticket is purchased successfully</p>
                     <div className="modal-action">
-                        <button onClick={()=>{router.push('/customer/trip')}} className="btn">Ok</button>
+                        <button onClick={() => { router.push('/customer/trip') }} className="btn">Ok</button>
                     </div>
                 </div>
             </dialog>
