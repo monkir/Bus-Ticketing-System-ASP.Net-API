@@ -78,6 +78,7 @@ export default function Example() {
             <th>End Time</th>
             <th>Depot</th>
             <th>Destination</th>
+            <th>Bus ID</th>
           </tr>
         </thead>
         <tbody>

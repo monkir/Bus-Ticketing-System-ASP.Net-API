@@ -1,4 +1,4 @@
-export default function Footer(){
+export default function BusProviderFooter(){
     return <>
     <footer className="footer p-10 bg-neutral text-neutral-content">
     <div>

@@ -107,7 +107,6 @@ export default function Example() {
                 </td>
               </tr>
             ))}
-
           </tbody>
         </table>
       </div>
