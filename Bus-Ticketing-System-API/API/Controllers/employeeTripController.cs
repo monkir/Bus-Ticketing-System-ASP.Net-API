@@ -29,6 +29,20 @@ namespace API.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
         [HttpGet]
+        [Route("all/details")]
+        public HttpResponseMessage allTripDetails()
+        {
+            var data = employeeTripService.allTripDetails();
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+        }
+        [HttpGet]
+        [Route("search/{search}")]
+        public HttpResponseMessage searchTrip(string search)
+        {
+            var data = employeeTripService.searchTrip(search);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+        }
+        [HttpGet]
         [Route("get/{id}")]
         public HttpResponseMessage findTrip(int id)
         {

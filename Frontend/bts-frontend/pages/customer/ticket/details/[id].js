@@ -78,7 +78,7 @@ export default function BookSeat() {
     }, [id, tripId])
     return (
         <>
-            <CustomerHeader title="Bus Ticketing System" pagename="Employee: Manage Notice" />
+            <CustomerHeader title="Bus Ticketing System" pagename="Customer: Ticket Details" />
             <div className="overflow-x-auto px-10 min-h-[70vh]">
                 <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
                     <div className="mx-auto w-1/2">

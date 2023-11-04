@@ -20,6 +20,7 @@ const stats = [
 export default function Example() {
     const [data, setData] = useState([])
     const [message, setMessage] = useState('This is message')
+    const [id, setId] = useState();
 
     async function fetchData(searchValue = "") {
         try {
@@ -55,6 +56,29 @@ export default function Example() {
         }
     }
 
+    async function cancelData() {
+        try {
+          const response = await axios.post(
+            process.env.NEXT_PUBLIC_api_root + '/api/customer/ticket/cancel/' + id, {},
+            {
+              headers: { 'Authorization': sessionStorage.getItem('token_string') }
+            }
+          )
+          setMessage(response.data.message);
+          fetchData();
+        }
+        catch (e) {
+          try {
+            console.log(e)
+            setMessage(e.response.data.message)
+          }
+          catch {
+            console.log(e)
+            setMessage("API is not connected")
+          }
+        }
+      }
+
     useEffect(() => {
         fetchData();
     }, [])
@@ -70,6 +94,7 @@ export default function Example() {
             <CustomerHeader title="Bus Ticketing System" pagename="Customer: My tickets" />
             <div className="overflow-x-auto px-10 min-h-[70vh]">
                 <h1> {data.length == 0 ? "No data found" : ""} </h1>
+                <p className="text-2xl text-center">{message}</p>
                 <table className="table table-zebra">
                     {/* head */}
                     <thead>
@@ -88,14 +113,37 @@ export default function Example() {
                                 <td>{item.ammount}</td>
                                 <td>{item.status}</td>
                                 <td>{item.trip_id}</td>
-                                <td><Link href={"/customer/ticket/details/" + item.id}>details</Link></td>
+                                <td>
+                                    <Link className=" btn btn-info mx-1"  href={"/customer/ticket/details/" + item.id}>details</Link>
+                                    {item.status == 'booked'
+                                    ? <span className=" btn btn-warning mx-1" onClick={() => { setId(item.id); document.getElementById('my_modal_1').showModal(); }} >Cancel</span>
+                                    : <span className=" btn btn-disabled mx-1" > Cancelled</span>
+
+                                }
+                                    
+
+                                </td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
-                <p className="text-2xl text-center">{message}</p>
             </div>
-            <CustomerFooter/>
+            <CustomerFooter />
+            {/* Delete Modal */}
+            <dialog id="my_modal_1" className="modal">
+
+                <div className="modal-box">
+                    <h3 className="font-bold text-lg">Hello!</h3>
+                    <p className="py-4">Sure to delete notice of id {id}</p>
+                    <div className="modal-action">
+                        <form method="dialog">
+                            {/* if there is a button in form, it will close the modal */}
+                            <button onClick={() => { setId(undefined); setMessage("Ticket is not cancelled") }} className="btn btn-info mx-1">No</button>
+                            <button onClick={() => { cancelData() }} className="btn btn-warning mx-1">Sure</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
         </>
 
     )

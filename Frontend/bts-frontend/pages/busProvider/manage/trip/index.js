@@ -124,7 +124,7 @@ export default function Example() {
   }
   return (
     <>
-      <MyHeader title="Bus Ticketing System" pagename="Bus Provider panel: Manage trip"></MyHeader>
+      <MyHeader title="Bus Ticketing System" pagename="Bus Provider: Manage trip"></MyHeader>
       <div className="overflow-x-auto px-10 min-h-[70vh]">
         <div className="grid justify-items-stretch">
           <div className=" flex justify-self-center w-1/2">

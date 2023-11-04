@@ -43,7 +43,7 @@ export default function App() {
     return (
         <>
 
-            <CustomerHeader title="Bus Ticketing System" pagename="Bus provider: Deposit money"/>
+            <CustomerHeader title="Bus Ticketing System" pagename="Customer: Deposit money"/>
             <div className="overflow-x-auto px-10 min-h-[70vh]">
                 <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
                     <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -81,7 +81,7 @@ export default function App() {
                                 <Link className='btn btn-info' href={'/customer/account'}>Cancel</Link>
                                 <input
                                     type="submit"
-                                    value="Edit"
+                                    value="Deposit"
                                     className="btn btn-warning"
                                 />
                             </div>

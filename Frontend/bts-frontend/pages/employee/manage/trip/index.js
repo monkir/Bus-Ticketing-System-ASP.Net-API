@@ -11,24 +11,24 @@ export default function Example() {
 
   async function fetchData(searchValue = "") {
     try {
-      // if (searchValue != "") {
-      //   const response = await axios.get(
-      //     process.env.NEXT_PUBLIC_api_root + '/api/employee/trip/search/' + searchValue,
-      //     {
-      //       headers: { 'Authorization': sessionStorage.getItem('token_string') }
-      //     }
-      //   )
-      //   setData(response.data)
-      // }
-      // else {
+      if (searchValue != "") {
         const response = await axios.get(
-          process.env.NEXT_PUBLIC_api_root + '/api/employee/trip/all',
+          process.env.NEXT_PUBLIC_api_root + '/api/employee/trip/search/' + searchValue,
           {
             headers: { 'Authorization': sessionStorage.getItem('token_string') }
           }
         )
         setData(response.data)
-      // }
+      }
+      else {
+        const response = await axios.get(
+          process.env.NEXT_PUBLIC_api_root + '/api/employee/trip/all/details',
+          {
+            headers: { 'Authorization': sessionStorage.getItem('token_string') }
+          }
+        )
+        setData(response.data)
+      }
 
     }
     catch (e) {
@@ -128,7 +128,7 @@ export default function Example() {
   }
   return (
     <>
-      <EmployeeHeader title="Bus Ticketing System" pagename="Bus Provider panel: Manage trip"></EmployeeHeader>
+      <EmployeeHeader title="Bus Ticketing System" pagename="Employee: Manage trip"></EmployeeHeader>
       <div className="overflow-x-auto px-10 min-h-[70vh]">
         <div className="grid justify-items-stretch">
           <div className=" flex justify-self-center w-1/2">
@@ -152,11 +152,12 @@ export default function Example() {
             <tr>
               <th>ID</th>
               <th>Ticket Price</th>
+              <th>Seat</th>
               <th>Status</th>
               <th>Start Time</th>
               <th>End Time</th>
-              {/* <th>Depot</th>
-              <th>Destination</th> */}
+              <th>Depot</th>
+              <th>Destination</th>
               <th>Bus ID</th>
               <th>Action</th>
             </tr>
@@ -165,12 +166,13 @@ export default function Example() {
             {data.map(item => (
               <tr key={item.id}>
                 <th>{item.id}</th>
+                <td>{item.bookedSeat?.length}/40</td>
                 <td>{item.ticketPrice}</td>
                 <td>{item.status}</td>
                 <td>{item.startTime}</td>
                 <td>{item.endTime}</td>
-                {/* <td>{item.depot?.name}</td>
-                <td>{item.destination?.name}</td> */}
+                <td>{item.depot?.name}</td>
+                <td>{item.destination?.name}</td>
                 <td>{item.bus_id}</td>
                 <td>
                   {

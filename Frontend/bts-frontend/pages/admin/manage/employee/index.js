@@ -60,7 +60,7 @@ export default function Example() {
 
   return (
     <>
-      <MyHeader title="Bus Ticketing System" pagename="Admin Panel: Manage Employee"></MyHeader>
+      <MyHeader title="Bus Ticketing System" pagename="Admin: Manage Employee"></MyHeader>
       <div className="overflow-x-auto px-10 min-h-[70vh]">
 
         <div className="grid justify-items-stretch">

@@ -43,7 +43,7 @@ export default function App() {
     return (
         <>
 
-            <EmployeeHeader title="Bus Ticketing System" pagename="Employee: Manage Bus Provider"></EmployeeHeader>
+            <EmployeeHeader title="Bus Ticketing System" pagename="Employee: Create Bus Provider"></EmployeeHeader>
             <div className="overflow-x-auto px-10 min-h-[70vh]">
                 <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
                     <div className="sm:mx-auto sm:w-full sm:max-w-sm">

@@ -43,7 +43,7 @@ export default function App() {
     return (
         <>
 
-            <EmployeeHeader title="Bus Ticketing System" pagename="Bus provider: Deposit money"/>
+            <EmployeeHeader title="Bus Ticketing System" pagename="Employee: Withdraw money"/>
             <div className="overflow-x-auto px-10 min-h-[70vh]">
                 <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
                     <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -53,7 +53,7 @@ export default function App() {
                             alt="Your Company"
                         />
                         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                            Deposit Money
+                            Withdraw Money
                         </h2>
                     </div>
                     <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -81,7 +81,7 @@ export default function App() {
                                 <Link className='btn btn-info' href={'/employee/account'}>Cancel</Link>
                                 <input
                                     type="submit"
-                                    value="Edit"
+                                    value="Withdraw"
                                     className="btn btn-warning"
                                 />
                             </div>

@@ -81,7 +81,7 @@ export default function App() {
                                 <Link className='btn btn-info' href={'/busProvider/account'}>Cancel</Link>
                                 <input
                                     type="submit"
-                                    value="Edit"
+                                    value="Withdraw"
                                     className="btn btn-warning"
                                 />
                             </div>

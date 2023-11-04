@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import BusProviderHeader from '../../component/header';
-import BusProviderFooter from '../../component/footer';
 import Link from 'next/link';
+import BusProviderHeader from '../component/header';
+import BusProviderFooter from '../component/footer';
 
 export default function App() {
     const [message, setMessage] = useState('');
@@ -42,7 +42,7 @@ export default function App() {
 
     return (
         <>
-            <BusProviderHeader title="Bus Ticketing System" pagename="Employee: Manage Bus Provider"></BusProviderHeader>
+            <BusProviderHeader title="Bus Ticketing System" pagename="Bus Provider: Change Password"/>
             <div className="overflow-x-auto px-10 min-h-[70vh]">
                 <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
                     <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -52,7 +52,7 @@ export default function App() {
                             alt="Your Company"
                         />
                         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                            Add Bus Provider
+                            Change Password
                         </h2>
                     </div>
                     <div className="sm:mx-auto sm:w-full sm:max-w-sm">

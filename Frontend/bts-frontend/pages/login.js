@@ -78,9 +78,9 @@ export default function App() {
               <div>
                 <span>{message}</span>
               </div>
-              <Link href="/forgot-password" className="font-semibold leading-4 text-red-600 hover:text-indigo-500">
+              {/* <Link href="/forgot-password" className="font-semibold leading-4 text-red-600 hover:text-indigo-500">
                 Forgot password
-              </Link>
+              </Link> */}
               <div class="grid grid-flow-col justify-stretch space-x-2 mx-2">
                 <Link className='btn btn-info' href={'/'}>Cancel</Link>
                 <input

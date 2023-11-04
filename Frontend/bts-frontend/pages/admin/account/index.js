@@ -66,7 +66,7 @@ export default function Example() {
     }
     return (
         <>
-            <AdminHeader title="Bus Ticketing System" pagename="Customer: My tickets" />
+            <AdminHeader title="Bus Ticketing System" pagename="Admin: My Account" />
             <div className="overflow-x-auto px-10 min-h-[70vh]">
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
                 <div className=" mx-auto space-x-2">

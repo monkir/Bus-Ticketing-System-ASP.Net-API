@@ -53,6 +53,7 @@ export default function AdminHeader(props) {
                     </button>
                 </div>
             </div>
+            <p className=" rounded-full bg-blue-300 text-4xl text-center m-5">{props.pagename}</p>
         </>
     )
 }

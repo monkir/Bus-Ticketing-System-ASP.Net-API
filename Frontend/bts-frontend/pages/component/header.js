@@ -18,12 +18,13 @@ export default function MyHeader(props) {
             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                 <li><Link href={"/"}>Homepage</Link></li>
                 <li><Link href={"/login"}>Login</Link></li>
-                <li><Link href={"/myinfo"}>My Info</Link></li>
+                <li><Link href={"/registration"}>Registration</Link></li>
                 <li><Link href={"#"}>About</Link></li>
             </ul>
             </div>
         </div>
         <div className="navbar-center">
+            <Link className="btn btn-ghost normal-case text-xl"  href={"/"}>Homepage</Link>
             <Link className="btn btn-ghost normal-case text-xl"  href={"/login"}>Login</Link>
             <Link className="btn btn-ghost normal-case text-xl"  href={"/registration"}>Registration</Link>
         </div>

@@ -72,7 +72,7 @@ export default function App() {
     return (
         <>
 
-            <EmployeeHeader title="Bus Ticketing System" pagename="Employee: Manage Bus Provider"></EmployeeHeader>
+            <EmployeeHeader title="Bus Ticketing System" pagename="Employee: Edit Notice"></EmployeeHeader>
             <div className="overflow-x-auto px-10 min-h-[70vh]">
                 <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
                     <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -82,7 +82,7 @@ export default function App() {
                             alt="Your Company"
                         />
                         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                            Add Bus Provider
+                            Edit Notice
                         </h2>
                     </div>
                     <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -139,7 +139,7 @@ export default function App() {
 
                 <div className="modal-box">
                     <h3 className="font-bold text-lg">Hello!</h3>
-                    <p className="py-4">Bus provider is updated successfully</p>
+                    <p className="py-4">Notice is updated successfully</p>
                     <div className="modal-action">
                         <button onClick={() => { router.push('/employee/manage/notice') }} className="btn">Ok</button>
                     </div>
