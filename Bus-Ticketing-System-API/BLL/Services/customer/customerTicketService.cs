@@ -59,7 +59,7 @@ namespace BLL.Services
                     )
                 );
             var mapper = config.CreateMapper();
-            return mapper.Map<List<ticketDTO>>(data);
+            return mapper.Map<List<ticketDTO>>(data.OrderByDescending(t => t.id));
         }
 
         public static bool isSeatAvailable(int trip_id, List<int> reqSeat)
@@ -187,7 +187,7 @@ namespace BLL.Services
                     }
                 );
             var mapper = config.CreateMapper();
-            return mapper.Map<List<tripInDetailsDTO>>(tripData);
+            return mapper.Map<List<tripInDetailsDTO>>(tripData.OrderByDescending(t => t.id));
         }
         public static List<tripInDetailsDTO> searchTripInDetails(string search)
         {
@@ -230,7 +230,7 @@ namespace BLL.Services
                 || t.depot.name.ToString().ToLower().Contains(search)
                 || t.destination.name.ToString().ToLower().Contains(search)
                 );
-            return searchedData.ToList();
+            return searchedData.OrderByDescending(t => t.id).ToList();
         }
         public static tripInDetailsDTO getTripInDetails(int tripid)
         {

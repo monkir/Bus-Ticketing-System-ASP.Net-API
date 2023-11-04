@@ -18,15 +18,11 @@ namespace BLL.Services
             var data = pb_data.buses.ToList();
             var config = new MapperConfiguration(cfg => cfg.CreateMap<bus, busDTO>());
             var mapper = config.CreateMapper();
-            return mapper.Map<List<busDTO>>(data);
+            return mapper.Map<List<busDTO>>(data.OrderByDescending(t => t.id));
         }
         public static List<busDTO> searchBus(int bp_id,string search)
         {
-            var pb_data = DataAccessFactory.getBusProvider().get(bp_id);
-            var data = pb_data.buses.ToList();
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<bus, busDTO>());
-            var mapper = config.CreateMapper();
-            var convertedData = mapper.Map<List<busDTO>>(data);
+            var convertedData = allBus(bp_id);
             search = search.ToLower();
             var filteredData = convertedData.Where(
                 b =>
@@ -52,7 +48,7 @@ namespace BLL.Services
             var data = DataAccessFactory.getBus().get(busID).trips.ToList();
             var config = new MapperConfiguration(cfg => cfg.CreateMap<trip, tripDTO>());
             var mapper = config.CreateMapper();
-            return mapper.Map<List<tripDTO>>(data);
+            return mapper.Map<List<tripDTO>>(data.OrderByDescending(t => t.id));
         }
         public static bool deleteBus(int id)
         {

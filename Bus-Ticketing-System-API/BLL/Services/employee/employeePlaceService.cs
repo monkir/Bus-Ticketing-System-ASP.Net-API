@@ -17,7 +17,7 @@ namespace BLL.Services
             var data = DataAccessFactory.getPlace().All();
             var config = new MapperConfiguration(cfg => cfg.CreateMap<place, placeDTO>());
             var mapper = config.CreateMapper();
-            return mapper.Map<List<placeDTO>>(data);
+            return mapper.Map<List<placeDTO>>(data.OrderByDescending(t => t.id));
         }
         public static placeDTO GetPlace(int id)
         {

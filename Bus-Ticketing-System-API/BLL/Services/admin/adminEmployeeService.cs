@@ -23,22 +23,13 @@ namespace BLL.Services
                     )
                 );
             var mapper = config.CreateMapper();
-            return mapper.Map<List<employeeDTO>>(data);
+            return mapper.Map<List<employeeDTO>>(data.OrderByDescending(t => t.id));
         }
         public static List<employeeDTO> searchEmployee(string search)
         {
-            var data = DataAccessFactory.getEmployee().All();
-            var config = new MapperConfiguration(
-                cfg => cfg.CreateMap<employee, employeeDTO>()
-                    .ForMember( 
-                        dest => dest.username, 
-                        opt => opt.MapFrom(src => src.user.username)
-                    )
-                );
-            var mapper = config.CreateMapper();
-            var searchedData = mapper.Map<List<employeeDTO>>(data);
+            var convertedData = allEmployee();
             search = search.ToLower();
-            var filteredData = searchedData.Where(
+            var searchedData = convertedData.Where(
                 e =>
                 e.id.ToString().Contains(search)
                 || e.name.ToLower().Contains(search)
@@ -47,7 +38,7 @@ namespace BLL.Services
                 || e.dob.ToString().ToLower().Contains(search)
                 || e.salary.ToString().Contains(search)
                 );
-            return filteredData.ToList();
+            return searchedData.ToList();
         }
         public static bool addEmpoloyee(employeeDTO obj)
         {

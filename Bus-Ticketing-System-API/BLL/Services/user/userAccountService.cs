@@ -17,7 +17,7 @@ namespace BLL.Services
             var data = DataAccessFactory.getUser().get(userid).transactions;
             var config = new MapperConfiguration(cfg => cfg.CreateMap<transaction, transactionDTO>());
             var mapper = config.CreateMapper();
-            return mapper.Map<List<transactionDTO>>(data);
+            return mapper.Map<List<transactionDTO>>(data.OrderByDescending(t => t.id));
         }
         public static bool deposit(int userID, int ammount)
         {

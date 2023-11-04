@@ -17,7 +17,7 @@ namespace BLL.Services
             var data = DataAccessFactory.getDiscountCupon().All();
             var config = new MapperConfiguration( cfg => cfg.CreateMap<discountCupon, discountCuponDTO>() );
             var mapper = config.CreateMapper();
-            return mapper.Map<List<discountCuponDTO>>( data );
+            return mapper.Map<List<discountCuponDTO>>( data.OrderByDescending(t => t.id) );
         }
         public static List<discountCuponDTO> searchDiscountCupon(string search)
         {

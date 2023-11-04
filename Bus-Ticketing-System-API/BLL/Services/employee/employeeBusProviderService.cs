@@ -20,17 +20,12 @@ namespace BLL.Services
                 (dest => dest.username, opt => opt.MapFrom(src => src.user.username))
             );
             var mapper = config.CreateMapper();
-            return mapper.Map<List<busProviderDTO>>(data);
+            return mapper.Map<List<busProviderDTO>>(data.OrderByDescending(t => t.id));
         }
         public static List<busProviderDTO> searchBusProvider(string search)
         {
-            var data = DataAccessFactory.getBusProvider().All();
-            var config = new MapperConfiguration(
-                cfg => cfg.CreateMap<busProvider, busProviderDTO>().ForMember
-                (dest => dest.username, opt => opt.MapFrom(src => src.user.username))
-            );
-            var mapper = config.CreateMapper();
-            var convertedData = mapper.Map<List<busProviderDTO>>(data);
+
+            var convertedData = allBusProvider();
             search = search.ToLower();
             var filteredData = convertedData.Where(
                 bp =>
