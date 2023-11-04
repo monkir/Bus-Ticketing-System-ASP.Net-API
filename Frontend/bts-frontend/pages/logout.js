@@ -30,11 +30,11 @@ export default function logout() {
     useEffect(() => { userLogout() }, [])
     return (
         <>
-            <MyHeader />
+            {/* <MyHeader /> */}
             <div className=" w-full h-[70vh]">
                 <div className=" mx-auto my-auto">{message}</div>
             </div>
-            <MyFooter />
+            {/* <MyFooter /> */}
         </>
     )
 }

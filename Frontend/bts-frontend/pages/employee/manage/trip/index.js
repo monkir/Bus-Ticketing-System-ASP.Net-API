@@ -166,8 +166,8 @@ export default function Example() {
             {data.map(item => (
               <tr key={item.id}>
                 <th>{item.id}</th>
+                <td>{item.ticketPrice} Tk</td>
                 <td>{item.bookedSeat?.length}/40</td>
-                <td>{item.ticketPrice}</td>
                 <td>{item.status}</td>
                 <td>{item.startTime}</td>
                 <td>{item.endTime}</td>

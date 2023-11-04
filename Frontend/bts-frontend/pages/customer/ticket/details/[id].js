@@ -88,18 +88,29 @@ export default function BookSeat() {
                                 :
                                 <ul className="grid gap-6 md:grid-cols-2">
                                     <ul className="my-auto">
-                                        Bus ID: {data?.bus_id}<br />
-                                        Bus From: {data?.depot?.name}<br />
-                                        Bus To: {data?.destination?.name}<br />
-                                        Bus Start at: {data?.startTime}<br />
-                                        Bus End at: {data?.endTime}<br />
-                                        Bus Status: {data?.status}<br />
+                                        <div className="card w-96 bg-zinc-400 shadow-xl">
+                                            <div className="card-body text-white">
+                                                <h2 className="card-title">Trip Data</h2>
+                                                <p>Ticket ID: {data?.id}</p>
+                                                <p>Bus ID: {data?.bus_id}</p>
+                                                <p>From: {data?.depot?.name}</p>
+                                                <p>To: {data?.destination?.name}</p>
+                                                <p>Start at: {data?.startTime}</p>
+                                                <p>End at: {data?.endTime}</p>
+                                                <p>Ticket Status: {data?.status}</p>
 
-                                        Trip ID: {ticketData?.id}<br />
-                                        Price: {ticketData?.ammount}<br />
-                                        Status: {ticketData?.status}<br />
-                                        Cupon: {ticketData?.cupon}<br />
-                                        <Link className='btn btn-info' href={'/customer/ticket'}>Back</Link>
+                                                <h2 className="card-title">Ticket Data</h2>
+                                                <p>Trip ID: {ticketData?.trip_id}</p>
+                                                <p>Price: {ticketData?.ammount}</p>
+                                                <p>Status: {ticketData?.status}</p>
+                                                <p>Cupon: {ticketData?.cupon}</p>
+                                                <div className="card-actions justify-start">
+                                                    <Link className='btn btn-primary' href={'/customer/ticket'}>Back</Link>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
                                     </ul>
                                     <ul className="grid gap-6 md:grid-cols-4">
                                         {numbers.map((i) =>

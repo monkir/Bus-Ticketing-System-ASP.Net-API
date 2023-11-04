@@ -66,7 +66,9 @@ namespace BLL.Services
                             dst => dst.bookedSeat,
                             opt => opt.MapFrom
                             (
-                                src => src.tickets.Where(t => t.status.Equals("booked")).SelectMany(t => convertSeat(t.seat_no)).ToList()
+                                src => src.tickets
+                                .Where(t => t.status.Equals("booked") || t.status.Equals("done"))
+                                .SelectMany(t => convertSeat(t.seat_no)).ToList()
                             )
                         )
                         ;
@@ -197,7 +199,9 @@ namespace BLL.Services
                             dst => dst.bookedSeat,
                             opt => opt.MapFrom
                             (
-                                src => src.tickets.Where(t => t.status.Equals("booked")).SelectMany(t => convertSeat(t.seat_no)).ToList()
+                                src => src.tickets
+                                .Where(t => t.status.Equals("booked") || t.status.Equals("done"))
+                                .SelectMany(t => convertSeat(t.seat_no)).ToList()
                             )
                         )
                         ;

@@ -101,9 +101,9 @@ export default function Example() {
                         <tr>
                             <th>ID</th>
                             <th>Ammount</th>
-                            <th>Status</th>
                             <th>Trip_id</th>
                             <th>Action</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -111,13 +111,21 @@ export default function Example() {
                             <tr key={item.id}>
                                 <th>{item.id}</th>
                                 <td>{item.ammount}</td>
-                                <td>{item.status}</td>
                                 <td>{item.trip_id}</td>
+                                <td>{item.status}</td>
                                 <td>
                                     <Link className=" btn btn-info mx-1"  href={"/customer/ticket/details/" + item.id}>details</Link>
-                                    {item.status == 'booked'
-                                    ? <span className=" btn btn-warning mx-1" onClick={() => { setId(item.id); document.getElementById('my_modal_1').showModal(); }} >Cancel</span>
-                                    : <span className=" btn btn-disabled mx-1" > Cancelled</span>
+                                    {
+                                    item.status == 'booked'
+                                    ? <span className=" btn btn-warning mx-1" onClick={() => { setId(item.id); document.getElementById('my_modal_1').showModal(); }} >
+                                        Cancel
+                                        </span>
+                                    :item.status == 'cancalled'
+                                    ? <span className=" btn btn-disabled mx-1" > Cancelled</span>
+                                    :item.status == 'done'
+                                    ? <span className=" btn btn-success mx-1" > Done</span>
+                                    : ""
+
 
                                 }
                                     

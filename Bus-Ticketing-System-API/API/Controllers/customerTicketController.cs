@@ -81,6 +81,8 @@ namespace API.Controllers
                 var obj = customerTicketService.GetTicket(ticketID);
                 if (obj.status.Equals("cancalled"))
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The ticket is already cancalled" });
+                if (obj.status.Equals("done"))
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The ticket is completed" });
                 if (obj.status.Equals("booked") == false)
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The ticket can not be cancalled" });
                 var data = customerTicketService.cancelTicket(ticketID);

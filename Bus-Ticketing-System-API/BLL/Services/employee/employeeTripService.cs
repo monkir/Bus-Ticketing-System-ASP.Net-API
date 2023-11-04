@@ -39,7 +39,9 @@ namespace BLL.Services
                             dst => dst.bookedSeat,
                             opt => opt.MapFrom
                             (
-                                src => src.tickets.Where(t => t.status.Equals("booked")).SelectMany(t => convertSeat(t.seat_no)).ToList()
+                                src => src.tickets
+                                .Where(t => t.status.Equals("booked") || t.status.Equals("done"))
+                                .SelectMany(t => convertSeat(t.seat_no)).ToList()
                             )
                         )
                         ;
@@ -95,6 +97,11 @@ namespace BLL.Services
                 DataAccessFactory.getTicket().update(tk);
                 addAccount(tk.cust_id, tk.ammount, "Refunded");
             }
+            foreach (var tk in tripData.tickets)
+            {
+                tk.status = "cancelled";
+                DataAccessFactory.getTicket().update(tk);
+            }
             tripData.status = "cancelled";
             return DataAccessFactory.getTrip().update(tripData);
         }
@@ -109,6 +116,11 @@ namespace BLL.Services
             var tripData = DataAccessFactory.getTrip().get(tripID);
             tripData.status = "done";
             int ammount = tripData.tickets.Select(t => t.ammount).Sum();
+            foreach(var tk in tripData.tickets)
+            {
+                tk.status = "done";
+                DataAccessFactory.getTicket().update(tk);
+            }
             addAccount(tripData.bus.bp_id, ammount, "Done trip");
             return DataAccessFactory.getTrip().update(tripData);
         }
