@@ -156,7 +156,7 @@ namespace BLL.Services
                     return false;
                 }
             }
-            ticketObj.status = "cancalled";
+            ticketObj.status = "cancelled";
             return DataAccessFactory.getTicket().update(ticketObj);
         }
         public static List<tripInDetailsDTO> getTripInDetails()

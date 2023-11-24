@@ -79,14 +79,14 @@ namespace API.Controllers
                 if(customerTicketService.isOwnerOfTicket(cust_id, ticketID) == false)
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The user is not the owner of this ticket" });
                 var obj = customerTicketService.GetTicket(ticketID);
-                if (obj.status.Equals("cancalled"))
-                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The ticket is already cancalled" });
+                if (obj.status.Equals("cancelled"))
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The ticket is already cancelled" });
                 if (obj.status.Equals("done"))
                     return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The ticket is completed" });
                 if (obj.status.Equals("booked") == false)
-                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The ticket can not be cancalled" });
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "The ticket can not be cancelled" });
                 var data = customerTicketService.cancelTicket(ticketID);
-                var message = data ? "The ticket is cancalled" : "The ticket is not cancalled";
+                var message = data ? "The ticket is cancelled" : "The ticket is not cancelled";
                 return Request.CreateResponse(HttpStatusCode.OK, new { message = message});
             }
             catch (Exception ex)

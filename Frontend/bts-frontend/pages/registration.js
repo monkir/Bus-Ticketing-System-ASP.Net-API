@@ -74,7 +74,7 @@ export default function App() {
                                     </span>
                                 </label>
                                 {/* password */}
-                                <input type="text" placeholder="password" className="input input-bordered w-full max-w-xs"
+                                <input type="password" placeholder="password" className="input input-bordered w-full max-w-xs"
                                     {...register("password", { required: { value: true, message: "password is required" } })} />
                                 <label className="label">
                                     <span className="label-text-alt text-red-500 text-xs italic">

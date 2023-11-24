@@ -7,17 +7,13 @@ import MyHeader from "./component/header";
 export default function logout() {
     const [message, setMessage] = useState('This is message')
     const router = useRouter();
-    async function userLogout () {
+    async function userLogout() {
         try {
             const response = await axios.post(process.env.NEXT_PUBLIC_api_root + '/api/user/logout', {},
                 {
                     headers: { 'Authorization': sessionStorage.getItem('token_string') }
                 })
             setMessage(response.data.Message)
-            sessionStorage.clear();
-            setTimeout(() => {
-                router.push('/')
-            }, 2000);
         } catch (e) {
             try {
                 setMessage(e.response.data.message)
@@ -26,6 +22,10 @@ export default function logout() {
                 console.log(e)
             }
         }
+        sessionStorage.clear();
+        setTimeout(() => {
+            router.push('/')
+        }, 2000);
     }
     useEffect(() => { userLogout() }, [])
     return (

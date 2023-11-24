@@ -120,7 +120,7 @@ export default function Example() {
                                     ? <span className=" btn btn-warning mx-1" onClick={() => { setId(item.id); document.getElementById('my_modal_1').showModal(); }} >
                                         Cancel
                                         </span>
-                                    :item.status == 'cancalled'
+                                    :item.status == 'cancelled'
                                     ? <span className=" btn btn-disabled mx-1" > Cancelled</span>
                                     :item.status == 'done'
                                     ? <span className=" btn btn-success mx-1" > Done</span>

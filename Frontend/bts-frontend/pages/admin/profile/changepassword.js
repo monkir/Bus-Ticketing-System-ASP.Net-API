@@ -59,7 +59,7 @@ export default function App() {
                         <form onSubmit={handleSubmit(onSubmit)} className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full'>
                             <div className="form-control w-full max-w-xs">
                                 {/* oldPassword */}
-                                <input type="text" placeholder="oldPassword" className="input input-bordered w-full max-w-xs"
+                                <input type="password" placeholder="oldPassword" className="input input-bordered w-full max-w-xs"
                                     {...register("oldPassword", { required: { value: true, message: "oldPassword is required" } })} />
                                 <label className="label">
                                     <span className="label-text-alt text-red-500 text-xs italic">
@@ -67,7 +67,7 @@ export default function App() {
                                     </span>
                                 </label>
                                 {/* newPassword */}
-                                <input type="text" placeholder="newPassword" className="input input-bordered w-full max-w-xs"
+                                <input type="password" placeholder="newPassword" className="input input-bordered w-full max-w-xs"
                                     {...register("newPassword", { required: { value: true, message: "newPassword is required" } })} />
                                 <label className="label">
                                     <span className="label-text-alt text-red-500 text-xs italic">

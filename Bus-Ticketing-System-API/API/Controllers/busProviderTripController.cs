@@ -146,11 +146,11 @@ namespace API.Controllers
                 string tripStatus = busProviderTripService.GetTrip(tripID).status;
                 if(tripStatus == "cancelling-pending")
                 {
-                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "This trip is already requested to be cancalled" });
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "This trip is already requested to be cancelled" });
                 }
                 if(tripStatus != "added")
                 {
-                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "This trip cannot be cancalled" });
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "This trip cannot be cancelled" });
                 }
                 var data = busProviderTripService.cancelTrip(tripID);
                 string message = data ? "The trip is requested to be cancelled" : "New trip is not cancelled";

@@ -129,13 +129,13 @@ namespace API.Controllers
                 {
                     return Request.CreateResponse(HttpStatusCode.NotFound, new { message = "This trip is not founded" });
                 }
-                if (tripObj.status == "cancalled")
+                if (tripObj.status == "cancelled")
                 {
-                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "This trip is already cancalled" });
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "This trip is already cancelled" });
                 }
                 if (tripObj.status != "cancelling-pending")
                 {
-                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "This trip cannot be cancalled" });
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, new { message = "This trip cannot be cancelled" });
                 }
                 //obj.bus_id = getID(Request);
                 var data = employeeTripService.acceptCancelTrip(tripID);
