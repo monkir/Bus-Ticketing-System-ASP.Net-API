@@ -1,43 +1,35 @@
-﻿**Bus Ticketing System**
+﻿# **Bus Ticketing System**
 
 ![](image/image.001.png)
 
 American International University- Bangladesh
 
-
-
-
 CSC 4261: Advanced Programming in .NET
-
 
 ~~Project Report~~
 
 Summer 23-24
 
-
-
-Project Title: <a name="_hlk126436574"></a>Bus Ticketing System
+Project Title: Bus Ticketing System
 
 Group Number: 01
 
 Section: B
 
-
-
-|**Student Name**|**Student Id**|
-| :-: | :-: |
-|Monkir Chowdhury|20-44085-2|
-|Forhad Ali Emon|20-44178-2|
+| **Student Name** | **Student Id** |
+|:----------------:|:--------------:|
+| Monkir Chowdhury | 20-44085-2     |
+| Forhad Ali Emon  | 20-44178-2     |
 
 **
 
-**Introduction:**
+# **Introduction:**
 
 The bus ticketing system is an essential component of public transportation that enables passengers to book and purchase bus tickets in advance. It is a web-based application that facilitates easy and convenient ticket booking and payment options for commuters. The system provides real-time information about bus routes, schedules, and ticket availability to ensure a seamless and hassle-free travel experience for passengers.
 
 The bus ticketing system is designed to simplify the bus booking process by allowing passengers to book their tickets online from the comfort of their homes or offices. This eliminates the need for physical ticket counters and long queues, making the process more efficient and convenient for both passengers and bus operators.
 
-**Problem Analysis**
+# **Problem Analysis**
 
 Before developing a bus ticketing system, it is crucial to analyse the problems that currently exist in the existing system. Here are some of the issues faced by commuters and bus operators that a bus ticketing system could address:
 
@@ -63,17 +55,14 @@ There are n-types of Users here. They are:
 - Passenger
 - Employee
 - Bus provider
-
-
-
-1. Feature List:
+2. Feature List:
 
 the “**user**” has the following features:
 
 - ✔️✔️ Login.
 - ✔️✔️ Logout.
 - ✔️✔️ Change password.
-- ⏳Reset password(forgotten)
+- ✔️✔️Reset password(forgotten)
 - ✔️✔️ See profile information.
 - ✔️✔️ See notice.
 - ✔️✔️✔️ Withdraw money.
@@ -112,25 +101,47 @@ the “**Bus Provider**” has the following features:
 - ✔️✔️✔️ Undo cancelling trip request (return 2000 taka to account).
 - ✔️✔️✔️ See the ticket status of trip.
 - ~~See/replay report/review~~.
-
-
 1. Design:
 
 ![](image/image.002.png)
 
+---
+
+- Figure: ER Diagram (old)
+
 ![Diagram, schematic Description automatically generated](image/image.003.png)
 
-~~Figure: ER Diagram (old)~~
+---
+
+- Figure: Use Case Diagram (old)
 
 ![Diagram Description automatically generated](image/image.004.png)
 
-~~Figure: Use Case Diagram (old)~~
+# Web view
 
+- Home page
 
-**	
-**
+![Picture1.png](D:\aiub\0.%20Github\Bus-Ticketing-System-.Net-Core-API\image\Picture1.png)
 
+---
 
-|![](image/image.005.png)|**American International University-Bangladesh (AIUB)**|
-| :-: | :- |
+- Signup page
+
+![Picture2.png](D:\aiub\0.%20Github\Bus-Ticketing-System-.Net-Core-API\image\Picture2.png)
+
+---
+
+- Booking ticket
+
+![Picture3.png](D:\aiub\0.%20Github\Bus-Ticketing-System-.Net-Core-API\image\Picture3.png)
+
+---
+
+- Ticket history
+
+![Picture4.png](D:\aiub\0.%20Github\Bus-Ticketing-System-.Net-Core-API\image\Picture4.png)
+
+| ![](image/image.005.png) | **American International University-Bangladesh (AIUB)** |
+|:------------------------:|:------------------------------------------------------- |
+
 
