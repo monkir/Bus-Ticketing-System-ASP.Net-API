@@ -121,25 +121,25 @@ the “**Bus Provider**” has the following features:
 
 - Home page
 
-![Picture1.png](D:\aiub\0.%20Github\Bus-Ticketing-System-.Net-Core-API\image\Picture1.png)
+![Picture1.png](image/Picture1.png)
 
 ---
 
 - Signup page
 
-![Picture2.png](D:\aiub\0.%20Github\Bus-Ticketing-System-.Net-Core-API\image\Picture2.png)
+![Picture2.png](image/Picture2.png)
 
 ---
 
 - Booking ticket
 
-![Picture3.png](D:\aiub\0.%20Github\Bus-Ticketing-System-.Net-Core-API\image\Picture3.png)
+![Picture3.png](image/Picture3.png)
 
 ---
 
 - Ticket history
 
-![Picture4.png](D:\aiub\0.%20Github\Bus-Ticketing-System-.Net-Core-API\image\Picture4.png)
+![Picture4.png](image/Picture4.png)
 
 | ![](image/image.005.png) | **American International University-Bangladesh (AIUB)** |
 |:------------------------:|:------------------------------------------------------- |
